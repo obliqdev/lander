@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Obliq</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html, body { height: 100%; }
+      @keyframes drift { 0%{transform:translate3d(0,0,0) rotate(-18deg);} 50%{transform:translate3d(6%,-6%,0) rotate(-18deg);} 100%{transform:translate3d(0,0,0) rotate(-18deg);} }
+      .animate-drift { animation: drift 12s ease-in-out infinite; }
+      @keyframes blob { 0%{transform:translate3d(0,0,0) scale(1);} 33%{transform:translate3d(4%,-6%,0) scale(1.15);} 66%{transform:translate3d(-4%,6%,0) scale(1.1);} 100%{transform:translate3d(0,0,0) scale(1);} }
+      .animate-blob { animation: blob 18s ease-in-out infinite; }
+      .animate-blob-slow { animation: blob 24s ease-in-out infinite; }
+      @keyframes bob { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+      .animate-bob { animation: bob 4s ease-in-out infinite; }
+    </style>
+  </head>
+  <body class="min-h-screen font-[Outfit] text-white bg-gradient-to-b from-[#1F2438] to-black">
+    <!-- animated layers -->
+    <div class="pointer-events-none absolute inset-0 -z-20">
+      <div class="absolute -top-40 -left-32 h-[80vh] w-[80vh] rounded-full blur-3xl opacity-50 animate-blob"
+           style="background:radial-gradient(circle at 30% 30%, rgba(96,208,132,0.6), transparent 60%)"></div>
+      <div class="absolute -bottom-40 -right-32 h-[90vh] w-[90vh] rounded-full blur-3xl opacity-50 animate-blob-slow"
+           style="background:radial-gradient(circle at 70% 70%, rgba(96,107,209,0.6), transparent 60%)"></div>
+    </div>
+    <div class="pointer-events-none absolute inset-0 -z-10 opacity-30 mix-blend-screen">
+      <div class="absolute -left-1/2 -top-1/2 h-[220vh] w-[220vw] -rotate-[18deg] animate-drift"
+           style="background:repeating-linear-gradient(-20deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 3px, transparent 3px, transparent 12px)"></div>
+    </div>
+
+    <!-- logo center -->
+    <main class="relative z-10 grid min-h-screen place-items-center">
+      <svg class="h-48 w-48 md:h-64 md:w-64 drop-shadow-[0_0_50px_rgba(96,208,132,0.5)] animate-bob" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Obliq symbol">
+        <path d="M370.909 210C370.909 121.132 298.868 49.0909 210 49.0909C121.132 49.0909 49.0909 121.132 49.0909 210C49.0909 298.868 121.132 370.909 210 370.909V420C94.0202 420 0 325.98 0 210C0 94.0202 94.0202 0 210 0C325.98 0 420 94.0202 420 210C420 325.98 325.98 420 210 420V370.909C298.868 370.909 370.909 298.868 370.909 210Z" fill="url(#g)"/>
+        <defs>
+          <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(226.634 197.525) rotate(128.384) scale(236.072)">
+            <stop offset="0.245192" stop-color="#60D084"/>
+            <stop offset="0.495872" stop-color="#79EA9D"/>
+            <stop offset="0.692308" stop-color="#8CFFB1"/>
+            <stop offset="1" stop-color="#606BD1"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </main>
+
+    <!-- socials fixed bottom -->
+    <footer class="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-12">
+      <a class="uppercase text-[#636E90] hover:text-white transition-colors" href="https://x.com" target="_blank" rel="noopener noreferrer">X</a>
+      <a class="uppercase text-[#636E90] hover:text-white transition-colors" href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a class="uppercase text-[#636E90] hover:text-white transition-colors" href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </footer>
+  </body>
+</html>
