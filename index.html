@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Obliq</title>
+    <title>obliq</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+      * { font-family: 'Outfit', sans-serif !important; }
       html, body {
         height: 100%;
         min-height: 100%;
         background: linear-gradient(to bottom, #1F2438, #000000);
         background-attachment: fixed;
-        font-family: 'Outfit', sans-serif;
       }
       @keyframes blob {
         0% { transform: translate3d(0,0,0) scale(1); }
@@ -27,6 +27,93 @@
         50% { transform: translateY(-10px); }
       }
       .animate-bob { animation: bob 4s ease-in-out infinite; }
+
+      /* --- Glow ring pulse around the logo --- */
+      .glow-wrap { position: relative; }
+      .glow-wrap::before {
+        content: "";
+        position: absolute;
+        inset: -16px; /* ring size around the logo */
+        border-radius: 9999px;
+        background: radial-gradient(closest-side, rgba(96,208,132,0.45), rgba(96,208,132,0.14) 60%, transparent 70%);
+        filter: blur(10px);
+        animation: pulse 2.8s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(0.96); opacity: 0.7; }
+        50% { transform: scale(1.06); opacity: 1; }
+      }
+
+      /* --- Chat bubbles --- */
+      .chat { display: flex; }
+      .chat-user { justify-content: flex-end; }
+      .chat-bot { justify-content: flex-start; }
+      .bubble {
+        max-width: 90%;
+        padding: 12px 16px;
+        border-radius: 9999px; /* fully rounded */
+        line-height: 1.4;
+        font-size: 0.95rem;
+      }
+      .chat-user .bubble {
+        background: linear-gradient(135deg, #87F0B4, #6B91C9);
+        color: #0A0A0A;
+      }
+      .chat-bot .bubble {
+        position: relative;
+        background: transparent;
+        border: 2px solid transparent;
+        border-radius: 9999px; /* ensure rounded outline */
+        background-image: linear-gradient(#000, #000), linear-gradient(135deg, #87F0B4, #6B91C9);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        color: #ffffff;
+        overflow: hidden;
+      }
+
+      /* typing dots */
+      .typing {
+        display: inline-flex;
+        gap: 4px;
+        align-items: center;
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        background: #87F0B4;
+        border-radius: 50%;
+        opacity: 0.6;
+        animation: blink 1.4s infinite;
+      }
+      .dot:nth-child(2) { animation-delay: 0.2s; }
+      .dot:nth-child(3) { animation-delay: 0.4s; }
+
+      @keyframes blink {
+        0%, 80%, 100% { opacity: 0.2; }
+        40% { opacity: 1; }
+      }
+
+      @keyframes fadeUp {
+        0% { opacity: 0; transform: translateY(12px) scale(0.98); }
+        60% { opacity: 1; transform: translateY(0) scale(1.02); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      .animate-fadeUp { animation: fadeUp 700ms ease-out forwards; }
+
+      /* Swap typing for text */
+      .swap-text {
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        white-space: pre-wrap;
+        text-align: left;
+      }
+      .bubble.show-text .typing { display: none; }
+      .bubble.show-text .swap-text { opacity: 1; position: static; transform: none; }
     </style>
   </head>
   <body class="h-full text-white relative overflow-hidden">
@@ -39,19 +126,48 @@
            style="background:radial-gradient(circle at 70% 70%, rgba(96,107,209,0.6), transparent 60%)"></div>
     </div>
 
-    <!-- logo center -->
+    <!-- logo center with glow ring pulse -->
     <main class="relative z-10 grid min-h-screen place-items-center">
-      <svg class="h-48 w-48 md:h-64 md:w-64 drop-shadow-[0_0_50px_rgba(96,208,132,0.5)] animate-bob" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Obliq symbol">
-        <path d="M370.909 210C370.909 121.132 298.868 49.0909 210 49.0909C121.132 49.0909 49.0909 121.132 49.0909 210C49.0909 298.868 121.132 370.909 210 370.909V420C94.0202 420 0 325.98 0 210C0 94.0202 94.0202 0 210 0C325.98 0 420 94.0202 420 210C420 325.98 325.98 420 210 420V370.909C298.868 370.909 370.909 298.868 370.909 210Z" fill="url(#g)"/>
-        <defs>
-          <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(226.634 197.525) rotate(128.384) scale(236.072)">
-            <stop offset="0.245192" stop-color="#60D084"/>
-            <stop offset="0.495872" stop-color="#79EA9D"/>
-            <stop offset="0.692308" stop-color="#8CFFB1"/>
-            <stop offset="1" stop-color="#606BD1"/>
-          </radialGradient>
-        </defs>
-      </svg>
+      <div class="glow-wrap h-48 w-48 md:h-64 md:w-64">
+        <svg class="h-full w-full drop-shadow-[0_0_50px_rgba(96,208,132,0.5)] animate-bob" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Obliq symbol">
+          <path d="M370.909 210C370.909 121.132 298.868 49.0909 210 49.0909C121.132 49.0909 49.0909 121.132 49.0909 210C49.0909 298.868 121.132 370.909 210 370.909V420C94.0202 420 0 325.98 0 210C0 94.0202 94.0202 0 210 0C325.98 0 420 94.0202 420 210C420 325.98 325.98 420 210 420V370.909C298.868 370.909 370.909 298.868 370.909 210Z" fill="url(#g)"/>
+          <defs>
+            <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(226.634 197.525) rotate(128.384) scale(236.072)">
+              <stop offset="0.245192" stop-color="#60D084"/>
+              <stop offset="0.495872" stop-color="#79EA9D"/>
+              <stop offset="0.692308" stop-color="#8CFFB1"/>
+              <stop offset="1" stop-color="#606BD1"/>
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+      <!-- Animated conversation -->
+      <div class="mt-10 w-full max-w-[680px] px-6">
+        <ul class="space-y-3">
+          <li class="chat chat-user opacity-0 translate-y-3 animate-fadeUp" style="animation-delay:1s">
+            <div class="bubble">Hey obliq, can I book a private session for 1hr?</div>
+          </li>
+          <li class="chat chat-bot opacity-0 translate-y-3 animate-fadeUp" style="animation-delay:2.5s">
+            <div class="bubble" id="msg1">
+              <div class="typing">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              </div>
+              <div class="swap-text">Of course, here are some available slots, which works for you? Friday at 3, Saturday at 11am</div>
+            </div>
+          </li>
+          <li class="chat chat-user opacity-0 translate-y-3 animate-fadeUp" style="animation-delay:5s">
+            <div class="bubble">Lets go with Saturday</div>
+          </li>
+          <li class="chat chat-bot opacity-0 translate-y-3 animate-fadeUp" style="animation-delay:6.5s">
+            <div class="bubble" id="msg2">
+              <div class="typing">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              </div>
+              <div class="swap-text">Sounds great! You are booked!</div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </main>
 
     <!-- socials fixed bottom -->
@@ -60,5 +176,20 @@
       <a class="uppercase text-[#636E90] hover:text-white transition-colors" href="https://facebook.com/withobliq" target="_blank" rel="noopener noreferrer">Facebook</a>
       <a class="uppercase text-[#636E90] hover:text-white transition-colors" href="https://instagram.com/withobliq" target="_blank" rel="noopener noreferrer">Instagram</a>
     </footer>
+
+    <script>
+      // swap typing to text after 500ms once bubble appears
+      function swapAfterDelay(id, delay) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        setTimeout(() => {
+          el.classList.add('show-text');
+        }, delay);
+      }
+
+      // Trigger swaps aligned with animation delays
+      setTimeout(() => swapAfterDelay('msg1', 1000), 2500);
+      setTimeout(() => swapAfterDelay('msg2', 1000), 6500);
+    </script>
   </body>
 </html>
