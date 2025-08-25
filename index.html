@@ -45,75 +45,6 @@
         0%, 100% { transform: scale(0.96); opacity: 0.7; }
         50% { transform: scale(1.06); opacity: 1; }
       }
-
-      /* --- Chat bubbles --- */
-      .chat { display: flex; }
-      .chat-user { justify-content: flex-end; }
-      .chat-bot { justify-content: flex-start; }
-      .bubble {
-        max-width: 90%;
-        padding: 12px 16px;
-        border-radius: 9999px; /* fully rounded */
-        line-height: 1.4;
-        font-size: 0.95rem;
-      }
-      .chat-user .bubble {
-        background: linear-gradient(135deg, #87F0B4, #6B91C9);
-        color: #0A0A0A;
-      }
-      .chat-bot .bubble {
-        position: relative;
-        background: transparent;
-        border: 2px solid transparent;
-        border-radius: 9999px; /* ensure rounded outline */
-        background-image: linear-gradient(#000, #000), linear-gradient(135deg, #87F0B4, #6B91C9);
-        background-origin: border-box;
-        background-clip: padding-box, border-box;
-        color: #ffffff;
-        overflow: hidden;
-      }
-
-      /* typing dots */
-      .typing {
-        display: inline-flex;
-        gap: 4px;
-        align-items: center;
-      }
-      .dot {
-        width: 6px;
-        height: 6px;
-        background: #87F0B4;
-        border-radius: 50%;
-        opacity: 0.6;
-        animation: blink 1.4s infinite;
-      }
-      .dot:nth-child(2) { animation-delay: 0.2s; }
-      .dot:nth-child(3) { animation-delay: 0.4s; }
-
-      @keyframes blink {
-        0%, 80%, 100% { opacity: 0.2; }
-        40% { opacity: 1; }
-      }
-
-      @keyframes fadeUp {
-        0% { opacity: 0; transform: translateY(12px) scale(0.98); }
-        60% { opacity: 1; transform: translateY(0) scale(1.02); }
-        100% { opacity: 1; transform: translateY(0) scale(1); }
-      }
-      .animate-fadeUp { animation: fadeUp 700ms ease-out forwards; }
-
-      /* Swap typing for text */
-      .swap-text {
-        opacity: 0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        white-space: pre-wrap;
-        text-align: left;
-      }
-      .bubble.show-text .typing { display: none; }
-      .bubble.show-text .swap-text { opacity: 1; position: static; transform: none; }
     </style>
   </head>
   <body class="h-full text-white relative overflow-hidden">
@@ -141,33 +72,6 @@
           </defs>
         </svg>
       </div>
-      <!-- Animated conversation -->
-      <div class="mt-10 w-full max-w-[680px] px-6">
-        <ul class="space-y-3">
-          <li class="chat chat-user opacity-0 translate-y-3 animate-fadeUp" style="animation-delay:1s">
-            <div class="bubble">Hey obliq, can I book a private session for 1hr?</div>
-          </li>
-          <li class="chat chat-bot opacity-0 translate-y-3 animate-fadeUp" style="animation-delay:2.5s">
-            <div class="bubble" id="msg1">
-              <div class="typing">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-              </div>
-              <div class="swap-text">Of course, here are some available slots, which works for you? Friday at 3, Saturday at 11am</div>
-            </div>
-          </li>
-          <li class="chat chat-user opacity-0 translate-y-3 animate-fadeUp" style="animation-delay:5s">
-            <div class="bubble">Lets go with Saturday</div>
-          </li>
-          <li class="chat chat-bot opacity-0 translate-y-3 animate-fadeUp" style="animation-delay:6.5s">
-            <div class="bubble" id="msg2">
-              <div class="typing">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-              </div>
-              <div class="swap-text">Sounds great! You are booked!</div>
-            </div>
-          </li>
-        </ul>
-      </div>
     </main>
 
     <!-- socials fixed bottom -->
@@ -176,20 +80,5 @@
       <a class="uppercase text-[#636E90] hover:text-white transition-colors" href="https://facebook.com/withobliq" target="_blank" rel="noopener noreferrer">Facebook</a>
       <a class="uppercase text-[#636E90] hover:text-white transition-colors" href="https://instagram.com/withobliq" target="_blank" rel="noopener noreferrer">Instagram</a>
     </footer>
-
-    <script>
-      // swap typing to text after 500ms once bubble appears
-      function swapAfterDelay(id, delay) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        setTimeout(() => {
-          el.classList.add('show-text');
-        }, delay);
-      }
-
-      // Trigger swaps aligned with animation delays
-      setTimeout(() => swapAfterDelay('msg1', 1000), 2500);
-      setTimeout(() => swapAfterDelay('msg2', 1000), 6500);
-    </script>
   </body>
 </html>
