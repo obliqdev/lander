@@ -14,64 +14,65 @@
         background: linear-gradient(to bottom, #1F2438, #000000);
         background-attachment: fixed;
       }
-      @keyframes blob {
-        0% { transform: translate3d(0,0,0) scale(1); }
-        33% { transform: translate3d(4%,-6%,0) scale(1.15); }
-        66% { transform: translate3d(-4%,6%,0) scale(1.1); }
-        100% { transform: translate3d(0,0,0) scale(1); }
-      }
-      .animate-blob { animation: blob 18s ease-in-out infinite; }
-      .animate-blob-slow { animation: blob 24s ease-in-out infinite; }
-      @keyframes bob {
-        0%,100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-      }
-      .animate-bob { animation: bob 4s ease-in-out infinite; }
-
-      /* --- Glow ring pulse around the logo --- */
-      .glow-wrap { position: relative; }
-      .glow-wrap::before {
-        content: "";
-        position: absolute;
-        inset: -16px; /* ring size around the logo */
-        border-radius: 9999px;
-        background: radial-gradient(closest-side, rgba(96,208,132,0.45), rgba(96,208,132,0.14) 60%, transparent 70%);
-        filter: blur(10px);
-        animation: pulse 2.8s ease-in-out infinite;
-        pointer-events: none;
-      }
-
-      @keyframes pulse {
-        0%, 100% { transform: scale(0.96); opacity: 0.7; }
-        50% { transform: scale(1.06); opacity: 1; }
-      }
     </style>
   </head>
   <body class="h-full text-white relative overflow-hidden">
-    
-    <!-- animated blobs -->
-    <div class="pointer-events-none absolute inset-0 -z-20">
-      <div class="absolute -top-40 -left-32 h-[80vh] w-[80vh] rounded-full blur-3xl opacity-50 animate-blob"
-           style="background:radial-gradient(circle at 30% 30%, rgba(96,208,132,0.6), transparent 60%)"></div>
-      <div class="absolute -bottom-40 -right-32 h-[90vh] w-[90vh] rounded-full blur-3xl opacity-50 animate-blob-slow"
-           style="background:radial-gradient(circle at 70% 70%, rgba(96,107,209,0.6), transparent 60%)"></div>
-    </div>
 
     <!-- logo center with glow ring pulse -->
     <main class="relative z-10 grid min-h-screen place-items-center">
-      <div class="glow-wrap h-48 w-48 md:h-64 md:w-64">
-        <svg class="h-full w-full drop-shadow-[0_0_50px_rgba(96,208,132,0.5)] animate-bob" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Obliq symbol">
-          <path d="M370.909 210C370.909 121.132 298.868 49.0909 210 49.0909C121.132 49.0909 49.0909 121.132 49.0909 210C49.0909 298.868 121.132 370.909 210 370.909V420C94.0202 420 0 325.98 0 210C0 94.0202 94.0202 0 210 0C325.98 0 420 94.0202 420 210C420 325.98 325.98 420 210 420V370.909C298.868 370.909 370.909 298.868 370.909 210Z" fill="url(#g)"/>
+        <svg class="max-w-[400px]" viewBox="0 0 432 105" fill="none" xmlns="http://www.w3.org/2000/s</svg>vg">
+          <g filter="url(#filter0_f_479_895)">
+          <path d="M182.5 82V101H160.5V82H182.5ZM200 64.5C200 54.835 192.165 47 182.5 47H160.5C150.835 47 143 54.835 143 64.5C143 74.165 150.835 82 160.5 82V101C140.342 101 124 84.6584 124 64.5C124 44.3416 140.342 28 160.5 28H182.5L183.442 28.0117C203.165 28.5116 219 44.6567 219 64.5C219 84.3433 203.165 100.488 183.442 100.988L182.5 101V82C192.165 82 200 74.165 200 64.5Z" fill="#3E3068"/>
+          <path d="M71.5 82V101H49.5V82H71.5ZM89 64.5C89 54.835 81.165 47 71.5 47H49.5C39.835 47 32 54.835 32 64.5C32 74.165 39.835 82 49.5 82V101C29.3416 101 13 84.6584 13 64.5C13 44.3416 29.3416 28 49.5 28H71.5L72.4424 28.0117C92.1652 28.5116 108 44.6567 108 64.5C108 84.3433 92.1652 100.488 72.4424 100.988L71.5 101V82C81.165 82 89 74.165 89 64.5Z" fill="#3E3068"/>
+          <path d="M9.87841 28H49.5803C53.2457 28 54.9808 32.5197 52.2569 34.9725L31.6818 53.5C30.1188 54.9075 27.7328 54.864 26.2221 53.4006L7.09534 34.8731C4.51361 32.3722 6.28402 28 9.87841 28Z" fill="#3E3068"/>
+          <path d="M339.5 47L339.5 28L361.5 28L361.5 47L339.5 47ZM322 64.5C322 74.165 329.835 82 339.5 82L361.5 82C371.165 82 379 74.165 379 64.5C379 54.835 371.165 47 361.5 47L361.5 28C381.658 28 398 44.3416 398 64.5C398 84.6584 381.658 101 361.5 101L339.5 101L338.558 100.988C318.835 100.488 303 84.3433 303 64.5C303 44.6567 318.835 28.5116 338.558 28.0117L339.5 28L339.5 47C329.835 47 322 54.835 322 64.5Z" fill="#3E3068"/>
+          <path d="M401.122 101L361.42 101C357.754 101 356.019 96.4803 358.743 94.0275L379.318 75.5C380.881 74.0925 383.267 74.136 384.778 75.5994L403.905 94.1269C406.486 96.6278 404.716 101 401.122 101Z" fill="#3E3068"/>
+          <rect x="122" y="4" width="21" height="97" rx="4" fill="#3E3068"/>
+          <rect x="233" y="4" width="21" height="97" rx="4" fill="#3E3068"/>
+          <rect x="268" y="28" width="21" height="73" rx="4" fill="#3E3068"/>
+          <rect x="268" y="4" width="21" height="18" rx="4" fill="#3E3068"/>
+          </g>
+          <g opacity="0.3" filter="url(#filter1_f_479_895)">
+          <path d="M203.5 82V101H181.5V82H203.5ZM221 64.5C221 54.835 213.165 47 203.5 47H181.5C171.835 47 164 54.835 164 64.5C164 74.165 171.835 82 181.5 82V101C161.342 101 145 84.6584 145 64.5C145 44.3416 161.342 28 181.5 28H203.5L204.442 28.0117C224.165 28.5116 240 44.6567 240 64.5C240 84.3433 224.165 100.488 204.442 100.988L203.5 101V82C213.165 82 221 74.165 221 64.5Z" fill="#87F9AB"/>
+          <path d="M92.5 82V101H70.5V82H92.5ZM110 64.5C110 54.835 102.165 47 92.5 47H70.5C60.835 47 53 54.835 53 64.5C53 74.165 60.835 82 70.5 82V101C50.3416 101 34 84.6584 34 64.5C34 44.3416 50.3416 28 70.5 28H92.5L93.4424 28.0117C113.165 28.5116 129 44.6567 129 64.5C129 84.3433 113.165 100.488 93.4424 100.988L92.5 101V82C102.165 82 110 74.165 110 64.5Z" fill="#87F9AB"/>
+          <path d="M30.8784 28H70.5803C74.2457 28 75.9808 32.5197 73.2569 34.9725L52.6818 53.5C51.1188 54.9075 48.7328 54.864 47.2221 53.4006L28.0953 34.8731C25.5136 32.3722 27.284 28 30.8784 28Z" fill="#87F9AB"/>
+          <path d="M360.5 47L360.5 28L382.5 28L382.5 47L360.5 47ZM343 64.5C343 74.165 350.835 82 360.5 82L382.5 82C392.165 82 400 74.165 400 64.5C400 54.835 392.165 47 382.5 47L382.5 28C402.658 28 419 44.3416 419 64.5C419 84.6584 402.658 101 382.5 101L360.5 101L359.558 100.988C339.835 100.488 324 84.3433 324 64.5C324 44.6567 339.835 28.5116 359.558 28.0117L360.5 28L360.5 47C350.835 47 343 54.835 343 64.5Z" fill="#87F9AB"/>
+          <path d="M422.122 101L382.42 101C378.754 101 377.019 96.4803 379.743 94.0275L400.318 75.5C401.881 74.0925 404.267 74.136 405.778 75.5994L424.905 94.1269C427.486 96.6278 425.716 101 422.122 101Z" fill="#87F9AB"/>
+          <rect x="143" y="4" width="21" height="97" rx="4" fill="#87F9AB"/>
+          <rect x="254" y="4" width="21" height="97" rx="4" fill="#87F9AB"/>
+          <rect x="289" y="28" width="21" height="73" rx="4" fill="#87F9AB"/>
+          <rect x="289" y="4" width="21" height="18" rx="4" fill="#87F9AB"/>
+          </g>
+          <g filter="url(#filter2_f_479_895)">
+          <path d="M195.5 82V101H173.5V82H195.5ZM213 64.5C213 54.835 205.165 47 195.5 47H173.5C163.835 47 156 54.835 156 64.5C156 74.165 163.835 82 173.5 82V101C153.342 101 137 84.6584 137 64.5C137 44.3416 153.342 28 173.5 28H195.5L196.442 28.0117C216.165 28.5116 232 44.6567 232 64.5C232 84.3433 216.165 100.488 196.442 100.988L195.5 101V82C205.165 82 213 74.165 213 64.5Z" fill="white"/>
+          <path d="M84.5 82V101H62.5V82H84.5ZM102 64.5C102 54.835 94.165 47 84.5 47H62.5C52.835 47 45 54.835 45 64.5C45 74.165 52.835 82 62.5 82V101C42.3416 101 26 84.6584 26 64.5C26 44.3416 42.3416 28 62.5 28H84.5L85.4424 28.0117C105.165 28.5116 121 44.6567 121 64.5C121 84.3433 105.165 100.488 85.4424 100.988L84.5 101V82C94.165 82 102 74.165 102 64.5Z" fill="white"/>
+          <path d="M22.8784 28H62.5803C66.2457 28 67.9808 32.5197 65.2569 34.9725L44.6818 53.5C43.1188 54.9075 40.7328 54.864 39.2221 53.4006L20.0953 34.8731C17.5136 32.3722 19.284 28 22.8784 28Z" fill="white"/>
+          <path d="M352.5 47L352.5 28L374.5 28L374.5 47L352.5 47ZM335 64.5C335 74.165 342.835 82 352.5 82L374.5 82C384.165 82 392 74.165 392 64.5C392 54.835 384.165 47 374.5 47L374.5 28C394.658 28 411 44.3416 411 64.5C411 84.6584 394.658 101 374.5 101L352.5 101L351.558 100.988C331.835 100.488 316 84.3433 316 64.5C316 44.6567 331.835 28.5116 351.558 28.0117L352.5 28L352.5 47C342.835 47 335 54.835 335 64.5Z" fill="white"/>
+          <path d="M414.122 101L374.42 101C370.754 101 369.019 96.4803 371.743 94.0275L392.318 75.5C393.881 74.0925 396.267 74.136 397.778 75.5994L416.905 94.1269C419.486 96.6278 417.716 101 414.122 101Z" fill="white"/>
+          <rect x="135" y="4" width="21" height="97" rx="4" fill="white"/>
+          <rect x="246" y="4" width="21" height="97" rx="4" fill="white"/>
+          <rect x="281" y="28" width="21" height="73" rx="4" fill="white"/>
+          <rect x="281" y="4" width="21" height="18" rx="4" fill="white"/>
+          </g>
           <defs>
-            <radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(226.634 197.525) rotate(128.384) scale(236.072)">
-              <stop offset="0.245192" stop-color="#60D084"/>
-              <stop offset="0.495872" stop-color="#79EA9D"/>
-              <stop offset="0.692308" stop-color="#8CFFB1"/>
-              <stop offset="1" stop-color="#606BD1"/>
-            </radialGradient>
+          <filter id="filter0_f_479_895" x="-4" y="0" width="419" height="105" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+          <feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_479_895"/>
+          </filter>
+          <filter id="filter1_f_479_895" x="17" y="0" width="419" height="105" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+          <feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_479_895"/>
+          </filter>
+          <filter id="filter2_f_479_895" x="11.4" y="2.4" width="414.2" height="100.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+          <feGaussianBlur stdDeviation="0.8" result="effect1_foregroundBlur_479_895"/>
+          </filter>
           </defs>
         </svg>
-      </div>
+      
     </main>
 
     <!-- socials fixed bottom -->
