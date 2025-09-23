@@ -14,9 +14,25 @@
         background: linear-gradient(to bottom, #1F2438, #000000);
         background-attachment: fixed;
       }
+      video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: 10;
+        object-fit: cover;
+        filter: brightness(0.5) contrast(1.2) saturate(1.5);
+        opacity: 10%;
+      }
     </style>
   </head>
   <body class="h-full text-white relative overflow-hidden">
+      <video autoplay muted loop>
+        <source src="bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
     <div class="absolute top-0 right-0 m-6 z-20 flex items-center gap-3">
       <a href="https://app.withobliq.com/" class="px-6 py-3 text-white uppercase font-medium rounded hover:bg-white hover:text-[#636E90] transition-colors">
         Login
