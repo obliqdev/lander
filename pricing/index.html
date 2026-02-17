@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing — Obliq</title>
+  <meta name="description" content="Simple monthly pricing for Obliq with a base package and optional add-ons." />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body class="pricing-page">
+  <header class="topbar">
+    <div class="container">
+      <div class="nav-row">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Obliq <span class="brand-sub">Studio OS</span></span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <div class="platform-wrap" id="platformWrap">
+            <button class="platform-trigger" id="platformTrigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="megaMenu">
+              Platform <span class="chev">▾</span>
+            </button>
+
+            <div class="mega" id="megaMenu" role="menu" aria-label="Platform menu">
+              <div class="mega-top">
+                <div>
+                  <p class="kicker">Platform Apps</p>
+                  <p class="mega-copy">Run scheduling, billing, retention, messaging, and reporting in one connected operating system for Pilates and yoga studios.</p>
+                </div>
+                <a class="explore-link" href="/plantform/#">Explore →</a>
+              </div>
+
+              <div class="mega-grid">
+                <a class="app-link" role="menuitem" href="/platform/#platform-dashboard"><p class="app-title">Dashboard</p><p class="app-desc">Your studio command center.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-scheduling"><p class="app-title">Scheduling</p><p class="app-desc">Rules, availability, and conflicts handled.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-classes"><p class="app-title">Classes</p><p class="app-desc">Capacity, waitlists, check-ins.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-appointments"><p class="app-title">Appointments</p><p class="app-desc">Private bookings with smart availability.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-memberships"><p class="app-title">Memberships</p><p class="app-desc">Recurring revenue and retention.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-passes"><p class="app-title">Passes</p><p class="app-desc">Packs, intro offers, expiry rules.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-services"><p class="app-title">Services</p><p class="app-desc">Sell add-ons, bundles, and sessions.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-payments"><p class="app-title">Payments</p><p class="app-desc">Integrated billing and payouts.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-messaging"><p class="app-title">Messaging</p><p class="app-desc">1:1 and broadcast studio comms.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-reporting"><p class="app-title">Reporting</p><p class="app-desc">Revenue, attendance, churn insights.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-website-builder"><p class="app-title">Website Builder</p><p class="app-desc">Pages that convert to bookings.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-email-configurator"><p class="app-title">Email Configurator</p><p class="app-desc">Branded email + deliverability setup.</p></a>
+              </div>
+            </div>
+          </div>
+
+          <a class="nav-link" href="/your-studio/">For Your Studio</a>
+          <a class="nav-link" href="/pricing/">Pricing</a>
+          <a class="nav-link" href="/support/">Support</a>
+        </nav>
+
+        <div class="actions">
+          <a class="btn desktop-only" href="https://app.withobliq.com">Login</a>
+          <a class="btn btn-primary desktop-only" href="/#support">Book a Demo</a>
+          <button class="btn hamburger" id="mobileOpen" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+  <aside class="sheet" id="mobileSheet" aria-label="Mobile menu" aria-hidden="true">
+    <div class="sheet-head">
+      <div class="sheet-title">Menu</div>
+      <button class="btn" id="mobileClose" type="button" aria-label="Close menu">✕</button>
+    </div>
+
+    <div class="sheet-body">
+      <div id="mobileRoot">
+        <button class="mobile-item" id="mobilePlatformBtn" type="button"><span><strong>Platform</strong><small>All connected apps</small></span><span class="arrow">›</span></button>
+        <a class="mobile-item" href="/your-studio/"><span><strong>For Your Studio</strong><small>Built for your studio model</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/pricing/"><span><strong>Pricing</strong><small>Plans for growing studios</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/support/"><span><strong>Support</strong><small>Help and guidance</small></span><span class="arrow">›</span></a>
+        <a class="btn btn-primary" href="/#support" style="width:100%;margin-top:8px;padding:14px;">Book a Demo</a>
+      </div>
+
+      <div id="mobilePlatform" style="display:none;">
+        <div class="back-row">
+          <button class="back-btn" id="mobileBack" type="button">← Back</button>
+          <span class="kicker">Platform</span>
+        </div>
+
+        <a class="mobile-item" href="/platform/#platform-dashboard"><span><strong>Dashboard</strong><small>Your studio command center.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-scheduling"><span><strong>Scheduling</strong><small>Rules, availability, and conflicts handled.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-classes"><span><strong>Classes</strong><small>Capacity, waitlists, check-ins.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-appointments"><span><strong>Appointments</strong><small>Private bookings with smart availability.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-memberships"><span><strong>Memberships</strong><small>Recurring revenue and retention.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-passes"><span><strong>Passes</strong><small>Packs, intro offers, expiry rules.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-services"><span><strong>Services</strong><small>Sell add-ons, bundles, and sessions.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-payments"><span><strong>Payments</strong><small>Integrated billing and payouts.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-messaging"><span><strong>Messaging</strong><small>1:1 and broadcast studio comms.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-reporting"><span><strong>Reporting</strong><small>Revenue, attendance, churn insights.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-website-builder"><span><strong>Website Builder</strong><small>Pages that convert to bookings.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-email-configurator"><span><strong>Email Configurator</strong><small>Branded email + deliverability setup.</small></span><span class="arrow">›</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="page">
+    <section class="section pricing-hero">
+      <div class="container">
+        <p class="kicker">Pricing</p>
+        <h1>Simple monthly pricing.</h1>
+        <p class="lead">Start with the base package at $100/month in your local currency, then add only what you need.</p>
+
+        <div class="split pricing-layout" id="pricingBuilder">
+          <article class="card pricing-base-card">
+            <p class="kicker">Base Package</p>
+            <h2>Studio Core</h2>
+            <p class="pricing-base-copy">Everything you need to run day-to-day operations.</p>
+            <div class="stack">
+              <div class="stack-item">Up to 10 staff members included <span>✓</span></div>
+              <div class="stack-item">Class scheduling and capacity <span>✓</span></div>
+              <div class="stack-item">Membership and pass management <span>✓</span></div>
+              <div class="stack-item">Payments and reporting <span>✓</span></div>
+            </div>
+
+            <div class="pricing-total-wrap">
+              <p class="pricing-total-label">Monthly Total</p>
+              <p class="pricing-total-value" id="pricingTotal">$100</p>
+              <p class="pricing-total-note">per month (local currency)</p>
+            </div>
+
+            <a class="btn btn-primary pricing-cta" href="/#support">Get Started</a>
+          </article>
+
+          <article class="card pricing-options-card">
+            <p class="kicker">Add-ons</p>
+            <h2>Choose optional features</h2>
+            <p class="pricing-options-copy">Most add-ons are +$10/month. Staff expansion is +$20/month.</p>
+
+            <label class="addon-option" for="addonStaffExpansion">
+              <span>
+                <strong>Add 20 more staff members</strong>
+                <small>Increase team capacity from 10 to 30 staff</small>
+              </span>
+              <span class="addon-check-wrap">
+                <input type="checkbox" id="addonStaffExpansion" data-addon-price="20" />
+                <em>+$20</em>
+              </span>
+            </label>
+
+            <label class="addon-option" for="addonSms">
+              <span>
+                <strong>SMS Communication</strong>
+                <small>Two-way and broadcast SMS messaging</small>
+              </span>
+              <span class="addon-check-wrap">
+                <input type="checkbox" id="addonSms" data-addon-price="10" />
+                <em>+$10</em>
+              </span>
+            </label>
+
+            <label class="addon-option" for="addonWebsite">
+              <span>
+                <strong>Website Builder</strong>
+                <small>Published pages optimized for bookings</small>
+              </span>
+              <span class="addon-check-wrap">
+                <input type="checkbox" id="addonWebsite" data-addon-price="10" />
+                <em>+$10</em>
+              </span>
+            </label>
+
+            <label class="addon-option" for="addonAppointments">
+              <span>
+                <strong>Appointments</strong>
+                <small>Private session scheduling and management</small>
+              </span>
+              <span class="addon-check-wrap">
+                <input type="checkbox" id="addonAppointments" data-addon-price="10" />
+                <em>+$10</em>
+              </span>
+            </label>
+
+            <label class="addon-option" for="addonEmailMarketing">
+              <span>
+                <strong>Email Marketing</strong>
+                <small>Campaigns, automations, and audience targeting</small>
+              </span>
+              <span class="addon-check-wrap">
+                <input type="checkbox" id="addonEmailMarketing" data-addon-price="10" />
+                <em>+$10</em>
+              </span>
+            </label>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">Obliq</p>
+        <p class="footer-copy">Studio OS for Pilates and yoga teams that need reliable operations, measurable outcomes, and clear decisions.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Product links">
+        <p class="footer-heading">Product</p>
+        <a href="/platform/">Platform</a>
+        <a href="/your-studio/">For Your Studio</a>
+        <a href="/pricing/">Pricing</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Legal links">
+        <p class="footer-heading">Legal</p>
+        <a href="/#privacy">Privacy Policy</a>
+        <a href="/#terms">Terms of Service</a>
+      </nav>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span class="js-year"></span> Obliq. All rights reserved.</p>
+      <div class="footer-links" aria-label="Footer quick links">
+        <a href="/#privacy">Privacy Policy</a>
+        <a href="/#terms">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script src="../assets/pricing.js"></script>
+  <script src="../assets/chat.js"></script>
+</body>
+</html>

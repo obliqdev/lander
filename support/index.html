@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — Obliq</title>
+  <meta name="description" content="Warm, practical support for Obliq studio teams." />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body class="support-page">
+  <header class="topbar">
+    <div class="container">
+      <div class="nav-row">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Obliq <span class="brand-sub">Studio OS</span></span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <div class="platform-wrap" id="platformWrap">
+            <button class="platform-trigger" id="platformTrigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="megaMenu">
+              Platform <span class="chev">▾</span>
+            </button>
+
+            <div class="mega" id="megaMenu" role="menu" aria-label="Platform menu">
+              <div class="mega-top">
+                <div>
+                  <p class="kicker">Platform Apps</p>
+                  <p class="mega-copy">Run scheduling, billing, retention, messaging, and reporting in one connected operating system for Pilates and yoga studios.</p>
+                </div>
+                <a class="explore-link" href="/plantform/#">Explore →</a>
+              </div>
+
+              <div class="mega-grid">
+                <a class="app-link" role="menuitem" href="/platform/#platform-dashboard"><p class="app-title">Dashboard</p><p class="app-desc">Your studio command center.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-scheduling"><p class="app-title">Scheduling</p><p class="app-desc">Rules, availability, and conflicts handled.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-classes"><p class="app-title">Classes</p><p class="app-desc">Capacity, waitlists, check-ins.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-appointments"><p class="app-title">Appointments</p><p class="app-desc">Private bookings with smart availability.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-memberships"><p class="app-title">Memberships</p><p class="app-desc">Recurring revenue and retention.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-passes"><p class="app-title">Passes</p><p class="app-desc">Packs, intro offers, expiry rules.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-services"><p class="app-title">Services</p><p class="app-desc">Sell add-ons, bundles, and sessions.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-payments"><p class="app-title">Payments</p><p class="app-desc">Integrated billing and payouts.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-messaging"><p class="app-title">Messaging</p><p class="app-desc">1:1 and broadcast studio comms.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-reporting"><p class="app-title">Reporting</p><p class="app-desc">Revenue, attendance, churn insights.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-website-builder"><p class="app-title">Website Builder</p><p class="app-desc">Pages that convert to bookings.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-email-configurator"><p class="app-title">Email Configurator</p><p class="app-desc">Branded email + deliverability setup.</p></a>
+              </div>
+            </div>
+          </div>
+
+          <a class="nav-link" href="/your-studio/">For Your Studio</a>
+          <a class="nav-link" href="/pricing/">Pricing</a>
+          <a class="nav-link" href="/support/">Support</a>
+        </nav>
+
+        <div class="actions">
+          <a class="btn desktop-only" href="https://app.withobliq.com">Login</a>
+          <a class="btn btn-primary desktop-only" href="#contact-support">Talk to Support</a>
+          <button class="btn hamburger" id="mobileOpen" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+  <aside class="sheet" id="mobileSheet" aria-label="Mobile menu" aria-hidden="true">
+    <div class="sheet-head">
+      <div class="sheet-title">Menu</div>
+      <button class="btn" id="mobileClose" type="button" aria-label="Close menu">✕</button>
+    </div>
+
+    <div class="sheet-body">
+      <div id="mobileRoot">
+        <button class="mobile-item" id="mobilePlatformBtn" type="button"><span><strong>Platform</strong><small>All connected apps</small></span><span class="arrow">›</span></button>
+        <a class="mobile-item" href="/your-studio/"><span><strong>For Your Studio</strong><small>Built for your studio model</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/pricing/"><span><strong>Pricing</strong><small>Plans for growing studios</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/support/"><span><strong>Support</strong><small>Help and guidance</small></span><span class="arrow">›</span></a>
+        <a class="btn btn-primary" href="#contact-support" style="width:100%;margin-top:8px;padding:14px;">Talk to Support</a>
+      </div>
+
+      <div id="mobilePlatform" style="display:none;">
+        <div class="back-row">
+          <button class="back-btn" id="mobileBack" type="button">← Back</button>
+          <span class="kicker">Platform</span>
+        </div>
+
+        <a class="mobile-item" href="/platform/#platform-dashboard"><span><strong>Dashboard</strong><small>Your studio command center.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-scheduling"><span><strong>Scheduling</strong><small>Rules, availability, and conflicts handled.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-classes"><span><strong>Classes</strong><small>Capacity, waitlists, check-ins.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-appointments"><span><strong>Appointments</strong><small>Private bookings with smart availability.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-memberships"><span><strong>Memberships</strong><small>Recurring revenue and retention.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-passes"><span><strong>Passes</strong><small>Packs, intro offers, expiry rules.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-services"><span><strong>Services</strong><small>Sell add-ons, bundles, and sessions.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-payments"><span><strong>Payments</strong><small>Integrated billing and payouts.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-messaging"><span><strong>Messaging</strong><small>1:1 and broadcast studio comms.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-reporting"><span><strong>Reporting</strong><small>Revenue, attendance, churn insights.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-website-builder"><span><strong>Website Builder</strong><small>Pages that convert to bookings.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/platform/#platform-email-configurator"><span><strong>Email Configurator</strong><small>Branded email + deliverability setup.</small></span><span class="arrow">›</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="page">
+    <section class="section support-hero">
+      <div class="container">
+        <p class="kicker">Support</p>
+        <h1>Let us take care of you.</h1>
+        <p class="lead">From setup to day-to-day questions, our team is here to help your studio stay confident, calm, and fully operational.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact-support">Talk to Support</a>
+          <a class="btn" href="#support-options">View Support Options</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="support-options">
+      <div class="container">
+        <p class="kicker">How We Help</p>
+        <h2 class="section-title">Default support options for studio teams.</h2>
+        <div class="support-options-grid">
+          <article class="card support-card">
+            <h3>Live Chat Support</h3>
+            <p>Fast help for urgent issues inside operating hours.</p>
+            <div class="stack">
+              <div class="stack-item">Best for quick fixes and blockers <span>✓</span></div>
+              <div class="stack-item">Real-time troubleshooting <span>✓</span></div>
+            </div>
+            <a class="btn" href="#contact-support">Start Chat</a>
+          </article>
+
+          <article class="card support-card">
+            <h3>Email Support</h3>
+            <p>Detailed responses for workflow questions and setup requests.</p>
+            <div class="stack">
+              <div class="stack-item">Step-by-step guidance <span>✓</span></div>
+              <div class="stack-item">Best for non-urgent support <span>✓</span></div>
+            </div>
+            <a class="btn" href="#contact-support">Send Request</a>
+          </article>
+
+          <article class="card support-card">
+            <h3>Onboarding + Migration</h3>
+            <p>Hands-on help to move data, configure settings, and launch with confidence.</p>
+            <div class="stack">
+              <div class="stack-item">Data migration support <span>✓</span></div>
+              <div class="stack-item">Launch checklist and guidance <span>✓</span></div>
+            </div>
+            <a class="btn" href="#contact-support">Plan Migration</a>
+          </article>
+
+          <article class="card support-card">
+            <h3>Billing + Account Help</h3>
+            <p>Support for invoices, payments, plan changes, and account settings.</p>
+            <div class="stack">
+              <div class="stack-item">Billing and subscription updates <span>✓</span></div>
+              <div class="stack-item">Account ownership and access help <span>✓</span></div>
+            </div>
+            <a class="btn" href="#contact-support">Get Billing Help</a>
+          </article>
+
+          <article class="card support-card">
+            <h3>Training Sessions</h3>
+            <p>Role-based training for front desk, instructors, and managers.</p>
+            <div class="stack">
+              <div class="stack-item">Team onboarding sessions <span>✓</span></div>
+              <div class="stack-item">Workflow best-practice reviews <span>✓</span></div>
+            </div>
+            <a class="btn" href="#contact-support">Book Training</a>
+          </article>
+
+          <article class="card support-card">
+            <h3>Help Center Resources</h3>
+            <p>Self-serve guides, checklists, and common troubleshooting steps.</p>
+            <div class="stack">
+              <div class="stack-item">Searchable support content <span>✓</span></div>
+              <div class="stack-item">Setup and policy templates <span>✓</span></div>
+            </div>
+            <a class="btn" href="#contact-support">Browse Resources</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact-support">
+      <div class="container">
+        <div class="final-cta support-cta">
+          <div>
+            <h3>Need help now? We are ready.</h3>
+            <p>Tell us what you need and we will point you to the fastest support path for your team.</p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:support@obliq.co">Email Support</a>
+            <a class="btn" href="/#support">Book a Demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">Obliq</p>
+        <p class="footer-copy">Studio OS for Pilates and yoga teams that need reliable operations, measurable outcomes, and clear decisions.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Product links">
+        <p class="footer-heading">Product</p>
+        <a href="/platform/">Platform</a>
+        <a href="/your-studio/">For Your Studio</a>
+        <a href="/pricing/">Pricing</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Legal links">
+        <p class="footer-heading">Legal</p>
+        <a href="/#privacy">Privacy Policy</a>
+        <a href="/#terms">Terms of Service</a>
+      </nav>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span class="js-year"></span> Obliq. All rights reserved.</p>
+      <div class="footer-links" aria-label="Footer quick links">
+        <a href="/#privacy">Privacy Policy</a>
+        <a href="/#terms">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script src="../assets/chat.js"></script>
+</body>
+</html>

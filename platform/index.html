@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Obliq Platform — All Features</title>
+  <meta name="description" content="Explore every Obliq platform feature for Pilates and yoga studios." />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body class="platform-page">
+  <header class="topbar">
+    <div class="container">
+      <div class="nav-row">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Obliq <span class="brand-sub">Studio OS</span></span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <div class="platform-wrap" id="platformWrap">
+            <button class="platform-trigger" id="platformTrigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="megaMenu">
+              Platform <span class="chev">▾</span>
+            </button>
+
+            <div class="mega" id="megaMenu" role="menu" aria-label="Platform menu">
+              <div class="mega-top">
+                <div>
+                  <p class="kicker">Platform Apps</p>
+                  <p class="mega-copy">Run scheduling, billing, retention, messaging, and reporting in one connected operating system for Pilates and yoga studios.</p>
+                </div>
+                <a class="explore-link" href="/platform/">Explore →</a>
+              </div>
+
+              <div class="mega-grid">
+                <a class="app-link" role="menuitem" href="#platform-dashboard"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-dashboard"></use></svg></span><p class="app-title">Dashboard</p><p class="app-desc">Your studio command center.</p></a>
+                <a class="app-link" role="menuitem" href="#platform-scheduling"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-scheduling"></use></svg></span><p class="app-title">Scheduling</p><p class="app-desc">Rules, availability, and conflicts handled.</p></a>
+                <a class="app-link" role="menuitem" href="#platform-classes"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-classes"></use></svg></span><p class="app-title">Classes</p><p class="app-desc">Capacity, waitlists, check-ins.</p></a>
+                <a class="app-link" role="menuitem" href="#platform-appointments"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-appointments"></use></svg></span><p class="app-title">Appointments</p><p class="app-desc">Private bookings with smart availability.</p></a>
+                <a class="app-link" role="menuitem" href="#platform-memberships"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-memberships"></use></svg></span><p class="app-title">Memberships</p><p class="app-desc">Recurring revenue and retention.</p></a>
+                <a class="app-link" role="menuitem" href="#platform-passes"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-passes"></use></svg></span><p class="app-title">Passes</p><p class="app-desc">Packs, intro offers, expiry rules.</p></a>
+                <a class="app-link" role="menuitem" href="#platform-services"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-services"></use></svg></span><p class="app-title">Services</p><p class="app-desc">Sell add-ons, bundles, and sessions.</p></a>
+                <a class="app-link" role="menuitem" href="#platform-payments"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-payments"></use></svg></span><p class="app-title">Payments</p><p class="app-desc">Integrated billing and payouts.</p></a>
+                <a class="app-link" role="menuitem" href="#platform-messaging"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-messaging"></use></svg></span><p class="app-title">Messaging</p><p class="app-desc">1:1 and broadcast studio comms.</p></a>
+                <a class="app-link" role="menuitem" href="#platform-reporting"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-reporting"></use></svg></span><p class="app-title">Reporting</p><p class="app-desc">Revenue, attendance, churn insights.</p></a>
+                <a class="app-link" role="menuitem" href="#platform-website-builder"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-website-builder"></use></svg></span><p class="app-title">Website Builder</p><p class="app-desc">Pages that convert to bookings.</p></a>
+                <a class="app-link" role="menuitem" href="#platform-email-configurator"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-email-configurator"></use></svg></span><p class="app-title">Email Configurator</p><p class="app-desc">Branded email + deliverability setup.</p></a>
+              </div>
+            </div>
+          </div>
+
+          <a class="nav-link" href="/your-studio/">For Your Studio</a>
+          <a class="nav-link" href="/pricing/">Pricing</a>
+          <a class="nav-link" href="/support/">Support</a>
+        </nav>
+
+        <div class="actions">
+          <a class="btn desktop-only" href="https://app.withobliq.com">Login</a>
+          <a class="btn btn-primary desktop-only" href="/#support">Book a Demo</a>
+          <button class="btn hamburger" id="mobileOpen" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+  <aside class="sheet" id="mobileSheet" aria-label="Mobile menu" aria-hidden="true">
+    <div class="sheet-head">
+      <div class="sheet-title">Menu</div>
+      <button class="btn" id="mobileClose" type="button" aria-label="Close menu">✕</button>
+    </div>
+
+    <div class="sheet-body">
+      <div id="mobileRoot">
+        <button class="mobile-item" id="mobilePlatformBtn" type="button"><span><strong>Platform</strong><small>All connected apps</small></span><span class="arrow">›</span></button>
+        <a class="mobile-item" href="/your-studio/"><span><strong>For Your Studio</strong><small>Built for your studio model</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/pricing/"><span><strong>Pricing</strong><small>Plans for growing studios</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/support/"><span><strong>Support</strong><small>Help and guidance</small></span><span class="arrow">›</span></a>
+        <a class="btn btn-primary" href="/#support" style="width:100%;margin-top:8px;padding:14px;">Book a Demo</a>
+      </div>
+
+      <div id="mobilePlatform" style="display:none;">
+        <div class="back-row">
+          <button class="back-btn" id="mobileBack" type="button">← Back</button>
+          <span class="kicker">Platform</span>
+        </div>
+
+        <a class="mobile-item" href="#platform-dashboard"><span><strong>Dashboard</strong><small>Your studio command center.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="#platform-scheduling"><span><strong>Scheduling</strong><small>Rules, availability, and conflicts handled.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="#platform-classes"><span><strong>Classes</strong><small>Capacity, waitlists, check-ins.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="#platform-appointments"><span><strong>Appointments</strong><small>Private bookings with smart availability.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="#platform-memberships"><span><strong>Memberships</strong><small>Recurring revenue and retention.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="#platform-passes"><span><strong>Passes</strong><small>Packs, intro offers, expiry rules.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="#platform-services"><span><strong>Services</strong><small>Sell add-ons, bundles, and sessions.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="#platform-payments"><span><strong>Payments</strong><small>Integrated billing and payouts.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="#platform-messaging"><span><strong>Messaging</strong><small>1:1 and broadcast studio comms.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="#platform-reporting"><span><strong>Reporting</strong><small>Revenue, attendance, churn insights.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="#platform-website-builder"><span><strong>Website Builder</strong><small>Pages that convert to bookings.</small></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="#platform-email-configurator"><span><strong>Email Configurator</strong><small>Branded email + deliverability setup.</small></span><span class="arrow">›</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="page">
+    <section class="platform-strip-section" id="platform-strip">
+      <div class="container">
+        <div class="platform-strip" aria-label="Platform feature quick links">
+          <div class="platform-strip-track">
+            <a class="platform-chip" href="#platform-dashboard"><span class="platform-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/app-icons.svg#icon-dashboard"></use></svg></span><span>Dashboard</span></a>
+            <a class="platform-chip" href="#platform-scheduling"><span class="platform-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/app-icons.svg#icon-scheduling"></use></svg></span><span>Scheduling</span></a>
+            <a class="platform-chip" href="#platform-classes"><span class="platform-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/app-icons.svg#icon-classes"></use></svg></span><span>Classes</span></a>
+            <a class="platform-chip" href="#platform-appointments"><span class="platform-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/app-icons.svg#icon-appointments"></use></svg></span><span>Appointments</span></a>
+            <a class="platform-chip" href="#platform-memberships"><span class="platform-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/app-icons.svg#icon-memberships"></use></svg></span><span>Memberships</span></a>
+            <a class="platform-chip" href="#platform-passes"><span class="platform-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/app-icons.svg#icon-passes"></use></svg></span><span>Passes</span></a>
+            <a class="platform-chip" href="#platform-services"><span class="platform-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/app-icons.svg#icon-services"></use></svg></span><span>Services</span></a>
+            <a class="platform-chip" href="#platform-payments"><span class="platform-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/app-icons.svg#icon-payments"></use></svg></span><span>Payments</span></a>
+            <a class="platform-chip" href="#platform-messaging"><span class="platform-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/app-icons.svg#icon-messaging"></use></svg></span><span>Messaging</span></a>
+            <a class="platform-chip" href="#platform-reporting"><span class="platform-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/app-icons.svg#icon-reporting"></use></svg></span><span>Reporting</span></a>
+            <a class="platform-chip" href="#platform-website-builder"><span class="platform-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/app-icons.svg#icon-website-builder"></use></svg></span><span>Website Builder</span></a>
+            <a class="platform-chip" href="#platform-email-configurator"><span class="platform-chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/app-icons.svg#icon-email-configurator"></use></svg></span><span>Email Configurator</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section platform-hero">
+      <div class="container">
+        <p class="kicker">Platform</p>
+        <h1>Every app your studio runs on — connected in one system.</h1>
+        <p class="lead">Explore each feature area below. Every module shares data in real time so schedules, billing, messaging, and reporting stay aligned.</p>
+      </div>
+    </section>
+
+    <section class="section" id="platform-dashboard">
+      <div class="container">
+        <div class="split platform-layout layout-64">
+          <article class="card">
+            <p class="kicker">Dashboard</p>
+            <h2 class="section-title">Your studio command center.</h2>
+            <p class="section-copy">Track revenue, bookings, utilization, and churn risk in a single operational view built for daily owner decisions.</p>
+            <div class="platform-showcase shot-dashboard">
+              <img class="platform-placeholder-image" src="../assets/placeholders/platform-placeholder.svg" alt="Dashboard placeholder screenshot" loading="lazy" />
+              <p class="shot-title">Screenshot spot: executive command center</p>
+              <div class="shot-tags"><span>Live KPIs</span><span>Daily Pulse</span><span>Risk Alerts</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="stack">
+              <div class="stack-item">Daily revenue and attendance snapshot <span>✓</span></div>
+              <div class="stack-item">At-risk member visibility <span>✓</span></div>
+              <div class="stack-item">Location and instructor performance <span>✓</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section platform-checklist-left" id="platform-scheduling">
+      <div class="container">
+        <div class="split platform-layout layout-46 layout-reverse">
+          <article class="card">
+            <p class="kicker">Scheduling</p>
+            <h2 class="section-title">Rules, availability, and conflicts handled.</h2>
+            <p class="section-copy">Configure booking rules once and let the system enforce instructor, room, and equipment constraints automatically.</p>
+            <div class="platform-showcase shot-scheduling">
+              <img class="platform-placeholder-image" src="../assets/placeholders/platform-placeholder.svg" alt="Scheduling placeholder screenshot" loading="lazy" />
+              <p class="shot-title">Promo image spot: scheduling canvas</p>
+              <div class="shot-tags"><span>Conflict Checks</span><span>Templates</span><span>Coverage View</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="stack">
+              <div class="stack-item">Instructor and room conflict prevention <span>✓</span></div>
+              <div class="stack-item">Availability templates by program type <span>✓</span></div>
+              <div class="stack-item">Override controls with audit trail <span>✓</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section platform-centered" id="platform-classes">
+      <div class="container">
+        <div class="split platform-layout layout-55 layout-panel">
+          <article class="card">
+            <p class="kicker">Classes</p>
+            <h2 class="section-title">Capacity, waitlists, and check-ins.</h2>
+            <p class="section-copy">Run class operations with precise capacity controls and automated waitlist movement to reduce empty spots.</p>
+            <div class="stack">
+              <div class="stack-item">Capacity by class type and equipment <span>✓</span></div>
+              <div class="stack-item">Waitlist auto-promotion rules <span>✓</span></div>
+              <div class="stack-item">Fast front-desk check-in flows <span>✓</span></div>
+            </div>
+            <div class="platform-showcase shot-classes">
+              <img class="platform-placeholder-image" src="../assets/placeholders/platform-placeholder.svg" alt="Classes placeholder screenshot" loading="lazy" />
+              <p class="shot-title">Screenshot spot: occupancy + waitlist lane</p>
+              <div class="shot-tags"><span>Capacity Meter</span><span>Waitlist Flow</span><span>Quick Check-in</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section platform-checklist-left" id="platform-appointments">
+      <div class="container">
+        <div class="split platform-layout layout-37 layout-reverse">
+          <article class="card">
+            <p class="kicker">Appointments</p>
+            <h2 class="section-title">Private bookings with smart availability.</h2>
+            <p class="section-copy">Manage private sessions with service-specific durations, buffers, and instructor preference logic.</p>
+            <div class="platform-showcase shot-appointments">
+              <img class="platform-placeholder-image" src="../assets/placeholders/platform-placeholder.svg" alt="Appointments placeholder screenshot" loading="lazy" />
+              <p class="shot-title">Screenshot spot: private booking timeline</p>
+              <div class="shot-tags"><span>Slot Matching</span><span>Buffers</span><span>Staff Preferences</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="stack">
+              <div class="stack-item">Smart slot matching and buffers <span>✓</span></div>
+              <div class="stack-item">Cancellation and reschedule policies <span>✓</span></div>
+              <div class="stack-item">Resource-specific availability windows <span>✓</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="platform-memberships">
+      <div class="container">
+        <div class="split platform-layout layout-64 layout-panel">
+          <article class="card">
+            <p class="kicker">Memberships</p>
+            <h2 class="section-title">Recurring revenue and retention.</h2>
+            <p class="section-copy">Set up recurring plans with lifecycle controls and visibility into member health and renewal performance.</p>
+            <div class="platform-showcase shot-memberships">
+              <img class="platform-placeholder-image" src="../assets/placeholders/platform-placeholder.svg" alt="Memberships placeholder screenshot" loading="lazy" />
+              <p class="shot-title">Promo image spot: lifecycle health overview</p>
+              <div class="shot-tags"><span>Renewal Trends</span><span>At-Risk Flags</span><span>Plan Controls</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="stack">
+              <div class="stack-item">Plan configuration and access rules <span>✓</span></div>
+              <div class="stack-item">Renewal and churn monitoring <span>✓</span></div>
+              <div class="stack-item">Pause, freeze, and transfer controls <span>✓</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section platform-centered" id="platform-passes">
+      <div class="container">
+        <div class="split platform-layout layout-46 layout-reverse">
+          <article class="card">
+            <p class="kicker">Passes</p>
+            <h2 class="section-title">Packs, intro offers, and expiry rules.</h2>
+            <p class="section-copy">Sell flexible packs with expiration, usage limits, and promotion logic for intro-to-paid conversion paths.</p>
+            <div class="stack">
+              <div class="stack-item">Multi-visit packs and intro offers <span>✓</span></div>
+              <div class="stack-item">Expiry and usage policy automation <span>✓</span></div>
+              <div class="stack-item">Promo gating and eligibility checks <span>✓</span></div>
+            </div>
+            <div class="platform-showcase shot-passes">
+              <img class="platform-placeholder-image" src="../assets/placeholders/platform-placeholder.svg" alt="Passes placeholder screenshot" loading="lazy" />
+              <p class="shot-title">Screenshot spot: pass catalog + conversion offers</p>
+              <div class="shot-tags"><span>Pack Types</span><span>Expiry Rules</span><span>Promo Logic</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="platform-services">
+      <div class="container">
+        <div class="split platform-layout layout-37 layout-panel">
+          <article class="card">
+            <p class="kicker">Services</p>
+            <h2 class="section-title">Sell add-ons, bundles, and sessions.</h2>
+            <p class="section-copy">Attach services to checkout and bookings to increase average order value without extra operational overhead.</p>
+            <div class="platform-showcase shot-services">
+              <img class="platform-placeholder-image" src="../assets/placeholders/platform-placeholder.svg" alt="Services placeholder screenshot" loading="lazy" />
+              <p class="shot-title">Promo image spot: bundle merchandising view</p>
+              <div class="shot-tags"><span>Add-ons</span><span>Bundles</span><span>Attach Rate</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="stack">
+              <div class="stack-item">Add-on catalog and pricing controls <span>✓</span></div>
+              <div class="stack-item">Bundle and package support <span>✓</span></div>
+              <div class="stack-item">Checkout attachment and tracking <span>✓</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section platform-checklist-left" id="platform-payments">
+      <div class="container">
+        <div class="split platform-layout layout-55 layout-reverse">
+          <article class="card">
+            <p class="kicker">Payments</p>
+            <h2 class="section-title">Integrated billing and payouts.</h2>
+            <p class="section-copy">Keep billing tightly linked to bookings so failed payments, retries, and payout status are always visible.</p>
+            <div class="platform-showcase shot-payments">
+              <img class="platform-placeholder-image" src="../assets/placeholders/platform-placeholder.svg" alt="Payments placeholder screenshot" loading="lazy" />
+              <p class="shot-title">Screenshot spot: recovery + payout ledger</p>
+              <div class="shot-tags"><span>Retries</span><span>Settlements</span><span>Reconciliation</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="stack">
+              <div class="stack-item">Failed charge recovery workflows <span>✓</span></div>
+              <div class="stack-item">Booking-to-payment reconciliation <span>✓</span></div>
+              <div class="stack-item">Payout visibility and export-ready data <span>✓</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section platform-centered" id="platform-messaging">
+      <div class="container">
+        <div class="split platform-layout layout-64 layout-panel layout-reverse">
+          <article class="card">
+            <p class="kicker">Messaging</p>
+            <h2 class="section-title">1:1 and broadcast studio communications.</h2>
+            <p class="section-copy">Run reminders and segmented outreach in the same platform that owns bookings and membership status.</p>
+            <div class="stack">
+              <div class="stack-item">Automated reminder sequences <span>✓</span></div>
+              <div class="stack-item">Segmented campaign targeting <span>✓</span></div>
+              <div class="stack-item">Engagement performance visibility <span>✓</span></div>
+            </div>
+            <div class="platform-showcase shot-messaging">
+              <img class="platform-placeholder-image" src="../assets/placeholders/platform-placeholder.svg" alt="Messaging placeholder screenshot" loading="lazy" />
+              <p class="shot-title">Screenshot spot: communication campaign feed</p>
+              <div class="shot-tags"><span>Reminders</span><span>Segments</span><span>Open Rates</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="platform-reporting">
+      <div class="container">
+        <div class="split platform-layout layout-46">
+          <article class="card">
+            <p class="kicker">Reporting</p>
+            <h2 class="section-title">Revenue, attendance, and churn insights.</h2>
+            <p class="section-copy">Analyze studio performance with connected data that updates as bookings, payments, and memberships change.</p>
+            <div class="platform-showcase shot-reporting">
+              <img class="platform-placeholder-image" src="../assets/placeholders/platform-placeholder.svg" alt="Reporting placeholder screenshot" loading="lazy" />
+              <p class="shot-title">Promo image spot: trend and cohort board</p>
+              <div class="shot-tags"><span>Cohorts</span><span>Utilization</span><span>Forecasts</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="stack">
+              <div class="stack-item">Revenue and utilization trend views <span>✓</span></div>
+              <div class="stack-item">Retention and cohort analysis <span>✓</span></div>
+              <div class="stack-item">Export-ready operational reports <span>✓</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section platform-checklist-left" id="platform-website-builder">
+      <div class="container">
+        <div class="split platform-layout layout-37 layout-reverse layout-panel">
+          <article class="card">
+            <p class="kicker">Website Builder</p>
+            <h2 class="section-title">Pages that convert visitors to bookings.</h2>
+            <p class="section-copy">Publish pages and booking widgets that stay synchronized with live schedules, memberships, and services.</p>
+            <div class="platform-showcase shot-website-builder">
+              <img class="platform-placeholder-image" src="../assets/placeholders/platform-placeholder.svg" alt="Website Builder placeholder screenshot" loading="lazy" />
+              <p class="shot-title">Screenshot spot: page builder + booking widget</p>
+              <div class="shot-tags"><span>Template Blocks</span><span>Widget Sync</span><span>Mobile Preview</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="stack">
+              <div class="stack-item">Booking-ready page templates <span>✓</span></div>
+              <div class="stack-item">Live widget sync with schedules <span>✓</span></div>
+              <div class="stack-item">Campaign landing page support <span>✓</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section platform-centered" id="platform-email-configurator">
+      <div class="container">
+        <div class="split platform-layout layout-55">
+          <article class="card">
+            <p class="kicker">Email Configurator</p>
+            <h2 class="section-title">Branded email and deliverability setup.</h2>
+            <p class="section-copy">Configure sending domains, templates, and compliance settings so every workflow email looks on-brand and lands reliably.</p>
+            <div class="stack">
+              <div class="stack-item">Domain verification and setup checks <span>✓</span></div>
+              <div class="stack-item">Template branding controls <span>✓</span></div>
+              <div class="stack-item">Deliverability status monitoring <span>✓</span></div>
+            </div>
+            <div class="platform-showcase shot-email-configurator">
+              <img class="platform-placeholder-image" src="../assets/placeholders/platform-placeholder.svg" alt="Email Configurator placeholder screenshot" loading="lazy" />
+              <p class="shot-title">Screenshot spot: template and domain setup</p>
+              <div class="shot-tags"><span>Brand Tokens</span><span>Domain Health</span><span>Delivery Status</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="footer-logo">Obliq</p>
+        <p class="footer-copy">Studio OS for Pilates and yoga teams that need reliable operations, measurable outcomes, and clear decisions.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Product links">
+        <p class="footer-heading">Product</p>
+        <a href="/#apps">Platform</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/#support">Support</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Legal links">
+        <p class="footer-heading">Legal</p>
+        <a href="/#privacy">Privacy Policy</a>
+        <a href="/#terms">Terms of Service</a>
+      </nav>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span class="js-year"></span> Obliq. All rights reserved.</p>
+      <div class="footer-links" aria-label="Footer quick links">
+        <a href="/#privacy">Privacy Policy</a>
+        <a href="/#terms">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script src="../assets/chat.js"></script>
+</body>
+</html>
