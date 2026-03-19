@@ -27,6 +27,12 @@ body { background:var(--bg); color:var(--text-1); font-family:var(--font); font-
 
 /* ── NAV ── */
 nav { display:none; }
+
+/* ── LOGIN BUTTON ── */
+.login-btn-wrap { position:absolute; top:18px; right:24px; z-index:100; }
+.login-btn { display:inline-flex; align-items:center; gap:7px; padding:9px 18px; background:#fff; color:var(--text-1); font-family:var(--font); font-size:13px; font-weight:600; text-decoration:none; border:none; border-radius:var(--r-sm); box-shadow:0 2px 12px rgba(0,0,0,.10),0 1px 3px rgba(0,0,0,.07); transition:box-shadow .15s,transform .1s; letter-spacing:.01em; }
+.login-btn:hover { box-shadow:0 6px 20px rgba(0,0,0,.13),0 2px 6px rgba(0,0,0,.08); transform:translateY(-1px); }
+.login-btn svg { width:14px; height:14px; opacity:.55; }
 .nav-logo { display:flex; align-items:center; text-decoration:none; color:var(--text-1); }
 .nav-logo svg { height:22px; width:auto; }
 .nav-links { display:flex; gap:32px; list-style:none; }
@@ -251,6 +257,14 @@ nav { display:none; }
     <circle cx="400" cy="640" r="58" fill="none" stroke="#3EAC61" stroke-width="0.75" opacity="0.08"/>
   </g>
 </svg>
+
+<!-- LOGIN BUTTON -->
+<div class="login-btn-wrap">
+  <a class="login-btn" href="https://app.withobliq.com" target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="5.5" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 13c0-2.485 2.462-4.5 5.5-4.5s5.5 2.015 5.5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    Log in
+  </a>
+</div>
 
 <!-- NAV -->
 <nav>
