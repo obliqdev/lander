@@ -1,536 +1,584 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Obliq — Studio OS for Pilates & Yoga</title>
-  <meta name="description" content="Obliq is the all-in-one Studio OS for Pilates and yoga studios." />
-  <link rel="stylesheet" href="assets/site.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obliq — Studio Management Software</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#f4f6f9; --surface:#ffffff; --surface-2:#f0f2f6;
+  --border:#e4e7ec; --border-soft:#eef0f4;
+  --text-1:#0f1623; --text-2:#4a5568; --text-3:#9aa3b2;
+  --brand:#3EAC61; --brand-mid:#62c882; --brand-soft:#edf7f1;
+  --green:#10b981; --green-soft:#ecfdf5;
+  --font:'Plus Jakarta Sans',sans-serif;
+  --r:20px; --r-sm:12px;
+  --sh-sm:0 1px 4px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --sh-md:0 4px 24px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);
+  --sh-lg:0 16px 48px rgba(0,0,0,.1),0 4px 12px rgba(0,0,0,.06);
+}
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--text-1); font-family:var(--font); font-weight:400; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+
+/* ── NAV ── */
+nav { display:none; }
+.nav-logo { display:flex; align-items:center; text-decoration:none; color:var(--text-1); }
+.nav-logo svg { height:22px; width:auto; }
+.nav-links { display:flex; gap:32px; list-style:none; }
+.nav-links a { font-size:14px; font-weight:400; color:var(--text-2); text-decoration:none; transition:color .15s; }
+.nav-links a:hover { color:var(--text-1); }
+.nav-cta { padding:9px 20px; background:var(--brand); color:#fff; font-size:13px; font-weight:500; border-radius:var(--r-sm); text-decoration:none; transition:background .15s,transform .1s; }
+.nav-cta:hover { background:#2e9450; transform:translateY(-1px); }
+
+/* ── BACKGROUND SHAPES ── */
+.founders { background:transparent; padding:56px 60px 104px; position:relative; }
+.founders-inner { max-width:1200px; margin:0 auto; position:relative; z-index:1; }
+
+.founders-intro { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; margin-bottom:72px; }
+.founders-mockup-col { position:relative; padding:32px 16px; }
+.mockup-wrap { position:relative; width:100%; padding:24px 32px; animation:floatIn .7s .15s ease both; transform:scale(1.2); transform-origin:center top; }
+
+
+.eyebrow { display:inline-flex; align-items:center; gap:7px; background:var(--brand-soft); color:var(--brand); font-size:12px; font-weight:500; letter-spacing:.03em; padding:5px 13px; border-radius:99px; margin-bottom:24px; }
+.blink-dot { width:5px; height:5px; border-radius:50%; background:var(--brand); animation:blink 2.4s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+.founders-headline { font-size:clamp(38px,5vw,64px); font-weight:700; letter-spacing:-.025em; line-height:1.08; color:var(--text-1); margin-bottom:18px; }
+.founders-headline strong { font-weight:600; color:var(--brand); }
+.founders-sub { font-size:15px; font-weight:300; color:var(--text-2); line-height:1.75; max-width:440px; margin-bottom:36px; }
+
+.spots-strip { display:inline-flex; align-items:center; gap:14px; background:var(--surface); border:1px solid var(--border); border-radius:99px; padding:8px 18px 8px 12px; margin-bottom:0; box-shadow:var(--sh-sm); }
+.spots-pips { display:flex; gap:4px; }
+.pip { width:8px; height:8px; border-radius:50%; background:var(--border); transition:background .3s; }
+.pip.taken { background:var(--brand); }
+.spots-text { font-size:13px; font-weight:500; color:var(--text-2); }
+.spots-text span { color:var(--brand); }
+
+/* Pricing + perks */
+.layout { display:grid; grid-template-columns: 1fr; gap:20px; align-items:start; }
+.price-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:36px; box-shadow:var(--sh-md); position:relative; overflow:hidden; }
+.price-card::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--brand),var(--brand-mid)); }
+.price-label { font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); margin-bottom:16px; }
+.price-row { display:flex; align-items:baseline; gap:4px; margin-bottom:4px; }
+.price-amount { font-size:52px; font-weight:700; letter-spacing:-.03em; color:var(--text-1); line-height:1; }
+.price-unit { font-size:15px; font-weight:400; color:var(--text-3); }
+.price-note { font-size:12px; color:var(--text-3); margin-bottom:28px; }
+.price-note s { opacity:.6; }
+.price-note strong { color:var(--green); font-weight:500; }
+.feat-list { list-style:none; margin-bottom:32px; border-top:1px solid var(--border-soft); padding-top:24px; }
+.feat-list li { display:flex; align-items:flex-start; gap:10px; font-size:14px; font-weight:300; color:var(--text-2); padding:8px 0; border-bottom:1px solid var(--border-soft); line-height:1.45; }
+.feat-list li:last-child { border-bottom:none; }
+.feat-check { width:18px; height:18px; border-radius:50%; background:var(--green-soft); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+.feat-check svg { width:9px; height:9px; }
+.cta { display:block; width:100%; padding:15px 20px; background:var(--brand); color:#fff; font-family:var(--font); font-size:14px; font-weight:500; text-align:center; text-decoration:none; border:none; border-radius:var(--r-sm); cursor:pointer; transition:background .15s,box-shadow .15s,transform .1s; letter-spacing:.01em; }
+.cta:hover { background:#2e9450; box-shadow:0 6px 20px rgba(62,172,97,.28); transform:translateY(-1px); }
+.cta-note { text-align:center; font-size:12px; font-weight:300; color:var(--text-3); margin-top:10px; }
+.hero-cta-wrap { margin-top:20px; }
+@media (max-width:540px) {
+  .hero-cta-wrap a { display:block; text-align:center; }
+}
+.right-col { display:flex; flex-direction:column; gap:12px; }
+.perk { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:22px 24px; box-shadow:var(--sh-sm); display:flex; gap:16px; align-items:flex-start; transition:box-shadow .2s,border-color .2s; }
+.perk:hover { box-shadow:var(--sh-md); border-color:#a8dbb8; }
+.perk-icon-wrap { width:36px; height:36px; border-radius:var(--r-sm); background:var(--brand-soft); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px; }
+.perk-title { font-size:14px; font-weight:500; color:var(--text-1); margin-bottom:3px; }
+.perk-desc { font-size:13px; font-weight:300; color:var(--text-2); line-height:1.55; }
+
+/* Who it's for */
+.for-section { margin-top:56px; }
+.for-title { font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); margin-bottom:16px; }
+.for-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.for-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:20px; box-shadow:var(--sh-sm); }
+.for-card-label { font-size:13px; font-weight:500; color:var(--text-1); margin-bottom:5px; }
+.for-card-desc { font-size:12px; font-weight:300; color:var(--text-2); line-height:1.55; }
+
+/* ── MOCKUP ── */
+@keyframes floatIn { from{opacity:0;transform:translateY(24px) scale(.97);} to{opacity:1;transform:translateY(0) scale(1);} }
+@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-7px);} }
+
+.float-card { position:absolute; background:#ffffff; border:1px solid var(--border); border-radius:20px; box-shadow:var(--sh-md); padding:12px 16px; display:flex; align-items:center; gap:10px; z-index:2; }
+.float-card-1 { bottom:-20px; left:-28px; animation:float2 6s ease-in-out infinite; }
+.float-card-2 { top:-16px; right:-24px; animation:float2 7s ease-in-out infinite reverse; }
+@keyframes float2 { 0%,100%{transform:translateY(0) rotate(-1deg);} 50%{transform:translateY(-5px) rotate(1deg);} }
+.float-icon { width:32px; height:32px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
+.float-icon-green { background:var(--green-soft); }
+.float-icon-brand { background:var(--brand-soft); }
+.float-label { font-size:10px; font-weight:300; color:var(--text-3); }
+.float-val { font-size:13px; font-weight:600; color:var(--text-1); letter-spacing:-.01em; }
+
+/* ── AMBIENT BACKGROUND FLOAT CARDS ── */
+.bg-float { position:fixed; background:#fff; border:1px solid var(--border); border-radius:20px; box-shadow:var(--sh-md); padding:11px 15px; display:flex; align-items:center; gap:9px; pointer-events:none; z-index:0; opacity:0; transition:opacity .9s ease; will-change:transform; }
+.bg-float .float-icon { width:28px; height:28px; border-radius:8px; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.bg-float .float-label { font-size:9px; font-weight:300; color:var(--text-3); white-space:nowrap; }
+.bg-float .float-val  { font-size:12px; font-weight:600; color:var(--text-1); letter-spacing:-.01em; white-space:nowrap; }
+@media (max-width:1280px) { .bg-float { display:none; } }
+
+/* ── DASHBOARD ── */
+.dash-card { background:#f7f8fa; border:1px solid var(--border); border-radius:24px; box-shadow:var(--sh-lg); overflow:hidden; animation:float 5s ease-in-out infinite; min-width:400px; }
+.db-main-only { padding:14px; }
+.db-greeting { margin-bottom:12px; }
+.db-greeting-title { font-size:13px; font-weight:400; color:#0f1623; }
+.db-greeting-title strong { font-weight:700; }
+.db-greeting-sub { font-size:9px; color:#9aa3b2; margin-top:1px; }
+.db-cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:10px; }
+.db-card { background:#ffffff; border:1px solid var(--border-soft); border-radius:14px; padding:10px; position:relative; overflow:hidden; }
+.db-card-accent { position:absolute; top:0; left:0; bottom:0; width:3px; border-radius:3px 0 0 3px; }
+.db-card-label { font-size:9px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:#9aa3b2; margin-bottom:4px; padding-left:6px; }
+.db-card-val { font-size:18px; font-weight:700; color:#0f1623; letter-spacing:-.02em; padding-left:6px; line-height:1.1; }
+.db-card-change { font-size:9px; font-weight:500; margin-top:4px; padding-left:6px; }
+.db-card-change span { font-weight:400; color:#9aa3b2; }
+.db-card-change.green { color:#3EAC61; }
+.db-card-change.amber { color:#f59e0b; }
+.db-sparkline { position:absolute; bottom:8px; right:8px; width:60px; height:22px; }
+.db-ring-wrap { position:absolute; top:8px; right:8px; }
+.db-membership-ring { display:flex; align-items:center; gap:8px; margin-top:4px; }
+.db-legend { display:flex; flex-direction:column; gap:3px; }
+.db-leg-row { display:flex; align-items:center; gap:4px; font-size:8.5px; color:#4a5568; }
+.db-leg-row strong { margin-left:auto; font-weight:600; color:#0f1623; padding-left:6px; }
+.db-leg-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+.db-attendance { background:#ffffff; border:1px solid var(--border-soft); border-radius:14px; padding:10px; }
+.db-att-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+.db-att-title { font-size:11px; font-weight:600; color:#0f1623; }
+.db-att-legend { display:flex; gap:8px; }
+.db-att-legend span { font-size:8px; color:#6b7280; display:flex; align-items:center; gap:3px; }
+.db-att-legend i { width:6px; height:6px; border-radius:50%; display:inline-block; }
+.db-chart { display:flex; align-items:flex-end; gap:8px; height:110px; padding-bottom:18px; position:relative; }
+.db-chart::before { content:''; position:absolute; top:0; left:0; right:0; bottom:18px; background:repeating-linear-gradient(transparent, transparent calc(25% - 0.5px), #f0f2f6 calc(25% - 0.5px), #f0f2f6 25%); pointer-events:none; }
+.db-bar-group { display:flex; flex-direction:column; align-items:center; gap:3px; flex:1; position:relative; z-index:1; }
+.db-bar { width:100%; border-radius:4px; transition:opacity .2s; min-height:4px; }
+.db-bar-lbl { font-size:7px; color:#9aa3b2; white-space:nowrap; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:none;} }
+@keyframes spin-slow { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+@keyframes spin-rev  { from{transform:rotate(0deg);} to{transform:rotate(-360deg);} }
+@keyframes bob-a { 0%,100%{transform:translateY(0) translateX(0);} 50%{transform:translateY(-22px) translateX(10px);} }
+@keyframes bob-b { 0%,100%{transform:translateY(0) translateX(0);} 50%{transform:translateY(18px) translateX(-14px);} }
+@keyframes bob-c { 0%,100%{transform:translateY(0) translateX(0);} 50%{transform:translateY(-12px) translateX(18px);} }
+@keyframes bob-d { 0%,100%{transform:translateY(0) translateX(0);} 50%{transform:translateY(14px) translateX(-8px);} }
+.sh-a { animation:bob-a 9s ease-in-out infinite; }
+.sh-b { animation:bob-b 12s ease-in-out infinite; }
+.sh-c { animation:bob-c 8s ease-in-out infinite; }
+.sh-d { animation:bob-d 14s ease-in-out infinite; }
+.sh-spin { transform-origin:center; animation:spin-slow 30s linear infinite; }
+.sh-spin-rev { transform-origin:center; animation:spin-rev 24s linear infinite; }
+@media (prefers-reduced-motion:no-preference) {
+  .fade { opacity:0; transform:translateY(16px); animation:fadeUp .5s ease forwards; }
+  .fade:nth-child(1){animation-delay:0s} .fade:nth-child(2){animation-delay:.08s}
+  .fade:nth-child(3){animation-delay:.14s} .fade:nth-child(4){animation-delay:.2s}
+}
+
+@media( min-width: 720px ) {
+  .layout { grid-template-columns:1fr 1fr; }
+}
+/* ── TABLET: 880px ── */
+@media (max-width:880px) {
+  .founders { padding:48px 40px 80px; }
+  .founders-intro { grid-template-columns:1fr; gap:40px; margin-bottom:48px; }
+  .founders-mockup-col { display:none; }
+}
+
+/* ── SMALL TABLET: 720px ── */
+@media (max-width:720px) {
+  .founders { padding:40px 28px 72px; }
+  .for-grid { grid-template-columns:1fr 1fr; }
+  .founders-sub { max-width:100%; }
+  .price-card { padding:28px 24px; }
+}
+
+/* ── MOBILE: 540px ── */
+@media (max-width:540px) {
+  .founders { padding:36px 20px 64px; }
+  .founders-headline { letter-spacing:-.02em; line-height:1.1; }
+  .for-grid { grid-template-columns:1fr; }
+  .spots-strip { flex-wrap:wrap; gap:10px; padding:10px 14px; border-radius:16px; }
+  .spots-pips { flex-wrap:wrap; }
+  .perk { padding:16px 18px; gap:12px; }
+  .perk-icon-wrap { width:30px; height:30px; font-size:14px; }
+  .price-card { padding:24px 20px; }
+  .price-amount { font-size:44px; }
+}
+</style>
 </head>
-<body class="home-page">
-  <header class="topbar transparent white-text">
-    <div class="container">
-      <div class="nav-row">
-        <a class="brand" href="/">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span>Obliq <span class="brand-sub">Studio OS</span></span>
-        </a>
+<body>
 
-        <nav class="desktop-nav" aria-label="Primary navigation">
-          <div class="platform-wrap" id="platformWrap">
-            <button class="platform-trigger" id="platformTrigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="megaMenu">
-              Platform <span class="chev">▾</span>
-            </button>
+<svg style="position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <g class="sh-a" style="transform-origin:1100px 120px"><circle cx="1100" cy="120" r="260" fill="#3EAC61" opacity="0.045"/></g>
+  <g class="sh-b" style="transform-origin:160px 200px">
+    <circle cx="160" cy="200" r="150" fill="none" stroke="#3EAC61" stroke-width="1.5" opacity="0.1"/>
+    <circle cx="160" cy="200" r="100" fill="none" stroke="#3EAC61" stroke-width="0.75" opacity="0.07"/>
+  </g>
+  <g class="sh-spin" style="transform-origin:82px 520px">
+    <rect x="50" y="488" width="64" height="64" rx="10" fill="none" stroke="#3EAC61" stroke-width="1.2" opacity="0.12" transform="rotate(15 82 520)"/>
+  </g>
+  <g class="sh-c" style="transform-origin:1300px 280px" opacity="0.15">
+    <circle cx="1260" cy="260" r="3.5" fill="#3EAC61"/><circle cx="1284" cy="260" r="3.5" fill="#3EAC61"/>
+    <circle cx="1308" cy="260" r="3.5" fill="#3EAC61"/><circle cx="1332" cy="260" r="3.5" fill="#3EAC61"/>
+    <circle cx="1260" cy="284" r="3.5" fill="#3EAC61"/><circle cx="1284" cy="284" r="3.5" fill="#3EAC61"/>
+    <circle cx="1308" cy="284" r="3.5" fill="#3EAC61"/><circle cx="1332" cy="284" r="3.5" fill="#3EAC61"/>
+    <circle cx="1260" cy="308" r="3.5" fill="#3EAC61"/><circle cx="1284" cy="308" r="3.5" fill="#3EAC61"/>
+    <circle cx="1308" cy="308" r="3.5" fill="#3EAC61"/><circle cx="1332" cy="308" r="3.5" fill="#3EAC61"/>
+  </g>
+  <g class="sh-d" style="transform-origin:248px 730px">
+    <polygon points="248,665 178,785 318,785" fill="none" stroke="#3EAC61" stroke-width="1.2" opacity="0.1"/>
+  </g>
+  <g class="sh-spin-rev" style="transform-origin:1375px 595px">
+    <polygon points="1375,553 1413,575 1413,619 1375,641 1337,619 1337,575" fill="none" stroke="#3EAC61" stroke-width="1.2" opacity="0.1"/>
+  </g>
+  <g class="sh-a" style="transform-origin:1200px 800px" opacity="0.12">
+    <circle cx="1158" cy="800" r="7" fill="#3EAC61"/>
+    <circle cx="1190" cy="780" r="4.5" fill="#3EAC61"/>
+    <circle cx="1220" cy="812" r="9" fill="#3EAC61"/>
+    <circle cx="1250" cy="792" r="5.5" fill="#3EAC61"/>
+  </g>
+  <g class="sh-b" style="transform-origin:720px 450px" opacity="0.05">
+    <path d="M0,450 Q180,415 360,455 Q540,495 720,450 Q900,405 1080,455 Q1260,495 1440,450" fill="none" stroke="#3EAC61" stroke-width="1.5"/>
+  </g>
+  <g class="sh-c" style="transform-origin:585px 88px" opacity="0.13">
+    <line x1="585" y1="60" x2="585" y2="116" stroke="#3EAC61" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="557" y1="88" x2="613" y2="88" stroke="#3EAC61" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <g class="sh-d" style="transform-origin:720px 940px">
+    <circle cx="720" cy="940" r="210" fill="none" stroke="#3EAC61" stroke-width="1" opacity="0.06"/>
+    <circle cx="720" cy="940" r="155" fill="none" stroke="#3EAC61" stroke-width="0.75" opacity="0.05"/>
+  </g>
+  <g class="sh-a" style="transform-origin:400px 640px">
+    <circle cx="400" cy="640" r="38" fill="#3EAC61" opacity="0.05"/>
+    <circle cx="400" cy="640" r="58" fill="none" stroke="#3EAC61" stroke-width="0.75" opacity="0.08"/>
+  </g>
+</svg>
 
-            <div class="mega" id="megaMenu" role="menu" aria-label="Platform menu">
-              <div class="mega-top">
-                <div>
-                  <p class="kicker">Platform Apps</p>
-                  <p class="mega-copy">Run scheduling, billing, retention, messaging, and reporting in one connected operating system for Pilates and yoga studios.</p>
-                </div>
-                <a class="explore-link" href="/platform/">Explore →</a>
-              </div>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <svg viewBox="0 0 411 97" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M182.5 78V97H160.5V78H182.5ZM200 60.5C200 50.835 192.165 43 182.5 43H160.5C150.835 43 143 50.835 143 60.5C143 70.165 150.835 78 160.5 78V97C140.342 97 124 80.6584 124 60.5C124 40.3416 140.342 24 160.5 24H182.5L183.442 24.0117C203.165 24.5116 219 40.6567 219 60.5C219 80.3433 203.165 96.4884 183.442 96.9883L182.5 97V78C192.165 78 200 70.165 200 60.5Z" fill="currentColor"/><path d="M71.5 78V97H49.5V78H71.5ZM89 60.5C89 50.835 81.165 43 71.5 43H49.5C39.835 43 32 50.835 32 60.5C32 70.165 39.835 78 49.5 78V97C29.3416 97 13 80.6584 13 60.5C13 40.3416 29.3416 24 49.5 24H71.5L72.4424 24.0117C92.1652 24.5116 108 40.6567 108 60.5C108 80.3433 92.1652 96.4884 72.4424 96.9883L71.5 97V78C81.165 78 89 70.165 89 60.5Z" fill="currentColor"/><path d="M9.87841 24H49.5803C53.2457 24 54.9808 28.5197 52.2569 30.9725L31.6818 49.5C30.1188 50.9075 27.7328 50.864 26.2221 49.4006L7.09534 30.8731C4.51361 28.3722 6.28402 24 9.87841 24Z" fill="currentColor"/><path d="M339.5 43L339.5 24L361.5 24L361.5 43L339.5 43ZM322 60.5C322 70.165 329.835 78 339.5 78L361.5 78C371.165 78 379 70.165 379 60.5C379 50.835 371.165 43 361.5 43L361.5 24C381.658 24 398 40.3416 398 60.5C398 80.6584 381.658 97 361.5 97L339.5 97L338.558 96.9883C318.835 96.4884 303 80.3433 303 60.5C303 40.6567 318.835 24.5116 338.558 24.0117L339.5 24L339.5 43C329.835 43 322 50.835 322 60.5Z" fill="currentColor"/><path d="M401.122 97L361.42 97C357.754 97 356.019 92.4803 358.743 90.0275L379.318 71.5C380.881 70.0925 383.267 70.136 384.778 71.5994L403.905 90.1269C406.486 92.6278 404.716 97 401.122 97Z" fill="currentColor"/><rect x="122" width="21" height="97" rx="4" fill="currentColor"/><rect x="233" width="21" height="97" rx="4" fill="currentColor"/><rect x="268" y="24" width="21" height="73" rx="4" fill="currentColor"/><rect x="268" width="21" height="18" rx="4" fill="currentColor"/></svg>
+  </a>
+</nav>
 
-              <div class="mega-grid">
-                <a class="app-link" role="menuitem" href="/platform/#platform-dashboard"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-dashboard"></use></svg></span><p class="app-title">Dashboard</p><p class="app-desc">Your studio command center.</p></a>
-                <a class="app-link" role="menuitem" href="/platform/#platform-scheduling"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-scheduling"></use></svg></span><p class="app-title">Scheduling</p><p class="app-desc">Rules, availability, and conflicts handled.</p></a>
-                <a class="app-link" role="menuitem" href="/platform/#platform-classes"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-classes"></use></svg></span><p class="app-title">Classes</p><p class="app-desc">Capacity, waitlists, check-ins.</p></a>
-                <a class="app-link" role="menuitem" href="/platform/#platform-appointments"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-appointments"></use></svg></span><p class="app-title">Appointments</p><p class="app-desc">Private bookings with smart availability.</p></a>
-                <a class="app-link" role="menuitem" href="/platform/#platform-memberships"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-memberships"></use></svg></span><p class="app-title">Memberships</p><p class="app-desc">Recurring revenue and retention.</p></a>
-                <a class="app-link" role="menuitem" href="/platform/#platform-passes"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-passes"></use></svg></span><p class="app-title">Passes</p><p class="app-desc">Packs, intro offers, expiry rules.</p></a>
-                <a class="app-link" role="menuitem" href="/platform/#platform-services"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-services"></use></svg></span><p class="app-title">Services</p><p class="app-desc">Sell add-ons, bundles, and sessions.</p></a>
-                <a class="app-link" role="menuitem" href="/platform/#platform-payments"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-payments"></use></svg></span><p class="app-title">Payments</p><p class="app-desc">Integrated billing and payouts.</p></a>
-                <a class="app-link" role="menuitem" href="/platform/#platform-messaging"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-messaging"></use></svg></span><p class="app-title">Messaging</p><p class="app-desc">1:1 and broadcast studio comms.</p></a>
-                <a class="app-link" role="menuitem" href="/platform/#platform-reporting"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-reporting"></use></svg></span><p class="app-title">Reporting</p><p class="app-desc">Revenue, attendance, churn insights.</p></a>
-                <a class="app-link" role="menuitem" href="/platform/#platform-website-builder"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-website-builder"></use></svg></span><p class="app-title">Website Builder</p><p class="app-desc">Pages that convert to bookings.</p></a>
-                <a class="app-link" role="menuitem" href="/platform/#platform-email-configurator"><span class="app-link-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/assets/app-icons.svg#icon-email-configurator"></use></svg></span><p class="app-title">Email Configurator</p><p class="app-desc">Branded email + deliverability setup.</p></a>
-              </div>
-            </div>
+<!-- FOUNDERS -->
+<section class="founders" id="founders">
+
+  <div class="founders-inner">
+
+    <!-- Two-col intro: copy left, dashboard right -->
+    <div class="founders-intro">
+
+      <!-- Left copy -->
+      <div>
+        <div style="margin-bottom:28px;">
+          <svg viewBox="0 0 411 97" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:28px;width:auto;color:#0f1623"><path d="M182.5 78V97H160.5V78H182.5ZM200 60.5C200 50.835 192.165 43 182.5 43H160.5C150.835 43 143 50.835 143 60.5C143 70.165 150.835 78 160.5 78V97C140.342 97 124 80.6584 124 60.5C124 40.3416 140.342 24 160.5 24H182.5L183.442 24.0117C203.165 24.5116 219 40.6567 219 60.5C219 80.3433 203.165 96.4884 183.442 96.9883L182.5 97V78C192.165 78 200 70.165 200 60.5Z" fill="currentColor"/><path d="M71.5 78V97H49.5V78H71.5ZM89 60.5C89 50.835 81.165 43 71.5 43H49.5C39.835 43 32 50.835 32 60.5C32 70.165 39.835 78 49.5 78V97C29.3416 97 13 80.6584 13 60.5C13 40.3416 29.3416 24 49.5 24H71.5L72.4424 24.0117C92.1652 24.5116 108 40.6567 108 60.5C108 80.3433 92.1652 96.4884 72.4424 96.9883L71.5 97V78C81.165 78 89 70.165 89 60.5Z" fill="currentColor"/><path d="M9.87841 24H49.5803C53.2457 24 54.9808 28.5197 52.2569 30.9725L31.6818 49.5C30.1188 50.9075 27.7328 50.864 26.2221 49.4006L7.09534 30.8731C4.51361 28.3722 6.28402 24 9.87841 24Z" fill="currentColor"/><path d="M339.5 43L339.5 24L361.5 24L361.5 43L339.5 43ZM322 60.5C322 70.165 329.835 78 339.5 78L361.5 78C371.165 78 379 70.165 379 60.5C379 50.835 371.165 43 361.5 43L361.5 24C381.658 24 398 40.3416 398 60.5C398 80.6584 381.658 97 361.5 97L339.5 97L338.558 96.9883C318.835 96.4884 303 80.3433 303 60.5C303 40.6567 318.835 24.5116 338.558 24.0117L339.5 24L339.5 43C329.835 43 322 50.835 322 60.5Z" fill="currentColor"/><path d="M401.122 97L361.42 97C357.754 97 356.019 92.4803 358.743 90.0275L379.318 71.5C380.881 70.0925 383.267 70.136 384.778 71.5994L403.905 90.1269C406.486 92.6278 404.716 97 401.122 97Z" fill="currentColor"/><rect x="122" width="21" height="97" rx="4" fill="currentColor"/><rect x="233" width="21" height="97" rx="4" fill="currentColor"/><rect x="268" y="24" width="21" height="73" rx="4" fill="currentColor"/><rect x="268" width="21" height="18" rx="4" fill="currentColor"/></svg>
+        </div>
+        <div class="eyebrow fade"><span class="blink-dot"></span>Founding Studios · Canada</div>
+        <h2 class="founders-headline fade">Run your studio.<br><strong>Not your software.</strong></h2>
+        <p class="founders-sub fade">Everything you need to manage bookings, members, payments, and marketing — studio management software built for independent studios, not gym chains.</p>
+        <div class="spots-strip fade">
+          <div class="spots-pips" id="pips"></div>
+          <div class="spots-text"><span id="spotsLabel">4 spots remaining</span></div>
+        </div>
+        <div class="hero-cta-wrap fade" style="margin-top:20px;">
+          <a href="#booking" id="heroCtaBtn" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--brand);color:#fff;font-family:var(--font);font-size:15px;font-weight:600;text-decoration:none;border-radius:var(--r-sm);box-shadow:0 4px 14px rgba(62,172,97,.3);transition:background .15s,box-shadow .15s,transform .1s;">
+            Book a spot →
+          </a>
+          <p style="margin-top:10px;font-size:12px;font-weight:300;color:var(--text-3);">No credit card · 15-min demo call</p>
+        </div>
+      </div>
+
+      <!-- Right: dashboard mockup -->
+      <div class="founders-mockup-col">
+        <div class="mockup-wrap">
+
+          <!-- Float card top-right -->
+          <div class="float-card float-card-2">
+            <div class="float-icon float-icon-green">💰</div>
+            <div><div class="float-label">This month</div><div class="float-val">$8,420</div></div>
           </div>
 
-          <a class="nav-link" href="/your-studio/">For Your Studio</a>
-          <a class="nav-link" href="/pricing/">Pricing</a>
-          <a class="nav-link" href="/support/">Support</a>
-        </nav>
-
-        <div class="actions">
-          <a class="btn desktop-only" href="https://app.withobliq.com">Login</a>
-          <a class="btn btn-primary desktop-only" href="/#support">Book a Demo</a>
-          <button class="btn hamburger" id="mobileOpen" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="overlay" id="overlay" aria-hidden="true"></div>
-  <aside class="sheet" id="mobileSheet" aria-label="Mobile menu" aria-hidden="true">
-    <div class="sheet-head">
-      <div class="sheet-title">Menu</div>
-      <button class="btn" id="mobileClose" type="button" aria-label="Close menu">✕</button>
-    </div>
-
-    <div class="sheet-body">
-      <div id="mobileRoot">
-        <button class="mobile-item" id="mobilePlatformBtn" type="button"><span><strong>Platform</strong><small>All connected apps</small></span><span class="arrow">›</span></button>
-        <a class="mobile-item" href="/your-studio/"><span><strong>For Your Studio</strong><small>Built for your studio model</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/pricing/"><span><strong>Pricing</strong><small>Plans for growing studios</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/support/"><span><strong>Support</strong><small>Help and guidance</small></span><span class="arrow">›</span></a>
-        <a class="btn btn-primary" href="/#support" style="width:100%;margin-top:8px;padding:14px;">Book a Demo</a>
-      </div>
-
-      <div id="mobilePlatform" style="display:none;">
-        <div class="back-row">
-          <button class="back-btn" id="mobileBack" type="button">← Back</button>
-          <span class="kicker">Platform</span>
-        </div>
-
-        <a class="mobile-item" href="/platform/#platform-dashboard"><span><strong>Dashboard</strong><small>Your studio command center.</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/platform/#platform-scheduling"><span><strong>Scheduling</strong><small>Rules, availability, and conflicts handled.</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/platform/#platform-classes"><span><strong>Classes</strong><small>Capacity, waitlists, check-ins.</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/platform/#platform-appointments"><span><strong>Appointments</strong><small>Private bookings with smart availability.</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/platform/#platform-memberships"><span><strong>Memberships</strong><small>Recurring revenue and retention.</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/platform/#platform-passes"><span><strong>Passes</strong><small>Packs, intro offers, expiry rules.</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/platform/#platform-services"><span><strong>Services</strong><small>Sell add-ons, bundles, and sessions.</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/platform/#platform-payments"><span><strong>Payments</strong><small>Integrated billing and payouts.</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/platform/#platform-messaging"><span><strong>Messaging</strong><small>1:1 and broadcast studio comms.</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/platform/#platform-reporting"><span><strong>Reporting</strong><small>Revenue, attendance, churn insights.</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/platform/#platform-website-builder"><span><strong>Website Builder</strong><small>Pages that convert to bookings.</small></span><span class="arrow">›</span></a>
-        <a class="mobile-item" href="/platform/#platform-email-configurator"><span><strong>Email Configurator</strong><small>Branded email + deliverability setup.</small></span><span class="arrow">›</span></a>
-      </div>
-    </div>
-  </aside>
-
-  <main class="page">
-    <section class="hero-wrap">
-      <div class="container hero-center">
-        <div>
-            <p class="kicker">Studio OS</p>
-            <h1>Run Your Entire Studio on One Operating System.</h1>
-            <p class="lead hero-lead">Obliq unifies scheduling, memberships, payments, messaging, reporting, and your website into one seamless platform — built for Pilates and yoga studios.</p>
-        </div>
-        <div>
-            <div class="hero-actions">
-            <a class="btn btn-primary" href="#support">Book a Demo</a>
-            <a class="btn" href="/platform/">Explore the Platform</a>
-            </div>
-            <p class="hero-note">Airy, modern workflows for boutique studio teams.</p>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- <section class="section" id="carousel">
-      <div class="hero-carousel" id="heroCarousel" aria-label="Platform preview carousel">
-        <div class="carousel-shell">
-          <div class="carousel-stage">
-            <button class="btn carousel-nav carousel-nav-prev" id="heroPrev" type="button" aria-label="Previous preview">←</button>
-            <button class="btn carousel-nav carousel-nav-next" id="heroNext" type="button" aria-label="Next preview">→</button>
-
-            <div class="carousel-center">
-              <div class="carousel-feature-meta" aria-live="polite" aria-atomic="true">
-                <p class="feature-title" id="heroFeatureTitle"></p>
-                <p class="feature-subtitle" id="heroFeatureSubtitle"></p>
+          <!-- Dashboard -->
+          <div class="dash-card">
+            <div class="db-main-only">
+              <div class="db-greeting">
+                <div class="db-greeting-title">Good morning, <strong id="dashName">Sarah</strong></div>
+                <div class="db-greeting-sub">Here's what's happening with your studio today</div>
               </div>
-
-              <div class="carousel-viewport" id="heroViewport" tabindex="0">
-                <div class="carousel-track" id="heroTrack">
-                  <article class="feature-slide">
-                    <div class="preview">
-                      <div class="preview-head">
-                        <span class="pill">Dashboard</span>
-                        <span class="pill">Your studio command center</span>
-                      </div>
-                      <div class="preview-grid">
-                        <div class="widget"><h4>Today</h4><p class="metric">128 check-ins</p><p class="row"><span>Classes</span><strong>18</strong></p></div>
-                        <div class="widget"><h4>Revenue</h4><p class="metric">$4,860</p><p class="row"><span>vs last week</span><strong>+12%</strong></p></div>
-                        <div class="widget feed"><h4>Live activity</h4><div class="feed-item"><span>Waitlist promoted</span><strong>3 min ago</strong></div><div class="feed-item"><span>Membership renewed</span><strong>8 min ago</strong></div></div>
-                      </div>
+              <div class="db-cards">
+                <!-- Revenue -->
+                <div class="db-card">
+                  <div class="db-card-accent" style="background:#3EAC61"></div>
+                  <div class="db-card-label">Revenue</div>
+                  <div class="db-card-val">$4,280</div>
+                  <div class="db-card-change green">↑ 12% <span>today</span></div>
+                  <svg class="db-sparkline" viewBox="0 0 80 28" fill="none">
+                    <polyline points="0,22 10,18 20,20 30,12 40,15 50,8 60,10 70,5 80,7" stroke="#3EAC61" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <!-- Capacity -->
+                <div class="db-card">
+                  <div class="db-card-accent" style="background:#a855f7"></div>
+                  <div class="db-card-label">Capacity</div>
+                  <div class="db-card-val">78<span style="font-size:12px;font-weight:400;color:#9aa3b2">%</span></div>
+                  <div class="db-card-change amber">↑ 5% <span>today</span></div>
+                  <div class="db-ring-wrap">
+                    <svg viewBox="0 0 44 44" width="44" height="44">
+                      <circle cx="22" cy="22" r="17" stroke="#f0f2f6" stroke-width="4" fill="none"/>
+                      <circle cx="22" cy="22" r="17" stroke="#a855f7" stroke-width="4" fill="none" stroke-dasharray="107" stroke-dashoffset="24" stroke-linecap="round" transform="rotate(-90 22 22)"/>
+                    </svg>
+                  </div>
+                </div>
+                <!-- Membership -->
+                <div class="db-card">
+                  <div class="db-card-accent" style="background:#3EAC61"></div>
+                  <div class="db-card-label">Membership</div>
+                  <div class="db-membership-ring">
+                    <svg viewBox="0 0 56 56" width="56" height="56">
+                      <circle cx="28" cy="28" r="22" stroke="#f0f2f6" stroke-width="4" fill="none"/>
+                      <circle cx="28" cy="28" r="22" stroke="#3EAC61" stroke-width="4" fill="none" stroke-dasharray="62 76" stroke-dashoffset="-5" stroke-linecap="round" transform="rotate(-90 28 28)"/>
+                      <circle cx="28" cy="28" r="22" stroke="#3b82f6" stroke-width="4" fill="none" stroke-dasharray="48 90" stroke-dashoffset="-67" stroke-linecap="round" transform="rotate(-90 28 28)"/>
+                      <circle cx="28" cy="28" r="22" stroke="#f59e0b" stroke-width="4" fill="none" stroke-dasharray="14 124" stroke-dashoffset="-115" stroke-linecap="round" transform="rotate(-90 28 28)"/>
+                      <circle cx="28" cy="28" r="22" stroke="#ef4444" stroke-width="4" fill="none" stroke-dasharray="10 128" stroke-dashoffset="-129" stroke-linecap="round" transform="rotate(-90 28 28)"/>
+                      <text x="28" y="25" text-anchor="middle" font-size="10" font-weight="700" fill="#0f1623" font-family="Plus Jakarta Sans,sans-serif">94</text>
+                      <text x="28" y="35" text-anchor="middle" font-size="6" fill="#9aa3b2" font-family="Plus Jakarta Sans,sans-serif">members</text>
+                    </svg>
+                    <div class="db-legend">
+                      <div class="db-leg-row"><span class="db-leg-dot" style="background:#3EAC61"></span><span>Healthy</span><strong>35</strong></div>
+                      <div class="db-leg-row"><span class="db-leg-dot" style="background:#3b82f6"></span><span>Watch</span><strong>40</strong></div>
+                      <div class="db-leg-row"><span class="db-leg-dot" style="background:#f59e0b"></span><span>At Risk</span><strong>11</strong></div>
+                      <div class="db-leg-row"><span class="db-leg-dot" style="background:#ef4444"></span><span>Critical</span><strong>8</strong></div>
                     </div>
-                  </article>
-
-                  <article class="feature-slide">
-                    <div class="preview">
-                      <div class="preview-head">
-                        <span class="pill">Scheduling</span>
-                        <span class="pill">Rules and conflicts handled</span>
-                      </div>
-                      <div class="preview-grid">
-                        <div class="widget"><h4>Capacity</h4><p class="metric">92%</p><p class="row"><span>Prime classes</span><strong>12/13 full</strong></p></div>
-                        <div class="widget"><h4>Coverage</h4><p class="metric">7 instructors</p><p class="row"><span>Conflicts</span><strong>0</strong></p></div>
-                        <div class="widget feed"><h4>Automation</h4><div class="feed-item"><span>Auto-reminders sent</span><strong>124</strong></div><div class="feed-item"><span>Waitlist offers</span><strong>17</strong></div></div>
-                      </div>
-                    </div>
-                  </article>
-
-                  <article class="feature-slide">
-                    <div class="preview">
-                      <div class="preview-head">
-                        <span class="pill">Memberships</span>
-                        <span class="pill">Predictable recurring revenue</span>
-                      </div>
-                      <div class="preview-grid">
-                        <div class="widget"><h4>MRR</h4><p class="metric">$42,300</p><p class="row"><span>Active plans</span><strong>286</strong></p></div>
-                        <div class="widget"><h4>At risk</h4><p class="metric">18 members</p><p class="row"><span>Retention flow</span><strong>Running</strong></p></div>
-                        <div class="widget feed"><h4>Signals</h4><div class="feed-item"><span>Card expiring soon</span><strong>21</strong></div><div class="feed-item"><span>Win-back sent</span><strong>9</strong></div></div>
-                      </div>
-                    </div>
-                  </article>
-
-                  <article class="feature-slide">
-                    <div class="preview">
-                      <div class="preview-head">
-                        <span class="pill">Messaging</span>
-                        <span class="pill">Attendance and retention nudges</span>
-                      </div>
-                      <div class="preview-grid">
-                        <div class="widget"><h4>Campaign</h4><p class="metric">No-show recovery</p><p class="row"><span>Delivered</span><strong>412</strong></p></div>
-                        <div class="widget"><h4>Response rate</h4><p class="metric">38%</p><p class="row"><span>Bookings recovered</span><strong>54</strong></p></div>
-                        <div class="widget feed"><h4>Conversations</h4><div class="feed-item"><span>Coach follow-up</span><strong>Now</strong></div><div class="feed-item"><span>Class reminder</span><strong>12 min ago</strong></div></div>
-                      </div>
-                    </div>
-                  </article>
+                  </div>
+                </div>
+              </div>
+              <!-- Attendance -->
+              <div class="db-attendance">
+                <div class="db-att-header">
+                  <span class="db-att-title">Attendance</span>
+                  <div class="db-att-legend">
+                    <span><i style="background:#3b82f6"></i>Total 30</span>
+                    <span><i style="background:#a855f7"></i>Check-ins 18</span>
+                    <span><i style="background:#ef4444"></i>Drop-outs 2</span>
+                    <span><i style="background:#f59e0b"></i>Waitlist 4</span>
+                  </div>
+                </div>
+                <div class="db-chart">
+                  <div class="db-bar-group"><div class="db-bar" style="height:14px;background:#3EAC61;opacity:.7"></div><div class="db-bar-lbl">6am</div></div>
+                  <div class="db-bar-group"><div class="db-bar" style="height:42px;background:#a855f7"></div><div class="db-bar-lbl">8am</div></div>
+                  <div class="db-bar-group"><div class="db-bar" style="height:58px;background:#3EAC61"></div><div class="db-bar-lbl">9am</div></div>
+                  <div class="db-bar-group"><div class="db-bar" style="height:30px;background:#ef4444"></div><div class="db-bar-lbl">10am</div></div>
+                  <div class="db-bar-group"><div class="db-bar" style="height:68px;background:#3EAC61"></div><div class="db-bar-lbl">12pm</div></div>
+                  <div class="db-bar-group"><div class="db-bar" style="height:18px;background:#9aa3b2;opacity:.4"></div><div class="db-bar-lbl">1pm</div></div>
+                  <div class="db-bar-group"><div class="db-bar" style="height:46px;background:#3EAC61;opacity:.6"></div><div class="db-bar-lbl">5pm</div></div>
+                  <div class="db-bar-group"><div class="db-bar" style="height:34px;background:#9aa3b2;opacity:.3"></div><div class="db-bar-lbl">6pm</div></div>
+                  <div class="db-bar-group"><div class="db-bar" style="height:22px;background:#9aa3b2;opacity:.25"></div><div class="db-bar-lbl">7pm</div></div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section> -->
-    <section class="section" id="solutions">
-        <div class="problem-desk" aria-hidden="true">
-          <span class="desk-tile tile-1"></span>
-          <span class="desk-tile tile-2"></span>
-          <span class="desk-tile tile-3"></span>
-          <span class="desk-tile tile-4"></span>
-          <span class="desk-tile tile-5"></span>
-          <span class="desk-tile tile-6"></span>
-          <span class="desk-tile tile-7"></span>
-          <span class="desk-tile tile-8"></span>
-          <span class="desk-tile tile-9"></span>
-          <span class="desk-tile tile-10"></span>
-          <span class="desk-tile tile-11"></span>
-          <span class="desk-tile tile-12"></span>
-          <span class="desk-tile tile-13"></span>
-          <span class="desk-tile tile-14"></span>
-          <span class="desk-tile tile-15"></span>
-          <span class="desk-tile tile-16"></span>
-          <span class="desk-tile tile-17"></span>
-          <span class="desk-tile tile-18"></span>
-        </div>
-      <div class="container">
 
-        <div class="problem-layout">
-          <article class="problem-copy">
-            <p class="kicker">The Problem</p>
-            <h2 class="section-title">Studios shouldn&apos;t need 7 different tools.</h2>
-            <p class="section-copy">Obliq replaces disconnected systems with one operating model. One login, one source of truth, one connected studio workflow which merges the following</p>
-            <p class="kicker">Typical stack</p>
-            <div class="stack">
-              <div class="stack-item">Booking system <span>+</span></div>
-              <div class="stack-item">Payment processor <span>+</span></div>
-              <div class="stack-item">Website tool <span>+</span></div>
-              <div class="stack-item">Email provider <span>+</span></div>
-              <div class="stack-item">Messaging platform <span>+</span></div>
-              <div class="stack-item">Manual reporting <span>+</span></div>
-            </div>
-          </article>
-
-          <article class="problem-tools" data-inertia="1.2" aria-hidden="true">
-            <span class="problem-tool-tile logo-1"><img class="problem-tool-logo" src="/assets/problem-logos/mailchimp.png" alt="MailChimp logo" loading="lazy" /></span>
-            <span class="problem-tool-tile logo-4"><img class="problem-tool-logo" src="/assets/problem-logos/wix.png" alt="Wix logo" loading="lazy" /></span>
-            <span class="problem-tool-tile logo-5"><img class="problem-tool-logo" src="/assets/problem-logos/squarespace.png" alt="SquareSpace logo" loading="lazy" /></span>
-            <span class="problem-tool-tile logo-6"><img class="problem-tool-logo" src="/assets/problem-logos/constantcontact.png" alt="Constant Contact logo" loading="lazy" /></span>
-            <span class="problem-tool-tile logo-7"><img class="problem-tool-logo" src="/assets/problem-logos/mindbody.png" alt="MindBody logo" loading="lazy" /></span>
-            <span class="problem-tool-tile logo-8"><img class="problem-tool-logo" src="/assets/problem-logos/jane.png" alt="Jane logo" loading="lazy" /></span>
-            <span class="problem-tool-tile logo-9"><img class="problem-tool-logo" src="/assets/problem-logos/youcanbookme.jpeg" alt="YouCanBookMe Schedule logo" loading="lazy" /></span>
-            <span class="problem-tool-tile logo-10"><img class="problem-tool-logo" src="/assets/problem-logos/acuity.png" alt="Acuity Schedule logo" loading="lazy" /></span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <p class="kicker">The Solution</p>
-        <h2 class="section-title">Everything your studio needs — built in.</h2>
-        <p class="section-copy">Every app shares the same client, booking, payment, and retention data so your studio stays aligned as you grow.</p>
-        <svg aria-hidden="true" width="0" height="0" style="position:absolute;pointer-events:none;opacity:0;">
-          <defs>
-            <linearGradient id="appIconStrokeGradient" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#60d084" />
-              <stop offset="100%" stop-color="#3ea86a" />
-            </linearGradient>
-            <linearGradient id="appIconSoftGradient" x1="3" y1="4" x2="21" y2="12" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#60d084" stop-opacity="0.22" />
-              <stop offset="100%" stop-color="#3ea86a" stop-opacity="0.1" />
-            </linearGradient>
-          </defs>
-        </svg>
-        <div class="apps-grid" id="apps">
-          <a class="app-card" href="/platform/#platform-dashboard"><div class="app-head"><span class="app-icon dashboard-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
-    <defs>
-      <linearGradient id="dashboardStrokeGradient" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#60d084" />
-        <stop offset="100%" stop-color="#3ea86a" />
-      </linearGradient>
-      <linearGradient id="dashboardSoftGradient" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#60d084" stop-opacity="0.2" />
-        <stop offset="100%" stop-color="#3ea86a" stop-opacity="0.08" />
-      </linearGradient>
-      <linearGradient id="dashboardFillGradient" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#6adb95" stop-opacity="0.34" />
-        <stop offset="100%" stop-color="#3ea86a" stop-opacity="0.16" />
-      </linearGradient>
-    </defs>
-    <path d="M21 9.75V5.75C21 5.05222 21 4.70333 20.9139 4.41943C20.72 3.78023 20.2198 3.28002 19.5806 3.08612C19.2967 3 18.9478 3 18.25 3C17.5522 3 17.2033 3 16.9194 3.08612C16.2802 3.28002 15.78 3.78023 15.5861 4.41943C15.5 4.70333 15.5 5.05222 15.5 5.75V9.75C15.5 10.4478 15.5 10.7967 15.5861 11.0806C15.78 11.7198 16.2802 12.22 16.9194 12.4139C17.2033 12.5 17.5522 12.5 18.25 12.5C18.9478 12.5 19.2967 12.5 19.5806 12.4139C20.2198 12.22 20.72 11.7198 20.9139 11.0806C21 10.7967 21 10.4478 21 9.75Z" fill="url(#dashboardFillGradient)" />
-    <path d="M8.5 11.5H7C5.11438 11.5 4.17157 11.5 3.58579 12.0858C3 12.6716 3 13.6144 3 15.5V17C3 18.8856 3 19.8284 3.58579 20.4142C4.17157 21 5.11438 21 7 21H8.5C10.3856 21 11.3284 21 11.9142 20.4142C12.5 19.8284 12.5 18.8856 12.5 17V15.5C12.5 13.6144 12.5 12.6716 11.9142 12.0858C11.3284 11.5 10.3856 11.5 8.5 11.5Z" fill="url(#dashboardSoftGradient)" />
-    <path d="M9.75 3H5.75C5.05222 3 4.70333 3 4.41943 3.08612C3.78023 3.28002 3.28002 3.78023 3.08612 4.41943C3 4.70333 3 5.05222 3 5.75C3 6.44778 3 6.79667 3.08612 7.08057C3.28002 7.71977 3.78023 8.21998 4.41943 8.41388C4.70333 8.5 5.05222 8.5 5.75 8.5H9.75C10.4478 8.5 10.7967 8.5 11.0806 8.41388C11.7198 8.21998 12.22 7.71977 12.4139 7.08057C12.5 6.79667 12.5 6.44778 12.5 5.75C12.5 5.05222 12.5 4.70333 12.4139 4.41943C12.22 3.78023 11.7198 3.28002 11.0806 3.08612C10.7967 3 10.4478 3 9.75 3Z" stroke="url(#dashboardStrokeGradient)" stroke-width="1.5" stroke-linejoin="round" />
-    <path d="M21 9.75V5.75C21 5.05222 21 4.70333 20.9139 4.41943C20.72 3.78023 20.2198 3.28002 19.5806 3.08612C19.2967 3 18.9478 3 18.25 3C17.5522 3 17.2033 3 16.9194 3.08612C16.2802 3.28002 15.78 3.78023 15.5861 4.41943C15.5 4.70333 15.5 5.05222 15.5 5.75V9.75C15.5 10.4478 15.5 10.7967 15.5861 11.0806C15.78 11.7198 16.2802 12.22 16.9194 12.4139C17.2033 12.5 17.5522 12.5 18.25 12.5C18.9478 12.5 19.2967 12.5 19.5806 12.4139C20.2198 12.22 20.72 11.7198 20.9139 11.0806C21 10.7967 21 10.4478 21 9.75Z" stroke="url(#dashboardStrokeGradient)" stroke-width="1.5" stroke-linejoin="round" />
-    <path d="M16.9194 20.9139C17.2033 21 17.5522 21 18.25 21C18.9478 21 19.2967 21 19.5806 20.9139C20.2198 20.72 20.72 20.2198 20.9139 19.5806C21 19.2967 21 18.9478 21 18.25C21 17.5522 21 17.2033 20.9139 16.9194C20.72 16.2802 20.2198 15.78 19.5806 15.5861C19.2967 15.5 18.9478 15.5 18.25 15.5C17.5522 15.5 17.2033 15.5 16.9194 15.5861C16.2802 15.78 15.78 16.2802 15.5861 16.9194C15.5 17.2033 15.5 17.5522 15.5 18.25C15.5 18.9478 15.5 19.2967 15.5861 19.5806C15.78 20.2198 16.2802 20.72 16.9194 20.9139Z" stroke="url(#dashboardStrokeGradient)" stroke-width="1.5" stroke-linejoin="round" />
-    <path d="M8.5 11.5H7C5.11438 11.5 4.17157 11.5 3.58579 12.0858C3 12.6716 3 13.6144 3 15.5V17C3 18.8856 3 19.8284 3.58579 20.4142C4.17157 21 5.11438 21 7 21H8.5C10.3856 21 11.3284 21 11.9142 20.4142C12.5 19.8284 12.5 18.8856 12.5 17V15.5C12.5 13.6144 12.5 12.6716 11.9142 12.0858C11.3284 11.5 10.3856 11.5 8.5 11.5Z" stroke="url(#dashboardStrokeGradient)" stroke-width="1.5" stroke-linejoin="round" />
-  </svg></span><h2>Dashboard</h2></div><p>Your studio command center.</p></a>
-          <a class="app-card" href="/platform/#platform-scheduling"><div class="app-head"><span class="app-icon scheduling-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
-    <defs>
-      <linearGradient id="schedulingStrokeGradient" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#60d084" />
-        <stop offset="100%" stop-color="#3ea86a" />
-      </linearGradient>
-      <linearGradient id="schedulingSoftGradient" x1="3" y1="4" x2="21" y2="12" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#60d084" stop-opacity="0.22" />
-        <stop offset="100%" stop-color="#3ea86a" stop-opacity="0.1" />
-      </linearGradient>
-    </defs>
-    <path d="M13.0086 4H11.0086C7.23733 4 5.35171 4 4.18014 5.17157C3.23705 6.11466 3.05313 7.52043 3.01726 10H20.9999C20.964 7.52043 20.7801 6.11466 19.837 5.17157C18.6654 4 16.7798 4 13.0086 4Z" fill="url(#schedulingSoftGradient)" />
-    <path d="M16 2V6M8 2V6" stroke="url(#schedulingStrokeGradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M13 4H11C7.22876 4 5.34315 4 4.17157 5.17157C3 6.34315 3 8.22876 3 12V14C3 17.7712 3 19.6569 4.17157 20.8284C5.34315 22 7.22876 22 11 22H13C16.7712 22 18.6569 22 19.8284 20.8284C21 19.6569 21 17.7712 21 14V12C21 8.22876 21 6.34315 19.8284 5.17157C18.6569 4 16.7712 4 13 4Z" stroke="url(#schedulingStrokeGradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M3 10H21" stroke="url(#schedulingStrokeGradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M15.5 15.5V17.5M17 16.5C17 17.3284 16.3284 18 15.5 18C14.6716 18 14 17.3284 14 16.5C14 15.6716 14.6716 15 15.5 15C16.3284 15 17 15.6716 17 16.5Z" stroke="url(#schedulingStrokeGradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-  </svg></span><h2>Scheduling</h2></div><p>Rules, availability, and conflicts handled.</p></a>
-          <a class="app-card" href="/platform/#platform-classes"><div class="app-head"><span class="app-icon classes-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
-    <path opacity="0.4" d="M13 4H11C7.22874 4 5.34312 4 4.17155 5.17157C3.22846 6.11466 3.04454 7.52043 3.00867 10H20.9913C20.9554 7.52043 20.7715 6.11466 19.8284 5.17157C18.6568 4 16.7712 4 13 4Z" fill="currentColor" />
-    <path d="M16 2V6M8 2V6" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M13 4H11C7.22876 4 5.34315 4 4.17157 5.17157C3 6.34315 3 8.22876 3 12V14C3 17.7712 3 19.6569 4.17157 20.8284C5.34315 22 7.22876 22 11 22H13C16.7712 22 18.6569 22 19.8284 20.8284C21 19.6569 21 17.7712 21 14V12C21 8.22876 21 6.34315 19.8284 5.17157C18.6569 4 16.7712 4 13 4Z" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M3 10H21" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M11.9955 14H12.0045M11.9955 18H12.0045M15.991 14H16M8 14H8.00897M8 18H8.00897" stroke="#141B34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-  </svg></span><h2>Classes</h2></div><p>Capacity, waitlists, check-ins.</p></a>
-          <a class="app-card" href="/platform/#platform-appointments"><div class="app-head"><span class="app-icon appointments-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
-    <path opacity="0.4" d="M19 4H5C3.89543 4 3 4.89543 3 6V10H21V6C21 4.89543 20.1046 4 19 4Z" fill="currentColor" />
-    <path d="M16.5 2V6M7.5 2V6" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4Z" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M3 10H21" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M8.80484 16.5L10.8048 18.5L15.8048 13.5" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-  </svg></span><h2>Appointments</h2></div><p>Private bookings with smart availability.</p></a>
-          <a class="app-card" href="/platform/#platform-memberships"><div class="app-head"><span class="app-icon memberships-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
-    <path opacity="0.4" d="M15 10C15 11.6569 13.6569 13 12 13C10.3431 13 9 11.6569 9 10C9 8.34315 10.3431 7 12 7C13.6569 7 15 8.34315 15 10Z" fill="currentColor" />
-    <path opacity="0.4" d="M6.06035 18.5193L5.49996 19.5L5.46997 19.5737C7.22199 21.0856 9.50423 21.9999 12 21.9999C14.5003 21.9999 16.7862 21.0823 18.5395 19.5655L18.5 19.5L17.9396 18.5193C17.0493 16.9614 15.3926 16 13.5983 16H10.4016C8.60729 16 6.95057 16.9614 6.06035 18.5193Z" fill="currentColor" />
-    <path d="M15 2.4578C14.053 2.16035 13.0452 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 10.9548 21.8396 9.94704 21.5422 9" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M15 10C15 11.6569 13.6569 13 12 13C10.3431 13 9 11.6569 9 10C9 8.34315 10.3431 7 12 7C13.6569 7 15 8.34315 15 10Z" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M5.49994 19.5001L6.06034 18.5194C6.95055 16.9616 8.60727 16.0001 10.4016 16.0001H13.5983C15.3926 16.0001 17.0493 16.9616 17.9395 18.5194L18.4999 19.5001" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M18.9737 2.02148C18.9795 1.99284 19.0205 1.99284 19.0263 2.02148C19.3302 3.50808 20.4919 4.66984 21.9785 4.97368C22.0072 4.97954 22.0072 5.02046 21.9785 5.02632C20.4919 5.33016 19.3302 6.49192 19.0263 7.97852C19.0205 8.00716 18.9795 8.00716 18.9737 7.97852C18.6698 6.49192 17.5081 5.33016 16.0215 5.02632C15.9928 5.02046 15.9928 4.97954 16.0215 4.97368C17.5081 4.66984 18.6698 3.50808 18.9737 2.02148Z" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-  </svg></span><h2>Memberships</h2></div><p>Recurring revenue and retention.</p></a>
-          <a class="app-card" href="/platform/#platform-passes"><div class="app-head"><span class="app-icon passes-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
-    <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" d="M16 2C17.1046 2 18 2.89543 18 4V20C18 21.1046 17.1046 22 16 22H4C2.89543 22 2 21.1046 2 20V4C2 2.89543 2.89543 2 4 2H16ZM10 6C7.79086 6 6 7.79086 6 10C6 12.2091 7.79086 14 10 14C12.2091 14 14 12.2091 14 10C14 7.79086 12.2091 6 10 6Z" fill="currentColor" />
-    <path d="M2 4V20C2 21.1046 2.89543 22 4 22H16C17.1046 22 18 21.1046 18 20V4C18 2.89543 17.1046 2 16 2H4C2.89543 2 2 2.89543 2 4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-    <path d="M18 6H20.7192C21.3698 6 21.8472 6.61139 21.6894 7.24254L18.1894 21.2425C18.0781 21.6877 17.6781 22 17.2192 22H13.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-    <path d="M10 6C12.2091 6 14 7.79086 14 10C14 12.2091 12.2091 14 10 14M10 6C7.79086 6 6 7.79086 6 10C6 12.2091 7.79086 14 10 14M10 6C9.17157 6 8.5 7.79086 8.5 10C8.5 12.2091 9.17157 14 10 14M10 6C10.8284 6 11.5 7.79086 11.5 10C11.5 12.2091 10.8284 14 10 14" stroke="currentColor" stroke-width="1.5" />
-    <path d="M6.5 17L13.5 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-  </svg></span><h2>Passes</h2></div><p>Packs, intro offers, expiry rules.</p></a>
-          <a class="app-card" href="/platform/#platform-services"><div class="app-head"><span class="app-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
-    <path opacity="0.4" d="M2 10.0332V13.9669C4.85668 13.9669 6.71425 17.0697 5.26795 19.5332L8.73205 21.5C9.46434 20.2527 10.7321 19.5335 12 19.5332C13.2679 19.5335 14.5357 20.2527 15.2679 21.5L18.732 19.5332C17.2857 17.0697 19.1433 13.9669 22 13.9669V10.0332C19.1433 10.0332 17.2841 6.93035 18.7305 4.46681L15.2664 2.5C14.5344 3.74672 13.2673 4.49978 12 4.50006C10.7327 4.49978 9.46557 3.74672 8.73363 2.5L5.26953 4.46681C6.71586 6.93035 4.85673 10.0332 2 10.0332Z" fill="currentColor" />
-    <path d="M12.5 8L10 12H14L11.5 16" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M2 10.0332V13.9669C4.85668 13.9669 6.71425 17.0697 5.26795 19.5332L8.73205 21.5C9.46434 20.2527 10.7321 19.5335 12 19.5332C13.2679 19.5335 14.5357 20.2527 15.2679 21.5L18.732 19.5332C17.2857 17.0697 19.1433 13.9669 22 13.9669V10.0332C19.1433 10.0332 17.2841 6.93035 18.7305 4.46681L15.2664 2.5C14.5344 3.74672 13.2673 4.49978 12 4.50006C10.7327 4.49978 9.46557 3.74672 8.73363 2.5L5.26953 4.46681C6.71586 6.93035 4.85673 10.0332 2 10.0332Z" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-  </svg></span><h2>Services</h2></div><p>Sell add-ons, bundles, and sessions.</p></a>
-          <a class="app-card" href="/platform/#platform-payments"><div class="app-head"><span class="app-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
-    <path opacity="0.4" d="M10.5 20H13.5C17.2586 20 19.1379 20 20.3925 19.0091C20.5932 18.8506 20.7788 18.676 20.9472 18.4871C22 17.3062 22 15.5375 22 12C22 10.8169 22 9.8316 21.9606 9H2.03939C2 9.8316 2 10.8169 2 12C2 15.5375 2 17.3062 3.0528 18.4871C3.22119 18.676 3.40678 18.8506 3.60746 19.0091C4.86213 20 6.74142 20 10.5 20Z" fill="currentColor" />
-    <path d="M2 12C2 8.46252 2 6.69377 3.0528 5.5129C3.22119 5.32403 3.40678 5.14935 3.60746 4.99087C4.86213 4 6.74142 4 10.5 4H13.5C17.2586 4 19.1379 4 20.3925 4.99087C20.5932 5.14935 20.7788 5.32403 20.9472 5.5129C22 6.69377 22 8.46252 22 12C22 15.5375 22 17.3062 20.9472 18.4871C20.7788 18.676 20.5932 18.8506 20.3925 19.0091C19.1379 20 17.2586 20 13.5 20H10.5C6.74142 20 4.86213 20 3.60746 19.0091C3.40678 18.8506 3.22119 18.676 3.0528 18.4871C2 17.3062 2 15.5375 2 12Z" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M10 16H11.5" stroke="#141B34" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M14.5 16L18 16" stroke="#141B34" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M2 9H22" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round" />
-  </svg></span><h2>Payments</h2></div><p>Integrated billing and payouts.</p></a>
-          <a class="app-card" href="/platform/#platform-messaging"><div class="app-head"><span class="app-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
-    <path opacity="0.4" d="M12 3C13.4791 3 14.9052 3.0306 16.2441 3.08789C16.6641 3.10586 17.0478 3.1247 17.4004 3.14453C17.1477 3.53516 17 4.00013 17 4.5C17 5.88071 18.1193 7 19.5 7C20.4431 7 21.2627 6.47703 21.6885 5.70605C21.8792 6.46206 21.914 7.41942 21.9609 8.75C21.9866 9.47648 22 10.2292 22 11C22 11.7708 21.9866 12.5235 21.9609 13.25C21.8772 15.6231 21.8352 16.8097 20.8701 17.7822C19.9048 18.7548 18.6844 18.8077 16.2441 18.9121C15.5104 18.9435 14.7501 18.9666 13.9697 18.9814C13.2286 18.9955 12.8578 19.003 12.5322 19.127C12.2067 19.2509 11.9325 19.4854 11.3848 19.9551L9.20508 21.8242C9.07277 21.9377 8.90378 22 8.72949 22C8.3267 21.9998 8.00022 21.6733 8 21.2705V18.9219C7.91842 18.9186 7.83681 18.9156 7.75586 18.9121C5.31557 18.8077 4.09522 18.7548 3.12988 17.7822C2.16479 16.8097 2.12278 15.6231 2.03906 13.25C2.01343 12.5235 2 11.7708 2 11C2 10.2292 2.01343 9.47648 2.03906 8.75C2.12278 6.37694 2.16479 5.19033 3.12988 4.21777C4.09522 3.24518 5.31558 3.1923 7.75586 3.08789C9.09483 3.0306 10.5209 3 12 3Z" fill="currentColor" />
-    <path d="M7.5 9H16.5M7.5 13H13" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M22 4.5C22 5.88071 20.8807 7 19.5 7C18.1193 7 17 5.88071 17 4.5C17 3.11929 18.1193 2 19.5 2C20.8807 2 22 3.11929 22 4.5Z" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M13.9693 3.01851C13.3258 3.00631 12.6684 3 12 3C10.5209 3 9.09517 3.0309 7.7562 3.08819C5.3157 3.1926 4.09545 3.24481 3.13007 4.21745C2.16469 5.19009 2.12282 6.37683 2.03909 8.7503C2.01346 9.47679 2 10.2292 2 11C2 11.7708 2.01346 12.5232 2.03909 13.2497C2.12282 15.6232 2.16469 16.8099 3.13007 17.7825C4.09545 18.7552 5.31569 18.8074 7.75619 18.9118C7.83715 18.9153 7.91842 18.9186 8 18.9219V21.2701C8 21.6732 8.32679 22 8.72991 22C8.90419 22 9.07273 21.9376 9.20503 21.8242L11.3845 19.9553C11.9325 19.4855 12.2064 19.2506 12.532 19.1266C12.8576 19.0026 13.2282 18.9955 13.9693 18.9815C14.7498 18.9667 15.5098 18.9432 16.2437 18.9118C18.6843 18.8074 19.9046 18.7552 20.8699 17.7826C21.8353 16.8099 21.8772 15.6232 21.9609 13.2497C21.9865 12.5232 22 11.7708 22 11C22 10.4913 21.9941 9.99055 21.9828 9.5" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-  </svg></span><h2>Messaging</h2></div><p>1:1 and broadcast studio comms.</p></a>
-          <a class="app-card" href="/platform/#platform-reporting"><div class="app-head"><span class="app-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
-    <path d="M4 15L4 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M12 9L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M22 22L2 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M20 13L20 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <g opacity="0.4">
-        <path d="M12 2C10.8954 2 10 2.89543 10 4C10 4.45027 10.1488 4.86579 10.3999 5.20007C10.7648 5.68581 11.3457 6 12 6C12.783 6 13.4609 5.55006 13.7892 4.89462C13.9241 4.62543 14 4.32158 14 4C14 2.89543 13.1046 2 12 2Z" fill="currentColor" />
-        <path d="M18 8C18 9.10457 18.8954 10 20 10C21.1046 10 22 9.10457 22 8C22 6.89543 21.1046 6 20 6C19.217 6 18.5391 6.44994 18.2108 7.10538C18.0759 7.37457 18 7.67842 18 8Z" fill="currentColor" />
-        <path d="M2 10C2 11.1046 2.89543 12 4 12C5.10457 12 6 11.1046 6 10C6 9.54973 5.8512 9.13421 5.60009 8.79993C5.23521 8.31419 4.6543 8 4 8C2.89543 8 2 8.89543 2 10Z" fill="currentColor" />
-    </g>
-    <path d="M5.60009 8.79993C5.23521 8.31419 4.6543 8 4 8C2.89543 8 2 8.89543 2 10C2 11.1046 2.89543 12 4 12C5.10457 12 6 11.1046 6 10C6 9.54973 5.8512 9.13421 5.60009 8.79993ZM5.60009 8.79993L10.3999 5.20007M10.3999 5.20007C10.7648 5.68581 11.3457 6 12 6C12.783 6 13.4609 5.55006 13.7892 4.89462M10.3999 5.20007C10.1488 4.86579 10 4.45027 10 4C10 2.89543 10.8954 2 12 2C13.1046 2 14 2.89543 14 4C14 4.32158 13.9241 4.62543 13.7892 4.89462M13.7892 4.89462L18.2108 7.10538M18.2108 7.10538C18.0759 7.37457 18 7.67842 18 8C18 9.10457 18.8954 10 20 10C21.1046 10 22 9.10457 22 8C22 6.89543 21.1046 6 20 6C19.217 6 18.5391 6.44994 18.2108 7.10538Z" stroke="currentColor" stroke-width="1.5" />
-  </svg></span><h2>Reporting</h2></div><p>Revenue, attendance, churn insights.</p></a>
-          <a class="app-card" href="/platform/#platform-website-builder"><div class="app-head"><span class="app-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
-    <path opacity="0.4" d="M3.89177 20.1087C5.28301 21.5 7.52218 21.5 12.0005 21.5C16.4789 21.5 18.718 21.5 20.1093 20.1087C21.5005 18.7175 21.5005 16.4783 21.5005 12C21.5005 10.1509 21.403 10.1835 21.305 9H2.50089C2.40296 10.1835 2.50053 10.1509 2.50053 12C2.50053 16.4783 2.50053 18.7175 3.89177 20.1087Z" fill="currentColor" />
-    <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="#141B34" stroke-width="1.5" />
-    <path d="M2.5 9H21.5" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round" />
-    <path d="M13 13L17 13" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M13 17H15" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M6.99981 6H7.00879" stroke="#141B34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M10.9998 6H11.0088" stroke="#141B34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M9 9V21.5" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-  </svg></span><h2>Website Builder</h2></div><p>Pages that convert to bookings.</p></a>
-          <a class="app-card" href="/platform/#platform-email-configurator"><div class="app-head"><span class="app-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none">
-    <path opacity="0.4" d="M5 7V9.52786C5 10.7307 5 11.3321 5.2987 11.8154C5.5974 12.2987 6.13531 12.5677 7.21115 13.1056L12 15.5L16.7889 13.1056C17.8647 12.5677 18.4026 12.2987 18.7013 11.8154C19 11.3321 19 10.7307 19 9.52786V7.00107L20.2172 7.81253C21.0909 8.39501 21.5278 8.68625 21.7645 9.13041C22.0013 9.57456 21.9995 10.0966 21.996 11.1406C21.9918 12.3975 21.9801 13.6782 21.9478 14.9741C21.871 18.0487 21.8327 19.586 20.7023 20.7164C19.5719 21.8469 18.0138 21.8858 14.8977 21.9637C12.9591 22.0121 11.0377 22.0121 9.09913 21.9637C5.98301 21.8858 4.42495 21.8469 3.29455 20.7164C2.16415 19.586 2.12578 18.0487 2.04904 14.9741C2.01669 13.6782 2.005 12.3975 2.00078 11.1406C1.99727 10.0966 1.99552 9.57457 2.23227 9.13041C2.46901 8.68625 2.90587 8.39501 3.77959 7.81253L4.99839 7H5Z" fill="currentColor" />
-    <path d="M4.99839 7L3.77959 7.81253C2.90587 8.39501 2.46901 8.68625 2.23227 9.13041C1.99552 9.57457 1.99727 10.0966 2.00078 11.1406C2.005 12.3975 2.01669 13.6782 2.04904 14.9741C2.12578 18.0487 2.16415 19.586 3.29455 20.7164C4.42495 21.8469 5.98301 21.8858 9.09913 21.9637C11.0377 22.0121 12.9591 22.0121 14.8977 21.9637C18.0138 21.8858 19.5719 21.8469 20.7023 20.7164C21.8327 19.586 21.871 18.0487 21.9478 14.9741C21.9801 13.6782 21.9918 12.3975 21.996 11.1406C21.9995 10.0966 22.0013 9.57456 21.7645 9.13041C21.5278 8.68625 21.0909 8.39501 20.2172 7.81253L18.9984 7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-    <path d="M2 10L8.91302 14.1478C10.417 15.0502 11.169 15.5014 12 15.5014C12.831 15.5014 13.583 15.0502 15.087 14.1478L22 10" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-    <path d="M4.99998 12V6C4.99998 4.11438 4.99998 3.17157 5.58577 2.58579C6.17156 2 7.11437 2 8.99998 2H15C16.8856 2 17.8284 2 18.4142 2.58579C19 3.17157 19 4.11438 19 6V12" stroke="currentColor" stroke-width="1.5" />
-    <path d="M10 10H14M10 6H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-  </svg></span><h2>Email</h2></div><p>Branded email + deliverability setup.</p></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section steph-story-section" id="steph-story">
-      <div class="container">
-        <div class="steph-story" data-video-story>
-          <video class="steph-video" preload="metadata" playsinline poster="/assets/images/steph.jpg">
-            <source src="/assets/videos/steph.mp4" type="video/mp4" />
-          </video>
-
-          <div class="steph-overlay" data-video-overlay>
-            <p class="kicker">Hear it from Steph</p>
-            <h2 class="section-title">Steph is the owner of Refine Pilates and Yoga</h2>
-            <button class="btn btn-primary steph-play" type="button" data-video-play>Play Video</button>
+          <!-- Float card bottom-left -->
+          <div class="float-card float-card-1">
+            <div class="float-icon float-icon-brand">🎉</div>
+            <div><div class="float-label">New member joined</div><div class="float-val">Ava Thompson</div></div>
           </div>
+
         </div>
       </div>
-    </section>
-
-    <section class="section" id="built-by-owners">
-      <div class="container">
-        <p class="kicker">Built by Studio Owners</p>
-        <h2 class="section-title">Designed by people who have run the front desk, schedule, and payroll.</h2>
-        <p class="section-copy">Obliq is shaped by real studio operations — not generic software assumptions. Every workflow is built to reduce admin burden while keeping the client experience premium.</p>
-
-        <div class="split">
-          <article class="card">
-            <p class="kicker">Operator-first product principles</p>
-            <div class="stack">
-              <div class="stack-item">Every automation is editable by your team <span>✓</span></div>
-              <div class="stack-item">Scheduling rules reflect real room/equipment limits <span>✓</span></div>
-              <div class="stack-item">Reports answer weekly owner decisions, not vanity metrics <span>✓</span></div>
-              <div class="stack-item">Billing and bookings stay in sync by default <span>✓</span></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <p class="kicker">What this means for your studio</p>
-            <p class="section-copy">You get software that mirrors how boutique Pilates and yoga teams actually work: fewer manual handoffs, fewer reconciliation issues, and clearer decisions every week.</p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#support">Talk to the Team</a>
-              <a class="btn" href="#support">Book a Call</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="support">
-      <div class="container">
-        <p class="kicker">Book a Demo</p>
-        <div class="demo-booking-layout">
-          <article class="demo-booking-copy">
-            <h2 class="section-title">Ready to learn more?<br />Book a Call.</h2>
-            <p class="section-copy">Let us show you exactly how much easier your week can be. We'll walk through your studio's workflow and model the time saved.</p>
-            <div class="demo-booking-links">
-              <a href="tel:+19054011516">↗ +1 905 401 1516</a>
-              <a href="mailto:hello@withobliq.com">↗ hello@withobliq.com</a>
-            </div>
-          </article>
-
-          <article class="demo-widget" id="demoBookingWidget" data-endpoint="http://localhost:5001/availability" data-charge-endpoint="http://localhost:5001/order/charge" data-service="6990df26ce62b53365b3d206" data-duration="30" data-duration-id="6990df26ce62b53365b3d207" data-product-id="686202bc9a643851a7fe0d4c" data-host-id="67843083f5a799d37a1891cc" data-location-id="6812defd916256e45887d5d0" data-user-id="6993dbc19af35e7752172eb7" data-tenant-id="67e2db23e3c65c88b48d0fcb" aria-label="Booking widget preview">
-            <div class="demo-widget-pane demo-widget-details">
-              <p class="demo-widget-brand">O</p>
-              <p class="demo-widget-owner">Obliq</p>
-              <h3>Obliq Introduction</h3>
-              <p class="demo-widget-meta">America/Toronto</p>
-            </div>
-
-            <div class="demo-widget-pane demo-widget-calendar">
-              <div class="demo-widget-head">
-                <p id="demoBookingMonthLabel"><strong>Month</strong> Year</p>
-              </div>
-              <div class="demo-widget-weekdays" aria-hidden="true">
-                <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
-              </div>
-              <div class="demo-widget-grid" id="demoBookingDateGrid"></div>
-              <p class="demo-widget-status" id="demoBookingStatus">Loading availability…</p>
-            </div>
-
-            <div class="demo-widget-pane demo-widget-times">
-              <div class="demo-widget-toggle" id="demoBookingFormatToggle"><span class="is-active" data-format="12h">12h</span><span data-format="24h">24h</span></div>
-              <div class="demo-widget-time-list" id="demoBookingTimeList"></div>
-            </div>
-
-            <div class="demo-widget-pane demo-widget-form" id="demoBookingFormPane" aria-live="polite">
-              <button class="demo-widget-back" id="demoBookingBack" type="button">Back</button>
-              <p class="demo-widget-form-slot" id="demoBookingSelectedSlot">Selected time</p>
-              <form class="demo-widget-form-fields" id="demoBookingForm">
-                <label>
-                  Name
-                  <input id="demoBookingName" name="name" type="text" autocomplete="name" required />
-                </label>
-                <label>
-                  Email
-                  <input id="demoBookingEmail" name="email" type="email" autocomplete="email" required />
-                </label>
-                <label>
-                  Phone
-                  <input id="demoBookingPhone" name="phone" type="tel" autocomplete="tel" required />
-                </label>
-                <button class="btn btn-primary" type="submit">Submit</button>
-                <p class="demo-widget-status" id="demoBookingFormStatus"></p>
-              </form>
-              <div class="demo-widget-success" id="demoBookingSuccess" hidden>
-                <h3>Your booked!</h3>
-                <p>You will receive confirmation via email shortly</p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <p class="footer-logo">Obliq</p>
-        <p class="footer-copy">Studio OS for Pilates and yoga teams that need reliable operations, measurable outcomes, and clear decisions.</p>
-      </div>
-
-      <nav class="footer-col" aria-label="Product links">
-        <p class="footer-heading">Product</p>
-        <a href="/platform/">Platform</a>
-        <a href="/pricing/">Pricing</a>
-        <a href="#support">Support</a>
-      </nav>
-
-      <nav class="footer-col" aria-label="Legal links">
-        <p class="footer-heading">Legal</p>
-        <a href="#privacy">Privacy Policy</a>
-        <a href="#terms">Terms of Service</a>
-      </nav>
     </div>
 
-    <div class="container footer-bottom">
-      <p>© <span class="js-year"></span> Obliq. All rights reserved.</p>
-      <div class="footer-links" aria-label="Footer quick links">
-        <a href="#privacy">Privacy Policy</a>
-        <a href="#terms">Terms of Service</a>
+    <!-- Pricing + perks -->
+    <div class="layout">
+      <div class="price-card fade">
+        <div class="price-label">Founder pricing</div>
+        <div class="price-row"><span class="price-amount">$60</span><span class="price-unit">&thinsp;/ month</span></div>
+        <div class="price-note"><s>$99 / month after founder period</s>&nbsp;<strong>Save 40%</strong></div>
+        <ul class="feat-list">
+          <li><span class="feat-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1 4.5l2.5 2.5L8 1.5" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Class scheduling &amp; booking</li>
+          <li><span class="feat-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1 4.5l2.5 2.5L8 1.5" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Appointments &amp; 1-on-1 booking</li>
+          <li><span class="feat-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1 4.5l2.5 2.5L8 1.5" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Member management &amp; profiles</li>
+          <li><span class="feat-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1 4.5l2.5 2.5L8 1.5" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Full website editor</li>
+          <li><span class="feat-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1 4.5l2.5 2.5L8 1.5" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Payments via Square &amp; Moneris</li>
+          <li><span class="feat-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1 4.5l2.5 2.5L8 1.5" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Waitlists &amp; late cancel rules</li>
+          <li><span class="feat-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1 4.5l2.5 2.5L8 1.5" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Direct input on the product roadmap</li>
+          <li><span class="feat-check"><svg viewBox="0 0 9 9" fill="none"><path d="M1 4.5l2.5 2.5L8 1.5" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Price locked for 12 months — guaranteed</li>
+        </ul>
+        <a class="cta" id="ctaBtn" href="#booking">Apply for a founder spot →</a>
+        <p class="cta-note">No credit card · 15-min demo call</p>
+      </div>
+      <div class="right-col">
+        <div class="perk fade"><div class="perk-icon-wrap">🔒</div><div><div class="perk-title">Price locked for 12 months</div><div class="perk-desc">$60/month guaranteed for a full year. When we raise pricing for new customers your rate stays the same — forever.</div></div></div>
+        <div class="perk fade"><div class="perk-icon-wrap">🗺️</div><div><div class="perk-title">Shape the roadmap</div><div class="perk-desc">Monthly calls with the founder. Your feedback goes directly into what we build — not into a ticket queue no one reads.</div></div></div>
+        <div class="perk fade"><div class="perk-icon-wrap">⚡</div><div><div class="perk-title">White-glove onboarding</div><div class="perk-desc">We migrate your data, set up your account, and stay until you're comfortable. No tutorials to watch on your own.</div></div></div>
+        <div class="perk fade"><div class="perk-icon-wrap">🏅</div><div><div class="perk-title">Founding Studio badge</div><div class="perk-desc">Permanent recognition on your profile and our website as one of the studios that built Obliq from the ground up.</div></div></div>
       </div>
     </div>
-  </footer>
 
-  <script src="assets/site.js"></script>
-  <script src="assets/demo-booking.js"></script>
-  <script src="assets/chat.js"></script>
+    <!-- Who it's for -->
+    <div class="for-section">
+      <div class="for-title">This is for you if</div>
+      <div class="for-grid">
+        <div class="for-card"><div class="for-card-label">You run a small studio</div><div class="for-card-desc">1–3 rooms, owner-operated. Yoga, Pilates, hot yoga, or barre — independent, not a franchise.</div></div>
+        <div class="for-card"><div class="for-card-label">You're done with MindBody</div><div class="for-card-desc">Overpaying for software that wasn't built for studios your size and won't pick up the phone when something breaks.</div></div>
+        <div class="for-card"><div class="for-card-label">You want to be heard</div><div class="for-card-desc">You have opinions on what studio software should actually do — and you want to talk to someone who'll act on them.</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const spotsRemaining = 4;
+  const total = 12, taken = total - spotsRemaining;
+  document.getElementById('spotsLabel').textContent = spotsRemaining === 1 ? '1 spot remaining' : `${spotsRemaining} spots remaining`;
+  const bookingSpotsEl = document.getElementById('bookingSpotsLabel');
+  if (bookingSpotsEl) bookingSpotsEl.textContent = spotsRemaining === 1 ? '1 spot left' : `${spotsRemaining} spots left`;
+  const pipsEl = document.getElementById('pips');
+  for (let i = 0; i < total; i++) {
+    const p = document.createElement('div');
+    p.className = 'pip' + (i < taken ? ' taken' : '');
+    pipsEl.appendChild(p);
+  }
+
+  // Personalise dashboard greeting from ?name= URL param
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get('name');
+  if (name) {
+    const el = document.getElementById('dashName');
+    if (el) el.textContent = name.charAt(0).toUpperCase() + name.slice(1);
+  }
+</script>
+
+<!-- BOOKING -->
+<section id="booking" style="padding:0 60px 104px;">
+  <div style="max-width:900px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:48px;">
+      <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-bottom:14px;">Founding Studios · Limited spots</p>
+      <h2 style="font-size:clamp(32px,4.5vw,56px);font-weight:700;letter-spacing:-.025em;line-height:1.1;color:var(--text-1);margin-bottom:16px;">Are you ready to <strong style="color:var(--brand);font-weight:700;">run a better studio?</strong></h2>
+      <p style="font-size:16px;font-weight:300;color:var(--text-2);line-height:1.7;max-width:480px;margin:0 auto 28px;">Pick a time below and we'll walk you through everything — no pressure, no credit card.</p>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:var(--green-soft);color:var(--green);font-size:13px;font-weight:500;padding:7px 16px;border-radius:99px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;"></span>Apply now — <span id="bookingSpotsLabel" style="font-weight:700;">4 spots left</span>
+      </div>
+    </div>
+
+    <article class="demo-widget" id="demoBookingWidget"
+      data-endpoint="https://api.withobliq.com/availability"
+      data-charge-endpoint="https://api.withobliq.com/order/charge"
+      data-service="69bb8e39a582bc000734f253"
+      data-duration="15"
+      data-duration-id="69bb8e39a582bc000734f254"
+      data-product-id="69bb8e21a582bc000734f23f"
+      data-host-id="68d3059feecb080006dc49cb"
+      data-location-id="69bb8e07a582bc000734f229"
+      data-user-id="68d3059feecb080006dc49cb"
+      data-tenant-id="69bb8ce6314e2135fd438dfb"
+      aria-label="Booking widget">
+      <div class="demo-widget-pane demo-widget-details">
+        <p class="demo-widget-brand">O</p>
+        <p class="demo-widget-owner">Obliq</p>
+        <h3>Apply for Founders Spot</h3>
+        <p class="demo-widget-meta">America/Toronto</p>
+      </div>
+      <div class="demo-widget-pane demo-widget-calendar">
+        <div class="demo-widget-head">
+          <p id="demoBookingMonthLabel"><strong>Month</strong> Year</p>
+        </div>
+        <div class="demo-widget-weekdays" aria-hidden="true">
+          <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
+        </div>
+        <div class="demo-widget-grid" id="demoBookingDateGrid"></div>
+        <p class="demo-widget-status" id="demoBookingStatus">Loading availability…</p>
+      </div>
+      <div class="demo-widget-pane demo-widget-times">
+        <div class="demo-widget-toggle" id="demoBookingFormatToggle"><span class="is-active" data-format="12h">12h</span><span data-format="24h">24h</span></div>
+        <div class="demo-widget-time-list" id="demoBookingTimeList"></div>
+      </div>
+      <div class="demo-widget-pane demo-widget-form" id="demoBookingFormPane" aria-live="polite">
+        <button class="demo-widget-back" id="demoBookingBack" type="button">Back</button>
+        <p class="demo-widget-form-slot" id="demoBookingSelectedSlot">Selected time</p>
+        <form class="demo-widget-form-fields" id="demoBookingForm">
+          <label>Name<input id="demoBookingName" name="name" type="text" autocomplete="name" required /></label>
+          <label>Email<input id="demoBookingEmail" name="email" type="email" autocomplete="email" required /></label>
+          <label>Phone<input id="demoBookingPhone" name="phone" type="tel" autocomplete="tel" required /></label>
+          <button type="submit" style="width:100%;padding:15px 24px;background:var(--brand);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;border:none;border-radius:var(--r-sm);cursor:pointer;letter-spacing:.01em;transition:background .15s,box-shadow .15s,transform .1s;" onmouseover="this.style.background='#2e9450';this.style.transform='translateY(-1px)';this.style.boxShadow='0 6px 20px rgba(62,172,97,.3)'" onmouseout="this.style.background='var(--brand)';this.style.transform='';this.style.boxShadow=''">Book Now</button>
+          <p class="demo-widget-status" id="demoBookingFormStatus"></p>
+        </form>
+        <div class="demo-widget-success" id="demoBookingSuccess" hidden>
+          <h3>You're booked!</h3>
+          <p>You will receive confirmation via email shortly.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Ambient background float cards (decorative, hidden below 1280px) -->
+<!-- left side -->
+<div class="bg-float" aria-hidden="true" style="top:7vh; left:36px;"   data-parallax="0.10" data-rot="-11" data-phase="0"   data-fadein="400">
+  <div class="float-icon float-icon-brand">📅</div>
+  <div><div class="float-label">New booking</div><div class="float-val">Sophia L.</div></div>
+</div>
+<div class="bg-float" aria-hidden="true" style="top:32vh; left:8px;"   data-parallax="0.20" data-rot="7"  data-phase="1.6" data-fadein="1000">
+  <div class="float-icon float-icon-green">💳</div>
+  <div><div class="float-label">Order placed</div><div class="float-val">$254.00</div></div>
+</div>
+<div class="bg-float" aria-hidden="true" style="top:58vh; left:56px;"  data-parallax="0.07" data-rot="-15" data-phase="3.1" data-fadein="1800">
+  <div class="float-icon" style="background:#fef3c7;">🔔</div>
+  <div><div class="float-label">Class Full!</div><div class="float-val">9am Vinyasa</div></div>
+</div>
+<div class="bg-float" aria-hidden="true" style="top:80vh; left:20px;"   data-parallax="0.14" data-rot="9"  data-phase="4.7" data-fadein="2600">
+  <div class="float-icon float-icon-brand">🏅</div>
+  <div><div class="float-label">Waitlist spot</div><div class="float-val">taken by Mia</div></div>
+</div>
+<!-- right side -->
+<div class="bg-float" aria-hidden="true" style="top:14vh; right:48px;"  data-parallax="0.16" data-rot="8"  data-phase="0.9" data-fadein="700">
+  <div class="float-icon float-icon-brand">🗓️</div>
+  <div><div class="float-label">New appointment</div><div class="float-val">Tyler M.</div></div>
+</div>
+<div class="bg-float" aria-hidden="true" style="top:46vh; right:12px;"  data-parallax="0.26" data-rot="-9" data-phase="2.3" data-fadein="1400">
+  <div class="float-icon" style="background:#fef9c3;">⭐</div>
+  <div><div class="float-label">New review</div><div class="float-val">★★★★★</div></div>
+</div>
+<div class="bg-float" aria-hidden="true" style="top:68vh; right:40px;" data-parallax="0.12" data-rot="13" data-phase="5.2" data-fadein="2100">
+  <div class="float-icon float-icon-brand">👤</div>
+  <div><div class="float-label">Member joined</div><div class="float-val">Jordan K.</div></div>
+</div>
+<div class="bg-float" aria-hidden="true" style="top:88vh; right:24px;"  data-parallax="0.18" data-rot="-6" data-phase="3.8" data-fadein="3000">
+  <div class="float-icon float-icon-green">💰</div>
+  <div><div class="float-label">Monthly revenue</div><div class="float-val">$8,420</div></div>
+</div>
+
+<script src="assets/demo-booking.js"></script>
+<script>
+(function () {
+  var bgCards = Array.from(document.querySelectorAll('.bg-float'));
+  if (!bgCards.length) return;
+
+  // Staggered fade-in
+  bgCards.forEach(function (card) {
+    var delay = parseInt(card.dataset.fadein) || 400;
+    setTimeout(function () { card.style.opacity = '0.78'; }, delay);
+  });
+
+  var scrollY = 0;
+  window.addEventListener('scroll', function () { scrollY = window.scrollY; }, { passive: true });
+
+  function loop(t) {
+    bgCards.forEach(function (card) {
+      var speed  = parseFloat(card.dataset.parallax) || 0.1;
+      var rot    = parseFloat(card.dataset.rot)      || 0;
+      var phase  = parseFloat(card.dataset.phase)    || 0;
+      // gentle idle bob (±5px over ~8-11s)
+      var bob = Math.sin(t * 0.00078 + phase) * 5;
+      // parallax: cards move up slower than scroll → feel layered behind content
+      var py  = scrollY * -speed + bob;
+      card.style.transform = 'translateY(' + py + 'px) rotate(' + rot + 'deg)';
+    });
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+}());
+</script>
 </body>
 </html>

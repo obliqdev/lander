@@ -122,6 +122,45 @@
     }
   }
 
+  if (document.body.classList.contains('platform-page') && topbar) {
+    const stripSection = document.querySelector('.platform-strip-section');
+    let previousScrollY = window.scrollY;
+    let navHidden = false;
+    const deltaThreshold = 6;
+
+    const setPlatformNavHidden = (hidden) => {
+      if (navHidden === hidden) return;
+      navHidden = hidden;
+      topbar.classList.toggle('is-hidden', hidden);
+      if (stripSection) {
+        stripSection.classList.toggle('is-hidden', hidden);
+      }
+    };
+
+    const updatePlatformNavByScrollDirection = () => {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - previousScrollY;
+
+      if (currentScrollY <= 24) {
+        setPlatformNavHidden(false);
+        previousScrollY = currentScrollY;
+        return;
+      }
+
+      if (delta > deltaThreshold) {
+        setPlatformNavHidden(true);
+      } else if (delta < -deltaThreshold) {
+        setPlatformNavHidden(false);
+      }
+
+      previousScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', updatePlatformNavByScrollDirection, { passive: true });
+    window.addEventListener('resize', () => setPlatformNavHidden(false));
+    updatePlatformNavByScrollDirection();
+  }
+
   if (storyVideos.length) {
     storyVideos.forEach((story) => {
       const video = story.querySelector('video');
@@ -519,7 +558,9 @@
   platformWrap.addEventListener('mouseleave', scheduleMegaClose);
   megaMenu.addEventListener('mouseenter', clearMegaCloseTimer);
   megaMenu.addEventListener('mouseleave', scheduleMegaClose);
-  platformTrigger.addEventListener('click', () => (megaOpen ? closeMega() : openMega()));
+  platformTrigger.addEventListener('click', () => {
+    window.location.href = '/platform/';
+  });
   platformTrigger.addEventListener('focus', openMega);
 
   mobileOpen.addEventListener('click', openSheet);
