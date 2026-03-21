@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Obliq</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#f4f6f9; --surface:#ffffff; --surface-2:#f0f2f6;
+  --border:#e4e7ec; --border-soft:#eef0f4;
+  --text-1:#0f1623; --text-2:#4a5568; --text-3:#9aa3b2;
+  --brand:#3EAC61; --brand-mid:#62c882; --brand-soft:#edf7f1;
+  --green:#10b981; --green-soft:#ecfdf5;
+  --font:'Plus Jakarta Sans',sans-serif;
+  --r:20px; --r-sm:12px;
+  --sh-sm:0 1px 4px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --sh-md:0 4px 24px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);
+}
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--text-1); font-family:var(--font); font-weight:400; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+
+/* ── LOGIN BUTTON ── */
+.login-btn-wrap { position:fixed; top:18px; right:24px; z-index:100; }
+.login-btn { display:inline-flex; align-items:center; gap:7px; padding:9px 18px; background:#fff; color:var(--text-1); font-family:var(--font); font-size:13px; font-weight:600; text-decoration:none; border:none; border-radius:var(--r-sm); box-shadow:0 2px 12px rgba(0,0,0,.10),0 1px 3px rgba(0,0,0,.07); transition:box-shadow .15s,transform .1s; letter-spacing:.01em; }
+.login-btn:hover { box-shadow:0 6px 20px rgba(0,0,0,.13),0 2px 6px rgba(0,0,0,.08); transform:translateY(-1px); }
+.login-btn svg { width:14px; height:14px; opacity:.55; }
+
+/* ── ANIMATIONS ── */
+@keyframes bob-a { 0%,100%{transform:translateY(0) translateX(0);} 50%{transform:translateY(-22px) translateX(10px);} }
+@keyframes bob-b { 0%,100%{transform:translateY(0) translateX(0);} 50%{transform:translateY(18px) translateX(-14px);} }
+@keyframes bob-c { 0%,100%{transform:translateY(0) translateX(0);} 50%{transform:translateY(-12px) translateX(18px);} }
+@keyframes bob-d { 0%,100%{transform:translateY(0) translateX(0);} 50%{transform:translateY(14px) translateX(-8px);} }
+@keyframes spin-slow { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+@keyframes spin-rev  { from{transform:rotate(0deg);} to{transform:rotate(-360deg);} }
+.sh-a { animation:bob-a 9s ease-in-out infinite; }
+.sh-b { animation:bob-b 12s ease-in-out infinite; }
+.sh-c { animation:bob-c 8s ease-in-out infinite; }
+.sh-d { animation:bob-d 14s ease-in-out infinite; }
+.sh-spin { transform-origin:center; animation:spin-slow 30s linear infinite; }
+.sh-spin-rev { transform-origin:center; animation:spin-rev 24s linear infinite; }
+
+/* ── PAGE LAYOUT ── */
+.page-wrap { max-width:760px; margin:0 auto; padding:80px 32px 120px; position:relative; z-index:1; }
+
+/* ── HEADER ── */
+.page-header { margin-bottom:56px; }
+.page-logo { display:block; margin-bottom:40px; }
+.page-logo svg { height:24px; width:auto; color:var(--text-1); }
+.page-eyebrow { font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--brand); margin-bottom:14px; }
+.page-title { font-size:clamp(32px,5vw,52px); font-weight:700; letter-spacing:-.025em; line-height:1.1; color:var(--text-1); margin-bottom:16px; }
+.page-meta { font-size:13px; font-weight:300; color:var(--text-3); }
+
+/* ── ARTICLE CARD ── */
+.article-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:48px 52px; box-shadow:var(--sh-md); position:relative; overflow:hidden; }
+.article-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--brand),var(--brand-mid)); }
+
+/* ── PROSE ── */
+.prose h2 { font-size:17px; font-weight:600; color:var(--text-1); margin:36px 0 10px; padding-top:4px; }
+.prose h2:first-child { margin-top:0; }
+.prose p { font-size:14px; font-weight:300; color:var(--text-2); line-height:1.8; margin-bottom:14px; }
+.prose p:last-child { margin-bottom:0; }
+.prose ul { list-style:none; margin:0 0 14px; padding:0; }
+.prose ul li { font-size:14px; font-weight:300; color:var(--text-2); line-height:1.75; padding:5px 0 5px 22px; position:relative; }
+.prose ul li::before { content:''; position:absolute; left:0; top:13px; width:6px; height:6px; border-radius:50%; background:var(--brand); opacity:.6; }
+.prose a { color:var(--brand); text-decoration:none; font-weight:400; }
+.prose a:hover { text-decoration:underline; }
+.prose strong { font-weight:600; color:var(--text-1); }
+.prose .divider { border:none; border-top:1px solid var(--border-soft); margin:36px 0; }
+
+/* ── FOOTER ── */
+.page-footer { margin-top:48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+.footer-links { display:flex; gap:20px; flex-wrap:wrap; }
+.footer-links a { font-size:13px; font-weight:400; color:var(--text-3); text-decoration:none; transition:color .15s; }
+.footer-links a:hover { color:var(--text-1); }
+.footer-copy { font-size:12px; font-weight:300; color:var(--text-3); }
+
+@media (max-width:600px) {
+  .page-wrap { padding:60px 20px 80px; }
+  .article-card { padding:28px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND SHAPES -->
+<svg style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <g class="sh-a" style="transform-origin:1100px 120px"><circle cx="1100" cy="120" r="260" fill="#3EAC61" opacity="0.04"/></g>
+  <g class="sh-b" style="transform-origin:160px 200px">
+    <circle cx="160" cy="200" r="150" fill="none" stroke="#3EAC61" stroke-width="1.5" opacity="0.08"/>
+    <circle cx="160" cy="200" r="100" fill="none" stroke="#3EAC61" stroke-width="0.75" opacity="0.06"/>
+  </g>
+  <g class="sh-spin" style="transform-origin:82px 520px">
+    <rect x="50" y="488" width="64" height="64" rx="10" fill="none" stroke="#3EAC61" stroke-width="1.2" opacity="0.1" transform="rotate(15 82 520)"/>
+  </g>
+  <g class="sh-c" style="transform-origin:1300px 280px" opacity="0.1">
+    <circle cx="1260" cy="260" r="3.5" fill="#3EAC61"/><circle cx="1284" cy="260" r="3.5" fill="#3EAC61"/>
+    <circle cx="1308" cy="260" r="3.5" fill="#3EAC61"/><circle cx="1332" cy="260" r="3.5" fill="#3EAC61"/>
+    <circle cx="1260" cy="284" r="3.5" fill="#3EAC61"/><circle cx="1284" cy="284" r="3.5" fill="#3EAC61"/>
+    <circle cx="1308" cy="284" r="3.5" fill="#3EAC61"/><circle cx="1332" cy="284" r="3.5" fill="#3EAC61"/>
+    <circle cx="1260" cy="308" r="3.5" fill="#3EAC61"/><circle cx="1284" cy="308" r="3.5" fill="#3EAC61"/>
+    <circle cx="1308" cy="308" r="3.5" fill="#3EAC61"/><circle cx="1332" cy="308" r="3.5" fill="#3EAC61"/>
+  </g>
+  <g class="sh-spin-rev" style="transform-origin:1375px 595px">
+    <polygon points="1375,553 1413,575 1413,619 1375,641 1337,619 1337,575" fill="none" stroke="#3EAC61" stroke-width="1.2" opacity="0.08"/>
+  </g>
+  <g class="sh-d" style="transform-origin:720px 940px">
+    <circle cx="720" cy="940" r="210" fill="none" stroke="#3EAC61" stroke-width="1" opacity="0.05"/>
+  </g>
+</svg>
+
+<!-- LOGIN BUTTON -->
+<div class="login-btn-wrap">
+  <a class="login-btn" href="https://app.withobliq.com" target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="5.5" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 13c0-2.485 2.462-4.5 5.5-4.5s5.5 2.015 5.5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    Log in
+  </a>
+</div>
+
+<!-- PAGE -->
+<div class="page-wrap">
+
+  <!-- Header -->
+  <div class="page-header">
+    <a class="page-logo" href="/">
+      <svg viewBox="0 0 411 97" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M182.5 78V97H160.5V78H182.5ZM200 60.5C200 50.835 192.165 43 182.5 43H160.5C150.835 43 143 50.835 143 60.5C143 70.165 150.835 78 160.5 78V97C140.342 97 124 80.6584 124 60.5C124 40.3416 140.342 24 160.5 24H182.5L183.442 24.0117C203.165 24.5116 219 40.6567 219 60.5C219 80.3433 203.165 96.4884 183.442 96.9883L182.5 97V78C192.165 78 200 70.165 200 60.5Z" fill="currentColor"/><path d="M71.5 78V97H49.5V78H71.5ZM89 60.5C89 50.835 81.165 43 71.5 43H49.5C39.835 43 32 50.835 32 60.5C32 70.165 39.835 78 49.5 78V97C29.3416 97 13 80.6584 13 60.5C13 40.3416 29.3416 24 49.5 24H71.5L72.4424 24.0117C92.1652 24.5116 108 40.6567 108 60.5C108 80.3433 92.1652 96.4884 72.4424 96.9883L71.5 97V78C81.165 78 89 70.165 89 60.5Z" fill="currentColor"/><path d="M9.87841 24H49.5803C53.2457 24 54.9808 28.5197 52.2569 30.9725L31.6818 49.5C30.1188 50.9075 27.7328 50.864 26.2221 49.4006L7.09534 30.8731C4.51361 28.3722 6.28402 24 9.87841 24Z" fill="currentColor"/><path d="M339.5 43L339.5 24L361.5 24L361.5 43L339.5 43ZM322 60.5C322 70.165 329.835 78 339.5 78L361.5 78C371.165 78 379 70.165 379 60.5C379 50.835 371.165 43 361.5 43L361.5 24C381.658 24 398 40.3416 398 60.5C398 80.6584 381.658 97 361.5 97L339.5 97L338.558 96.9883C318.835 96.4884 303 80.3433 303 60.5C303 40.6567 318.835 24.5116 338.558 24.0117L339.5 24L339.5 43C329.835 43 322 50.835 322 60.5Z" fill="currentColor"/><path d="M401.122 97L361.42 97C357.754 97 356.019 92.4803 358.743 90.0275L379.318 71.5C380.881 70.0925 383.267 70.136 384.778 71.5994L403.905 90.1269C406.486 92.6278 404.716 97 401.122 97Z" fill="currentColor"/><rect x="122" width="21" height="97" rx="4" fill="currentColor"/><rect x="233" width="21" height="97" rx="4" fill="currentColor"/><rect x="268" y="24" width="21" height="73" rx="4" fill="currentColor"/><rect x="268" width="21" height="18" rx="4" fill="currentColor"/></svg>
+    </a>
+    <div class="page-eyebrow">Legal</div>
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="page-meta">Last updated: March 21, 2026 &nbsp;·&nbsp; Effective: March 21, 2026</p>
+  </div>
+
+  <!-- Content -->
+  <div class="article-card">
+    <div class="prose">
+
+      <p>This Privacy Policy explains how Obliq Software Inc. ("Obliq", "we", "us", or "our") collects, uses, discloses, and protects information about you when you use the Obliq platform and related services (collectively, the "Service"). We are committed to protecting your privacy and handling your data in a transparent, responsible manner.</p>
+
+      <hr class="divider">
+
+      <h2>1. Who This Policy Applies To</h2>
+      <p>This policy applies to:</p>
+      <ul>
+        <li><strong>Studio owners and staff</strong> who create and manage an Obliq account</li>
+        <li><strong>Studio members and clients</strong> whose information is managed through the Service by a studio</li>
+        <li><strong>Visitors</strong> to our marketing website at withobliq.com</li>
+      </ul>
+      <p>If you are a studio member or client, your studio (the Obliq customer) is the primary controller of your data. Please contact your studio directly with questions about how they use your information.</p>
+
+      <h2>2. Information We Collect</h2>
+      <p><strong>Information you provide directly:</strong></p>
+      <ul>
+        <li>Account registration details: name, email address, phone number, business name</li>
+        <li>Profile information: studio address, time zone, business details</li>
+        <li>Payment information: billing address, last four digits of card (full card numbers are handled by our payment processors and never stored by us)</li>
+        <li>Communications: messages you send to us via email or support channels</li>
+      </ul>
+      <p><strong>Information collected automatically:</strong></p>
+      <ul>
+        <li>Log data: IP address, browser type, pages visited, time and date of visit, referring URL</li>
+        <li>Device information: device type, operating system, unique device identifiers</li>
+        <li>Usage data: features used, actions taken, session duration</li>
+        <li>Cookies and similar tracking technologies (see Section 7)</li>
+      </ul>
+      <p><strong>Information about your clients:</strong></p>
+      <p>As a studio operator, you may input data about your members and clients into the Service. This may include names, contact details, health notes, attendance history, and payment records. You are responsible for ensuring you have the appropriate authority or consent to input this information.</p>
+
+      <h2>3. How We Use Your Information</h2>
+      <p>We use the information we collect to:</p>
+      <ul>
+        <li>Provide, operate, and maintain the Service</li>
+        <li>Process transactions and manage subscriptions</li>
+        <li>Send transactional communications (booking confirmations, receipts, reminders)</li>
+        <li>Send service updates, security alerts, and support messages</li>
+        <li>Respond to your comments, questions, and support requests</li>
+        <li>Improve and personalise the Service based on usage patterns</li>
+        <li>Comply with legal obligations and enforce our Terms of Service</li>
+        <li>Prevent fraud, abuse, and unauthorised access</li>
+      </ul>
+      <p>With your consent, we may also send marketing communications about Obliq features, offers, or news. You can opt out at any time by clicking "unsubscribe" in any email or contacting us directly.</p>
+
+      <h2>4. How We Share Your Information</h2>
+      <p>We do not sell your personal information. We may share information in the following limited circumstances:</p>
+      <ul>
+        <li><strong>Service providers:</strong> We work with trusted third-party vendors (e.g., cloud hosting, email delivery, payment processing, analytics) who process data on our behalf and are contractually bound to protect it.</li>
+        <li><strong>Payment processors:</strong> Transactions are processed by Square and/or Moneris. These providers receive the data necessary to process payments and are governed by their own privacy policies.</li>
+        <li><strong>Legal requirements:</strong> We may disclose information if required to do so by law or in response to valid requests from public authorities.</li>
+        <li><strong>Business transfers:</strong> In the event of a merger, acquisition, or sale of all or substantially all assets, your information may be transferred as part of that transaction. We will notify you before your data is subject to a different privacy policy.</li>
+        <li><strong>With your consent:</strong> We may share information for any other purpose with your explicit consent.</li>
+      </ul>
+
+      <h2>5. Data Retention</h2>
+      <p>We retain your personal information for as long as your account is active or as needed to provide the Service. If you close your account, we will retain your data for up to 30 days before deletion to allow for recovery, after which it is permanently deleted from our systems, subject to any legal retention obligations.</p>
+      <p>Aggregated, anonymised data that cannot identify you may be retained indefinitely for analytical purposes.</p>
+
+      <h2>6. Data Security</h2>
+      <p>We implement appropriate technical and organisational measures to protect your personal information against unauthorised access, alteration, disclosure, or destruction. These measures include encrypted data transmission (TLS), access controls, and regular security reviews. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+
+      <h2>7. Cookies</h2>
+      <p>We use cookies and similar tracking technologies to operate and improve the Service. Cookies are small data files stored on your browser. We use:</p>
+      <ul>
+        <li><strong>Essential cookies:</strong> Required for the Service to function (e.g., session authentication). These cannot be disabled.</li>
+        <li><strong>Analytics cookies:</strong> Help us understand how visitors interact with our website (e.g., Google Analytics). These are anonymised where possible.</li>
+        <li><strong>Preference cookies:</strong> Remember your settings and preferences across sessions.</li>
+      </ul>
+      <p>You can control cookies through your browser settings. Disabling certain cookies may affect the functionality of the Service.</p>
+
+      <h2>8. Your Rights (PIPEDA / Canadian Privacy Law)</h2>
+      <p>Under Canada's Personal Information Protection and Electronic Documents Act (PIPEDA) and applicable provincial laws, you have the right to:</p>
+      <ul>
+        <li>Access the personal information we hold about you</li>
+        <li>Request correction of inaccurate or incomplete information</li>
+        <li>Withdraw consent to certain uses of your information (where consent is the basis for processing)</li>
+        <li>Request deletion of your personal information, subject to legal or contractual obligations</li>
+        <li>File a complaint with the Office of the Privacy Commissioner of Canada</li>
+      </ul>
+      <p>To exercise any of these rights, contact us at <a href="mailto:hello@withobliq.com">hello@withobliq.com</a>. We will respond within 30 days.</p>
+
+      <h2>9. Children's Privacy</h2>
+      <p>The Service is not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you believe we have inadvertently collected such information, please contact us immediately and we will take steps to delete it.</p>
+
+      <h2>10. International Data Transfers</h2>
+      <p>Our servers and service providers are primarily located in Canada. If you access the Service from outside Canada, your information may be transferred to and processed in Canada or other jurisdictions. By using the Service, you consent to this transfer.</p>
+
+      <h2>11. Third-Party Links</h2>
+      <p>The Service may contain links to third-party websites. This Privacy Policy does not apply to those sites. We encourage you to review the privacy policies of any third-party services you visit.</p>
+
+      <h2>12. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. If we make material changes, we will notify you by email or through a prominent notice in the Service at least 14 days before the changes take effect. We will update the "Last updated" date at the top of this page. Continued use of the Service after the effective date of any changes constitutes your acceptance of the revised policy.</p>
+
+      <h2>13. Contact Us</h2>
+      <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact our Privacy Officer at:</p>
+      <p><strong>Obliq Software Inc.</strong><br>
+      Email: <a href="mailto:hello@withobliq.com">hello@withobliq.com</a><br>
+      Toronto, Ontario, Canada</p>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="page-footer">
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/terms/">Terms of Service</a>
+      <a href="mailto:hello@withobliq.com">Contact</a>
+    </div>
+    <span class="footer-copy">© 2026 Obliq Software Inc.</span>
+  </div>
+
+</div>
+
+</body>
+</html>
