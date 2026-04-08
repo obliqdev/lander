@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Setting Up Appointments — Obliq Help Center</title>
+  <meta name="description" content="Create appointment service types, define availability windows, and configure booking rules for private sessions in Obliq." />
+  <link rel="stylesheet" href="../../../assets/site.css" />
+  <link rel="stylesheet" href="../../../assets/docs.css" />
+</head>
+<body class="docs-page">
+
+  <header class="topbar">
+    <div class="container">
+      <div class="nav-row">
+        <a class="brand" href="/" aria-label="Obliq home">
+          <svg class="brand-logo" width="360" height="85" viewBox="0 0 360 85" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M159.854 68.3505V85H140.584V68.3505H159.854ZM175.183 53.0155C175.183 44.5462 168.32 37.6804 159.854 37.6804H140.584C132.118 37.6804 125.256 44.5462 125.256 53.0155C125.256 61.4848 132.118 68.3505 140.584 68.3505V85C122.927 85 108.613 70.68 108.613 53.0155C108.613 35.3509 122.927 21.0309 140.584 21.0309H159.854L160.68 21.0412C177.955 21.4792 191.825 35.627 191.825 53.0155C191.825 70.4039 177.955 84.5517 160.68 84.9897L159.854 85V68.3505C168.32 68.3505 175.183 61.4848 175.183 53.0155Z" fill="black"/><path d="M62.6276 68.3505V85H43.3575V68.3505H62.6276ZM77.9561 53.0155C77.9561 44.5462 71.0933 37.6804 62.6276 37.6804H43.3575C34.8918 37.6804 28.0291 44.5462 28.0291 53.0155C28.0291 61.4848 34.8918 68.3505 43.3575 68.3505V85C25.7005 85 11.3867 70.68 11.3867 53.0155C11.3867 35.3509 25.7005 21.0309 43.3575 21.0309H62.6276L63.453 21.0412C80.7285 21.4792 94.5984 35.627 94.5984 53.0155C94.5984 70.4039 80.7285 84.5517 63.453 84.9897L62.6276 85V68.3505C71.0933 68.3505 77.9561 61.4848 77.9561 53.0155Z" fill="black"/><path d="M8.65279 21.0309H43.4282C46.6387 21.0309 48.1585 24.9915 45.7727 27.1408L27.7506 43.3763C26.3816 44.6096 24.2917 44.5716 22.9684 43.2892L6.21506 27.0537C3.95369 24.8623 5.50442 21.0309 8.65279 21.0309Z" fill="black"/><path d="M297.372 37.6804L297.372 21.0309L316.642 21.0309L316.642 37.6804L297.372 37.6804ZM282.044 53.0155C282.044 61.4848 288.907 68.3505 297.372 68.3505L316.642 68.3505C325.108 68.3505 331.971 61.4848 331.971 53.0155C331.971 44.5461 325.108 37.6804 316.642 37.6804L316.642 21.0309C334.299 21.0309 348.613 35.3509 348.613 53.0155C348.613 70.68 334.299 85 316.642 85L297.372 85L296.547 84.9897C279.271 84.5517 265.402 70.4039 265.402 53.0155C265.402 35.627 279.271 21.4792 296.547 21.0412L297.372 21.0309L297.372 37.6804C288.907 37.6804 282.044 44.5461 282.044 53.0155Z" fill="black"/><path d="M351.348 85L316.572 85C313.362 85 311.842 81.0394 314.228 78.8901L332.25 62.6546C333.619 61.4213 335.709 61.4594 337.032 62.7417L353.785 78.9772C356.047 81.1687 354.496 85 351.348 85Z" fill="black"/><rect x="106.861" width="18.3942" height="85" rx="4" fill="black"/><rect x="204.087" width="18.3942" height="85" rx="4" fill="black"/><rect x="234.745" y="21.0309" width="18.3942" height="63.9691" rx="4" fill="black"/><rect x="234.745" width="18.3942" height="15.7732" rx="4" fill="black"/></svg>
+        </a>
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <div class="platform-wrap" id="platformWrap">
+            <button class="platform-trigger" id="platformTrigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="megaMenu">Platform <span class="chev">▾</span></button>
+            <div class="mega" id="megaMenu" role="menu" aria-label="Platform menu">
+              <div class="mega-top"><div><p class="kicker">Platform Apps</p><p class="mega-copy">Run scheduling, billing, retention, messaging, and reporting in one connected operating system for Pilates and yoga studios.</p></div><a class="explore-link" href="/platform/">Explore →</a></div>
+              <div class="mega-grid">
+                <a class="app-link" role="menuitem" href="/platform/#platform-dashboard"><p class="app-title">Dashboard</p><p class="app-desc">Your studio command center.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-appointments"><p class="app-title">Appointments</p><p class="app-desc">Private bookings with smart availability.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-classes"><p class="app-title">Classes</p><p class="app-desc">Capacity, waitlists, check-ins.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-memberships"><p class="app-title">Memberships</p><p class="app-desc">Recurring revenue and retention.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-payments"><p class="app-title">Payments</p><p class="app-desc">Integrated billing and payouts.</p></a>
+                <a class="app-link" role="menuitem" href="/platform/#platform-reporting"><p class="app-title">Reporting</p><p class="app-desc">Revenue, attendance, churn insights.</p></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="actions">
+          <a class="btn" href="https://app.withobliq.com">Login</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+  <aside class="sheet" id="mobileSheet" aria-label="Mobile menu" aria-hidden="true">
+    <div class="sheet-head"><div class="sheet-title">Menu</div><button class="btn" id="mobileClose" type="button" aria-label="Close menu">✕</button></div>
+    <div class="sheet-body">
+      <div id="mobileRoot">
+        <button class="mobile-item" id="mobilePlatformBtn" type="button"><span><strong>Platform</strong><small>All connected apps</small></span><span class="arrow">›</span></button>
+        <a class="mobile-item" href="/pricing/"><span><strong>Pricing</strong></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/support/"><span><strong>Support</strong></span><span class="arrow">›</span></a>
+        <a class="btn btn-primary" href="/support/" style="width:100%;margin-top:8px;padding:14px;">Get Support</a>
+      </div>
+      <div id="mobilePlatform" style="display:none;">
+        <div class="back-row"><button class="back-btn" id="mobileBack" type="button">← Back</button><span class="kicker">Platform</span></div>
+        <a class="mobile-item" href="/platform/#platform-appointments"><span><strong>Appointments</strong></span><span class="arrow">›</span></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="docs-layout" style="margin-top:82px">
+
+    <aside class="docs-sidebar" id="docsSidebar" aria-label="Documentation navigation">
+      <div class="docs-sidebar-search-wrap">
+        <div class="docs-sidebar-search-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input class="docs-sidebar-search" type="search" placeholder="Search docs…" id="docsSearch" autocomplete="off" aria-label="Search docs" />
+        </div>
+      </div>
+      <nav aria-label="Documentation categories">
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Getting Started</p>
+          <a class="docs-nav-link" href="/docs/getting-started/">Overview</a>
+          <a class="docs-nav-link" href="/docs/getting-started/setting-up-your-studio/">Setting Up Your Studio</a>
+          <a class="docs-nav-link" href="/docs/getting-started/inviting-staff-members/">Inviting Staff Members</a>
+          <a class="docs-nav-link" href="/docs/getting-started/managing-your-account/">Managing Your Account</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Classes &amp; Scheduling</p>
+          <a class="docs-nav-link" href="/docs/classes-scheduling/">Overview</a>
+          <a class="docs-nav-link" href="/docs/classes-scheduling/creating-a-class/">Creating a Class</a>
+          <a class="docs-nav-link" href="/docs/classes-scheduling/capacity-waitlists/">Capacity &amp; Waitlists</a>
+          <a class="docs-nav-link" href="/docs/classes-scheduling/class-check-ins/">Class Check-ins</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Appointments</p>
+          <a class="docs-nav-link" href="/docs/appointments/">Overview</a>
+          <a class="docs-nav-link is-active" href="/docs/appointments/setting-up-appointments/">Setting Up Appointments</a>
+          <a class="docs-nav-link" href="/docs/appointments/staff-availability/">Staff Availability</a>
+          <a class="docs-nav-link" href="/docs/appointments/booking-rules/">Booking Rules</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Memberships</p>
+          <a class="docs-nav-link" href="/docs/memberships/">Overview</a>
+          <a class="docs-nav-link" href="/docs/memberships/creating-a-membership-plan/">Creating a Membership Plan</a>
+          <a class="docs-nav-link" href="/docs/memberships/auto-renewals/">Auto-Renewals</a>
+          <a class="docs-nav-link" href="/docs/memberships/pausing-cancellation/">Pausing &amp; Cancellation</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Passes &amp; Credits</p>
+          <a class="docs-nav-link" href="/docs/passes-credits/">Overview</a>
+          <a class="docs-nav-link" href="/docs/passes-credits/creating-pass-packs/">Creating Pass Packs</a>
+          <a class="docs-nav-link" href="/docs/passes-credits/expiry-rules/">Expiry Rules</a>
+          <a class="docs-nav-link" href="/docs/passes-credits/applying-passes/">Applying Passes to Bookings</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Payments &amp; Billing</p>
+          <a class="docs-nav-link" href="/docs/payments-billing/">Overview</a>
+          <a class="docs-nav-link" href="/docs/payments-billing/connecting-payment-method/">Connecting Payment Method</a>
+          <a class="docs-nav-link" href="/docs/payments-billing/processing-refunds/">Processing Refunds</a>
+          <a class="docs-nav-link" href="/docs/payments-billing/understanding-payouts/">Understanding Payouts</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Staff &amp; Settings</p>
+          <a class="docs-nav-link" href="/docs/staff-settings/">Overview</a>
+          <a class="docs-nav-link" href="/docs/staff-settings/staff-roles-permissions/">Staff Roles &amp; Permissions</a>
+          <a class="docs-nav-link" href="/docs/staff-settings/notification-settings/">Notification Settings</a>
+          <a class="docs-nav-link" href="/docs/staff-settings/studio-profile/">Studio Profile</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Reporting</p>
+          <a class="docs-nav-link" href="/docs/reporting/">Overview</a>
+          <a class="docs-nav-link" href="/docs/reporting/revenue-reports/">Revenue Reports</a>
+          <a class="docs-nav-link" href="/docs/reporting/attendance-insights/">Attendance Insights</a>
+          <a class="docs-nav-link" href="/docs/reporting/churn-tracking/">Churn Tracking</a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="docs-content" id="docsContent">
+      <button class="docs-sidebar-toggle" id="sidebarToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰ Navigation</button>
+
+      <nav class="docs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/docs/">Help Center</a>
+        <span class="docs-breadcrumb-sep">›</span>
+        <a href="/docs/appointments/">Appointments</a>
+        <span class="docs-breadcrumb-sep">›</span>
+        <span>Setting Up Appointments</span>
+      </nav>
+
+      <article>
+        <div class="docs-article-header">
+          <h1>Setting Up Appointments</h1>
+          <div class="docs-meta">
+            <span>Last updated April 2026</span>
+            <span class="docs-meta-dot">·</span>
+            <span>5 min read</span>
+          </div>
+        </div>
+
+        <div class="docs-body" id="docsBody">
+
+          <h2 id="overview">Overview</h2>
+          <p>Appointments in Obliq handle private, one-on-one sessions between a client and a single instructor. Unlike classes, appointments are booked against a specific instructor's availability window rather than a shared schedule slot.</p>
+          <div class="docs-callout docs-note">
+            <strong>Before you begin:</strong> You need at least one instructor with their <a href="/docs/appointments/staff-availability/">availability configured</a> before clients can book appointments.
+          </div>
+
+          <h2 id="service-type">Step 1 — Create a service type</h2>
+          <p>Navigate to <code>Appointments → Services → New Service</code>.</p>
+          <ol class="docs-steps">
+            <li><div><p>Enter a <strong>Service Name</strong> (e.g., "Private Reformer Session" or "Introductory Assessment"). This appears on your booking page and in client confirmation emails.</p></div></li>
+            <li><div><p>Add an optional <strong>Description</strong> — what the session covers, who it is suitable for, and what clients should bring or prepare.</p></div></li>
+            <li><div><p>Select which <strong>Instructors</strong> offer this service. Only instructors with this service selected will appear as available when a client books.</p></div></li>
+          </ol>
+
+          <h2 id="duration-pricing">Step 2 — Duration &amp; pricing</h2>
+          <ol class="docs-steps">
+            <li><div><p>Set the <strong>Session Duration</strong> in minutes. Common values are 30, 45, 60, or 90 minutes. This controls the slot length shown to clients when they pick a time.</p></div></li>
+            <li><div><p>Add a <strong>Buffer Time</strong> after the session (0–30 minutes) to give instructors time to clean equipment, make notes, or prepare for the next client. Buffer time is blocked in the instructor's calendar but not shown to clients.</p></div></li>
+            <li><div><p>Set the <strong>Price</strong> for a single session, or leave it unpiced if this service is covered by memberships or passes.</p></div></li>
+          </ol>
+          <div class="docs-callout docs-tip">
+            <strong>Tip:</strong> Add 10–15 minutes of buffer time after hands-on sessions. It avoids back-to-back pressure and reduces late-running bookings.
+          </div>
+
+          <h2 id="availability">Step 3 — Staff availability windows</h2>
+          <p>Clients can only book into times when the instructor is available. Navigate to <code>Staff → [Instructor Name] → Availability</code>.</p>
+          <ol class="docs-steps">
+            <li><div><p>Set the instructor's <strong>Weekly Availability</strong> — the days and time ranges when they accept bookings. Each day can have one or more time blocks.</p></div></li>
+            <li><div><p>Add any <strong>Blocked Dates</strong> for holidays, vacations, or other closures. Clients will not see blocked dates as available.</p></div></li>
+            <li><div><p>Configure <strong>Max Appointments Per Day</strong> to prevent over-booking. Once reached, no further bookings are accepted for that day regardless of available time slots.</p></div></li>
+          </ol>
+
+          <h2 id="booking-rules">Step 4 — Booking rules &amp; lead time</h2>
+          <ol class="docs-steps">
+            <li><div><p>Set the <strong>Minimum Lead Time</strong> — how far in advance a client must book. For example, setting 24 hours means clients cannot book a session starting within the next 24 hours.</p></div></li>
+            <li><div><p>Set the <strong>Cancellation Window</strong> — the minimum notice required for a client to cancel without a fee. Cancellations inside this window may trigger a credit deduction or no-show charge depending on your policy.</p></div></li>
+            <li><div><p>Enable <strong>Require Intake Form</strong> if you want new clients to complete a health questionnaire before their first appointment. The form is sent via email after booking.</p></div></li>
+          </ol>
+          <div class="docs-callout docs-warning">
+            <strong>Important:</strong> Lead time and cancellation window settings are per-service. Set them carefully — once a client has booked, the policy that was in effect at booking time is enforced, even if you change the settings later.
+          </div>
+
+          <h2 id="publish">Step 5 — Publish appointments</h2>
+          <ol class="docs-steps">
+            <li><div><p>On the service detail page, toggle the service status to <strong>Active</strong>. Active services are bookable by clients on your public booking page.</p></div></li>
+            <li><div><p>Visit your public booking page and select "Appointments" to confirm the service appears and slots are shown correctly.</p></div></li>
+          </ol>
+
+          <h2 id="whats-next">What's next</h2>
+          <ul>
+            <li><a href="/docs/appointments/staff-availability/">Refine staff availability</a> for more granular control</li>
+            <li><a href="/docs/appointments/booking-rules/">Advanced booking rules</a> for complex scheduling needs</li>
+            <li><a href="/docs/passes-credits/creating-pass-packs/">Create a session pass</a> clients can use to pre-purchase appointments</li>
+          </ul>
+
+        </div>
+
+        <aside class="docs-related">
+          <h2>Related articles</h2>
+          <div class="docs-related-grid">
+            <a class="docs-related-card" href="/docs/appointments/staff-availability/">
+              <strong>Staff Availability</strong>
+              <p>Configure detailed availability windows for each instructor.</p>
+            </a>
+            <a class="docs-related-card" href="/docs/passes-credits/creating-pass-packs/">
+              <strong>Creating Pass Packs</strong>
+              <p>Sell session credits clients can apply to appointment bookings.</p>
+            </a>
+          </div>
+        </aside>
+
+        <nav class="docs-prev-next" aria-label="Article navigation">
+          <a class="docs-prev" href="/docs/appointments/">
+            <span class="docs-pn-label">← Previous</span>
+            <span class="docs-pn-title">Appointments Overview</span>
+          </a>
+          <a class="docs-next" href="/docs/appointments/staff-availability/">
+            <span class="docs-pn-label">Next</span>
+            <span class="docs-pn-title">Staff Availability →</span>
+          </a>
+        </nav>
+      </article>
+    </main>
+
+    <aside class="docs-toc" id="docsToc" aria-label="On this page">
+      <p class="docs-toc-label">On this page</p>
+      <nav id="tocNav">
+        <ul class="docs-toc-list">
+          <li><a class="docs-toc-link" href="#overview">Overview</a></li>
+          <li><a class="docs-toc-link" href="#service-type">Create a service type</a></li>
+          <li><a class="docs-toc-link" href="#duration-pricing">Duration &amp; pricing</a></li>
+          <li><a class="docs-toc-link" href="#availability">Staff availability</a></li>
+          <li><a class="docs-toc-link" href="#booking-rules">Booking rules</a></li>
+          <li><a class="docs-toc-link" href="#publish">Publish appointments</a></li>
+          <li><a class="docs-toc-link" href="#whats-next">What's next</a></li>
+        </ul>
+      </nav>
+      <div class="docs-feedback-wrap" style="margin-top:28px;padding-top:20px;border-top:1px solid var(--line)">
+        <p class="docs-feedback-label">Was this helpful?</p>
+        <div class="docs-feedback-btns">
+          <button class="docs-feedback-btn" type="button">Yes</button>
+          <button class="docs-feedback-btn" type="button">No</button>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand"><p class="footer-logo">Obliq</p><p class="footer-copy">Studio OS for Pilates and yoga teams that need reliable operations, measurable outcomes, and clear decisions.</p></div>
+      <nav class="footer-col"><p class="footer-heading">Product</p><a href="/platform/">Platform</a><a href="/pricing/">Pricing</a></nav>
+      <nav class="footer-col"><p class="footer-heading">Resources</p><a href="/docs/">Help Center</a><a href="/support/">Support</a></nav>
+      <nav class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span class="js-year"></span> Obliq. All rights reserved.</p>
+      <div class="footer-links"><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
+    </div>
+  </footer>
+
+  <script src="../../../assets/site.js"></script>
+  <script src="../../../assets/docs.js"></script>
+</body>
+</html>

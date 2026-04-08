@@ -27,7 +27,6 @@ body { background:var(--bg); color:var(--text-1); font-family:var(--font); font-
 
 /* ── NAV ── */
 nav { display:none; }
-
 /* ── LOGIN BUTTON ── */
 .login-btn-wrap { position:absolute; top:18px; right:24px; z-index:100; }
 .login-btn { display:inline-flex; align-items:center; gap:7px; padding:9px 18px; background:#fff; color:var(--text-1); font-family:var(--font); font-size:13px; font-weight:600; text-decoration:none; border:none; border-radius:var(--r-sm); box-shadow:0 2px 12px rgba(0,0,0,.10),0 1px 3px rgba(0,0,0,.07); transition:box-shadow .15s,transform .1s; letter-spacing:.01em; }
@@ -257,7 +256,6 @@ nav { display:none; }
     <circle cx="400" cy="640" r="58" fill="none" stroke="#3EAC61" stroke-width="0.75" opacity="0.08"/>
   </g>
 </svg>
-
 <!-- LOGIN BUTTON -->
 <div class="login-btn-wrap">
   <a class="login-btn" href="https://app.withobliq.com" target="_blank" rel="noopener">
@@ -477,21 +475,21 @@ nav { display:none; }
     </div>
 
     <article class="demo-widget" id="demoBookingWidget"
-      data-endpoint="https://tor-api.withobliq.com/availability"
-      data-charge-endpoint="https://tor-api.withobliq.com/order/charge"
-      data-service="69bb8e39a582bc000734f253"
-      data-duration="15"
-      data-duration-id="69bb8e39a582bc000734f254"
-      data-product-id="69bb8e21a582bc000734f23f"
-      data-host-id="68d3059feecb080006dc49cb"
-      data-location-id="69bb8e07a582bc000734f229"
-      data-user-id="68d3059feecb080006dc49cb"
-      data-tenant-id="69bb8ce6314e2135fd438dfb"
+      data-endpoint="http://localhost:5001/availability"
+      data-charge-endpoint="http://localhost:5001/order/charge"
+      data-service="6990df26ce62b53365b3d206"
+      data-duration="30"
+      data-duration-id="6990df26ce62b53365b3d207"
+      data-product-id="686202bc9a643851a7fe0d4c"
+      data-host-id="67843083f5a799d37a1891cc"
+      data-location-id="6812defd916256e45887d5d0"
+      data-user-id="6993dbc19af35e7752172eb7"
+      data-tenant-id="67e2db23e3c65c88b48d0fcb"
       aria-label="Booking widget">
       <div class="demo-widget-pane demo-widget-details">
         <p class="demo-widget-brand">O</p>
         <p class="demo-widget-owner">Obliq</p>
-        <h3>Apply for Founders Spot</h3>
+        <h3>Obliq Introduction</h3>
         <p class="demo-widget-meta">America/Toronto</p>
       </div>
       <div class="demo-widget-pane demo-widget-calendar">
@@ -515,7 +513,7 @@ nav { display:none; }
           <label>Name<input id="demoBookingName" name="name" type="text" autocomplete="name" required /></label>
           <label>Email<input id="demoBookingEmail" name="email" type="email" autocomplete="email" required /></label>
           <label>Phone<input id="demoBookingPhone" name="phone" type="tel" autocomplete="tel" required /></label>
-          <button type="submit" style="width:100%;padding:15px 24px;background:var(--brand);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;border:none;border-radius:var(--r-sm);cursor:pointer;letter-spacing:.01em;transition:background .15s,box-shadow .15s,transform .1s;" onmouseover="this.style.background='#2e9450';this.style.transform='translateY(-1px)';this.style.boxShadow='0 6px 20px rgba(62,172,97,.3)'" onmouseout="this.style.background='var(--brand)';this.style.transform='';this.style.boxShadow=''">Book Now</button>
+          <button class="btn-primary" type="submit">Submit</button>
           <p class="demo-widget-status" id="demoBookingFormStatus"></p>
         </form>
         <div class="demo-widget-success" id="demoBookingSuccess" hidden>

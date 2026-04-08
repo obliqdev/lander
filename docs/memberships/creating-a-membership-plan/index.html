@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Creating a Membership Plan — Obliq Help Center</title>
+  <meta name="description" content="Build recurring membership plans with billing cycles, class credits, auto-renew settings, and pause or cancel policies in Obliq." />
+  <link rel="stylesheet" href="../../../assets/site.css" />
+  <link rel="stylesheet" href="../../../assets/docs.css" />
+</head>
+<body class="docs-page">
+
+  <header class="topbar">
+    <div class="container">
+      <div class="nav-row">
+        <a class="brand" href="/" aria-label="Obliq home">
+          <svg class="brand-logo" width="360" height="85" viewBox="0 0 360 85" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M159.854 68.3505V85H140.584V68.3505H159.854ZM175.183 53.0155C175.183 44.5462 168.32 37.6804 159.854 37.6804H140.584C132.118 37.6804 125.256 44.5462 125.256 53.0155C125.256 61.4848 132.118 68.3505 140.584 68.3505V85C122.927 85 108.613 70.68 108.613 53.0155C108.613 35.3509 122.927 21.0309 140.584 21.0309H159.854L160.68 21.0412C177.955 21.4792 191.825 35.627 191.825 53.0155C191.825 70.4039 177.955 84.5517 160.68 84.9897L159.854 85V68.3505C168.32 68.3505 175.183 61.4848 175.183 53.0155Z" fill="black"/><path d="M62.6276 68.3505V85H43.3575V68.3505H62.6276ZM77.9561 53.0155C77.9561 44.5462 71.0933 37.6804 62.6276 37.6804H43.3575C34.8918 37.6804 28.0291 44.5462 28.0291 53.0155C28.0291 61.4848 34.8918 68.3505 43.3575 68.3505V85C122.927 85 108.613 70.68 108.613 53.0155C108.613 35.3509 25.7005 21.0309 43.3575 21.0309H62.6276L63.453 21.0412C80.7285 21.4792 94.5984 35.627 94.5984 53.0155C94.5984 70.4039 80.7285 84.5517 63.453 84.9897L62.6276 85V68.3505C71.0933 68.3505 77.9561 61.4848 77.9561 53.0155Z" fill="black"/><path d="M8.65279 21.0309H43.4282C46.6387 21.0309 48.1585 24.9915 45.7727 27.1408L27.7506 43.3763C26.3816 44.6096 24.2917 44.5716 22.9684 43.2892L6.21506 27.0537C3.95369 24.8623 5.50442 21.0309 8.65279 21.0309Z" fill="black"/><path d="M297.372 37.6804L297.372 21.0309L316.642 21.0309L316.642 37.6804L297.372 37.6804ZM282.044 53.0155C282.044 61.4848 288.907 68.3505 297.372 68.3505L316.642 68.3505C325.108 68.3505 331.971 61.4848 331.971 53.0155C331.971 44.5461 325.108 37.6804 316.642 37.6804L316.642 21.0309C334.299 21.0309 348.613 35.3509 348.613 53.0155C348.613 70.68 334.299 85 316.642 85L297.372 85L296.547 84.9897C279.271 84.5517 265.402 70.4039 265.402 53.0155C265.402 35.627 279.271 21.4792 296.547 21.0412L297.372 21.0309L297.372 37.6804C288.907 37.6804 282.044 44.5461 282.044 53.0155Z" fill="black"/><path d="M351.348 85L316.572 85C313.362 85 311.842 81.0394 314.228 78.8901L332.25 62.6546C333.619 61.4213 335.709 61.4594 337.032 62.7417L353.785 78.9772C356.047 81.1687 354.496 85 351.348 85Z" fill="black"/><rect x="106.861" width="18.3942" height="85" rx="4" fill="black"/><rect x="204.087" width="18.3942" height="85" rx="4" fill="black"/><rect x="234.745" y="21.0309" width="18.3942" height="63.9691" rx="4" fill="black"/><rect x="234.745" width="18.3942" height="15.7732" rx="4" fill="black"/></svg>
+        </a>
+        <nav class="desktop-nav" aria-label="Primary navigation">
+        </nav>
+        <div class="actions">
+          <a class="btn" href="https://app.withobliq.com">Login</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+  <aside class="sheet" id="mobileSheet" aria-label="Mobile menu" aria-hidden="true">
+    <div class="sheet-head"><div class="sheet-title">Menu</div><button class="btn" id="mobileClose" type="button" aria-label="Close menu">✕</button></div>
+    <div class="sheet-body">
+      <div id="mobileRoot">
+        <a class="mobile-item" href="/pricing/"><span><strong>Pricing</strong></span><span class="arrow">›</span></a>
+        <a class="mobile-item" href="/support/"><span><strong>Support</strong></span><span class="arrow">›</span></a>
+        <a class="btn btn-primary" href="/support/" style="width:100%;margin-top:8px;padding:14px;">Get Support</a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="docs-layout" style="margin-top:82px">
+
+    <aside class="docs-sidebar" id="docsSidebar" aria-label="Documentation navigation">
+      <div class="docs-sidebar-search-wrap">
+        <div class="docs-sidebar-search-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input class="docs-sidebar-search" type="search" placeholder="Search docs…" id="docsSearch" autocomplete="off" aria-label="Search docs" />
+        </div>
+      </div>
+      <nav aria-label="Documentation categories">
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Getting Started</p>
+          <a class="docs-nav-link" href="/docs/getting-started/">Overview</a>
+          <a class="docs-nav-link" href="/docs/getting-started/setting-up-your-studio/">Setting Up Your Studio</a>
+          <a class="docs-nav-link" href="/docs/getting-started/inviting-staff-members/">Inviting Staff Members</a>
+          <a class="docs-nav-link" href="/docs/getting-started/managing-your-account/">Managing Your Account</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Classes &amp; Scheduling</p>
+          <a class="docs-nav-link" href="/docs/classes-scheduling/">Overview</a>
+          <a class="docs-nav-link" href="/docs/classes-scheduling/creating-a-class/">Creating a Class</a>
+          <a class="docs-nav-link" href="/docs/classes-scheduling/capacity-waitlists/">Capacity &amp; Waitlists</a>
+          <a class="docs-nav-link" href="/docs/classes-scheduling/class-check-ins/">Class Check-ins</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Appointments</p>
+          <a class="docs-nav-link" href="/docs/appointments/">Overview</a>
+          <a class="docs-nav-link" href="/docs/appointments/setting-up-appointments/">Setting Up Appointments</a>
+          <a class="docs-nav-link" href="/docs/appointments/staff-availability/">Staff Availability</a>
+          <a class="docs-nav-link" href="/docs/appointments/booking-rules/">Booking Rules</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Memberships</p>
+          <a class="docs-nav-link" href="/docs/memberships/">Overview</a>
+          <a class="docs-nav-link is-active" href="/docs/memberships/creating-a-membership-plan/">Creating a Membership Plan</a>
+          <a class="docs-nav-link" href="/docs/memberships/auto-renewals/">Auto-Renewals</a>
+          <a class="docs-nav-link" href="/docs/memberships/pausing-cancellation/">Pausing &amp; Cancellation</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Passes &amp; Credits</p>
+          <a class="docs-nav-link" href="/docs/passes-credits/">Overview</a>
+          <a class="docs-nav-link" href="/docs/passes-credits/creating-pass-packs/">Creating Pass Packs</a>
+          <a class="docs-nav-link" href="/docs/passes-credits/expiry-rules/">Expiry Rules</a>
+          <a class="docs-nav-link" href="/docs/passes-credits/applying-passes/">Applying Passes to Bookings</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Payments &amp; Billing</p>
+          <a class="docs-nav-link" href="/docs/payments-billing/">Overview</a>
+          <a class="docs-nav-link" href="/docs/payments-billing/connecting-payment-method/">Connecting Payment Method</a>
+          <a class="docs-nav-link" href="/docs/payments-billing/processing-refunds/">Processing Refunds</a>
+          <a class="docs-nav-link" href="/docs/payments-billing/understanding-payouts/">Understanding Payouts</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Staff &amp; Settings</p>
+          <a class="docs-nav-link" href="/docs/staff-settings/">Overview</a>
+          <a class="docs-nav-link" href="/docs/staff-settings/staff-roles-permissions/">Staff Roles &amp; Permissions</a>
+          <a class="docs-nav-link" href="/docs/staff-settings/notification-settings/">Notification Settings</a>
+          <a class="docs-nav-link" href="/docs/staff-settings/studio-profile/">Studio Profile</a>
+        </div>
+        <div class="docs-nav-section-group">
+          <p class="docs-nav-section">Reporting</p>
+          <a class="docs-nav-link" href="/docs/reporting/">Overview</a>
+          <a class="docs-nav-link" href="/docs/reporting/revenue-reports/">Revenue Reports</a>
+          <a class="docs-nav-link" href="/docs/reporting/attendance-insights/">Attendance Insights</a>
+          <a class="docs-nav-link" href="/docs/reporting/churn-tracking/">Churn Tracking</a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="docs-content" id="docsContent">
+      <button class="docs-sidebar-toggle" id="sidebarToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰ Navigation</button>
+
+      <nav class="docs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/docs/">Help Center</a>
+        <span class="docs-breadcrumb-sep">›</span>
+        <a href="/docs/memberships/">Memberships</a>
+        <span class="docs-breadcrumb-sep">›</span>
+        <span>Creating a Membership Plan</span>
+      </nav>
+
+      <article>
+        <div class="docs-article-header">
+          <h1>Creating a Membership Plan</h1>
+          <div class="docs-meta">
+            <span>Last updated April 2026</span>
+            <span class="docs-meta-dot">·</span>
+            <span>6 min read</span>
+          </div>
+        </div>
+
+        <div class="docs-body" id="docsBody">
+
+          <h2 id="before-you-begin">Before you begin</h2>
+          <p>Memberships create recurring revenue by automatically billing clients on a regular cycle. Before creating your first plan, make sure your payment method is connected — see <a href="/docs/payments-billing/connecting-payment-method/">Connecting Your Payment Method</a>.</p>
+          <div class="docs-callout docs-note">
+            <strong>Plan vs. Pass:</strong> Use a Membership for ongoing, recurring access. Use a <a href="/docs/passes-credits/creating-pass-packs/">Pass Pack</a> for one-time purchases of a fixed credit block with an expiry date.
+          </div>
+
+          <h2 id="plan-name">Step 1 — Plan name &amp; description</h2>
+          <p>Navigate to <code>Memberships → Plans → New Plan</code>.</p>
+          <ol class="docs-steps">
+            <li><div><p>Enter a <strong>Plan Name</strong> that is clear and marketable (e.g., "Unlimited Monthly", "4-Class Weekly", "Founders Rate"). This is the name clients see when purchasing.</p></div></li>
+            <li><div><p>Add a <strong>Plan Description</strong> — include what's covered, class types included, and any terms clients should know before subscribing.</p></div></li>
+            <li><div><p>Set the <strong>Plan Color</strong> (optional). Color-coding plans makes it easy to identify members at a glance in the check-in flow and on the dashboard.</p></div></li>
+          </ol>
+
+          <h2 id="billing">Step 2 — Billing frequency &amp; amount</h2>
+          <ol class="docs-steps">
+            <li><div><p>Select the <strong>Billing Frequency</strong>: Weekly, Monthly, or Annual. Monthly is the most common for studio memberships.</p></div></li>
+            <li><div><p>Set the <strong>Price</strong> for each billing cycle. If you offer an annual membership at a discount, enter the annual price and Obliq will calculate the monthly equivalent for display.</p></div></li>
+            <li><div><p>Toggle <strong>Prorate First Payment</strong> if you want to charge clients only for the remaining days of the current billing period when they join mid-cycle.</p></div></li>
+            <li><div><p>Set a <strong>Commitment Period</strong> if required (e.g., minimum 3-month commitment). Clients will be notified of the commitment before purchase.</p></div></li>
+          </ol>
+          <div class="docs-callout docs-tip">
+            <strong>Tip:</strong> For new studios, start with a simple Monthly Unlimited plan and a 4-Class Monthly plan. You can add more tiers once you understand what your clients want.
+          </div>
+
+          <h2 id="class-credits">Step 3 — Class credits &amp; access rules</h2>
+          <ol class="docs-steps">
+            <li><div><p>Set the <strong>Credits Per Cycle</strong>. For an unlimited plan, toggle <strong>Unlimited Credits</strong>. For limited plans, set the exact number of credits clients receive each billing period.</p></div></li>
+            <li><div><p>Choose whether credits <strong>Roll Over</strong> to the next period or expire at cycle end. Rollover credits increase perceived value but can complicate financial projections.</p></div></li>
+            <li><div><p>Set <strong>Class Type Restrictions</strong> if this membership only covers certain class types (e.g., group classes only, not workshops or private appointments).</p></div></li>
+          </ol>
+
+          <h2 id="auto-renew">Step 4 — Auto-renew settings</h2>
+          <ol class="docs-steps">
+            <li><div><p>Enable <strong>Auto-Renew</strong> to automatically charge the client's payment method at the start of each new billing cycle. This is on by default.</p></div></li>
+            <li><div><p>Set the <strong>Renewal Reminder</strong> — send clients an email N days before their renewal date. 3–5 days is standard practice.</p></div></li>
+            <li><div><p>Configure <strong>Failed Payment Handling</strong>: how many retry attempts to make, how many days between retries, and what happens to the member's access if payment ultimately fails (suspend or cancel).</p></div></li>
+          </ol>
+          <div class="docs-callout docs-warning">
+            <strong>Important:</strong> Once a client subscribes to a plan with auto-renew, they must be given the ability to cancel at least one full billing cycle before their next charge date. Make sure your cancellation window is visible and accessible in the client portal.
+          </div>
+
+          <h2 id="pause-cancel">Step 5 — Pause &amp; cancellation policy</h2>
+          <ol class="docs-steps">
+            <li><div><p>Enable <strong>Allow Member Pause</strong> if you want clients to be able to pause their membership. Set the maximum pause duration (e.g., up to 3 months per year).</p></div></li>
+            <li><div><p>Set the <strong>Cancellation Notice Period</strong> — the number of days' notice required before cancellation takes effect. Common values are 7 or 14 days.</p></div></li>
+            <li><div><p>Choose the <strong>Cancellation Effective Date</strong>: end of current billing period (most common) or immediately. Immediate cancellation is generally not recommended as it can result in partial billing disputes.</p></div></li>
+          </ol>
+
+          <h2 id="publish">Publishing the plan</h2>
+          <p>Toggle the plan to <strong>Active</strong> to make it available for purchase on your booking page and in the client portal. You can have multiple plans active simultaneously.</p>
+
+          <h2 id="whats-next">What's next</h2>
+          <ul>
+            <li><a href="/docs/memberships/auto-renewals/">Configure auto-renewal settings</a> in depth</li>
+            <li><a href="/docs/memberships/pausing-cancellation/">Manage pauses and cancellations</a> for existing members</li>
+            <li><a href="/docs/reporting/revenue-reports/">View revenue reports</a> to track membership revenue</li>
+          </ul>
+
+        </div>
+
+        <aside class="docs-related">
+          <h2>Related articles</h2>
+          <div class="docs-related-grid">
+            <a class="docs-related-card" href="/docs/memberships/auto-renewals/">
+              <strong>Auto-Renewals</strong>
+              <p>Configure retry logic, reminders, and failed payment handling.</p>
+            </a>
+            <a class="docs-related-card" href="/docs/payments-billing/connecting-payment-method/">
+              <strong>Connecting Your Payment Method</strong>
+              <p>Set up your payment provider before creating memberships.</p>
+            </a>
+          </div>
+        </aside>
+
+        <nav class="docs-prev-next" aria-label="Article navigation">
+          <a class="docs-prev" href="/docs/memberships/">
+            <span class="docs-pn-label">← Previous</span>
+            <span class="docs-pn-title">Memberships Overview</span>
+          </a>
+          <a class="docs-next" href="/docs/memberships/auto-renewals/">
+            <span class="docs-pn-label">Next</span>
+            <span class="docs-pn-title">Auto-Renewals →</span>
+          </a>
+        </nav>
+      </article>
+    </main>
+
+    <aside class="docs-toc" id="docsToc" aria-label="On this page">
+      <p class="docs-toc-label">On this page</p>
+      <nav id="tocNav">
+        <ul class="docs-toc-list">
+          <li><a class="docs-toc-link" href="#before-you-begin">Before you begin</a></li>
+          <li><a class="docs-toc-link" href="#plan-name">Plan name &amp; description</a></li>
+          <li><a class="docs-toc-link" href="#billing">Billing &amp; amount</a></li>
+          <li><a class="docs-toc-link" href="#class-credits">Class credits &amp; access</a></li>
+          <li><a class="docs-toc-link" href="#auto-renew">Auto-renew settings</a></li>
+          <li><a class="docs-toc-link" href="#pause-cancel">Pause &amp; cancellation policy</a></li>
+          <li><a class="docs-toc-link" href="#publish">Publishing the plan</a></li>
+          <li><a class="docs-toc-link" href="#whats-next">What's next</a></li>
+        </ul>
+      </nav>
+      <div class="docs-feedback-wrap" style="margin-top:28px;padding-top:20px;border-top:1px solid var(--line)">
+        <p class="docs-feedback-label">Was this helpful?</p>
+        <div class="docs-feedback-btns">
+          <button class="docs-feedback-btn" type="button">Yes</button>
+          <button class="docs-feedback-btn" type="button">No</button>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand"><p class="footer-logo">Obliq</p><p class="footer-copy">Studio OS for Pilates and yoga teams that need reliable operations, measurable outcomes, and clear decisions.</p></div>
+      <nav class="footer-col"><p class="footer-heading">Product</p><a href="/platform/">Platform</a><a href="/pricing/">Pricing</a></nav>
+      <nav class="footer-col"><p class="footer-heading">Resources</p><a href="/docs/">Help Center</a><a href="/support/">Support</a></nav>
+      <nav class="footer-col"><p class="footer-heading">Legal</p><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span class="js-year"></span> Obliq. All rights reserved.</p>
+      <div class="footer-links"><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></div>
+    </div>
+  </footer>
+
+  <script src="../../../assets/site.js"></script>
+  <script src="../../../assets/docs.js"></script>
+</body>
+</html>

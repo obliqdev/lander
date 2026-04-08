@@ -73,6 +73,11 @@ button { font: inherit; color: inherit; }
   -webkit-backdrop-filter: blur(12px);
 }
 
+.topbar .container {
+  width: 100%;
+  padding: 0 26px;
+}
+
 .platform-page .topbar {
   transition: transform .28s ease;
   will-change: transform;
