@@ -170,6 +170,70 @@
     return { start, end };
   }
 
+  function getTimeZoneOffset(date, timeZone) {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hourCycle: 'h23',
+    }).formatToParts(date);
+
+    const map = {};
+    parts.forEach((part) => {
+      if (part.type !== 'literal') {
+        map[part.type] = part.value;
+      }
+    });
+
+    const asUtc = Date.UTC(
+      Number.parseInt(map.year, 10),
+      Number.parseInt(map.month, 10) - 1,
+      Number.parseInt(map.day, 10),
+      Number.parseInt(map.hour, 10),
+      Number.parseInt(map.minute, 10),
+      Number.parseInt(map.second, 10),
+      0,
+    );
+
+    return asUtc - date.getTime();
+  }
+
+  function zonedDateTimeToUtc(year, month, day, hour, minute, second, millisecond, timeZone) {
+    const guessUtc = Date.UTC(year, month - 1, day, hour, minute, second, millisecond);
+    const offset = getTimeZoneOffset(new Date(guessUtc), timeZone);
+    return new Date(guessUtc - offset);
+  }
+
+  function toUtcIsoDayRange(startDate, endDate, timeZone) {
+    const from = zonedDateTimeToUtc(
+      startDate.getFullYear(),
+      startDate.getMonth() + 1,
+      startDate.getDate(),
+      0,
+      0,
+      0,
+      0,
+      timeZone,
+    ).toISOString();
+
+    const to = zonedDateTimeToUtc(
+      endDate.getFullYear(),
+      endDate.getMonth() + 1,
+      endDate.getDate(),
+      23,
+      59,
+      59,
+      999,
+      timeZone,
+    ).toISOString();
+
+    return { from, to };
+  }
+
   function formatSlotSummary(date) {
     return new Intl.DateTimeFormat('en-US', {
       weekday: 'long',
@@ -277,13 +341,14 @@
 
   async function fetchAvailability() {
     const { start, end } = buildMonthRange(viewMonthDate);
+    const { from, to } = toUtcIsoDayRange(start, end, timezone);
 
     statusEl.textContent = 'Loading availability…';
 
     const search = new URLSearchParams({
       service,
-      from: toYmd(start),
-      to: toYmd(end),
+      from,
+      to,
     });
 
     if (duration) {
