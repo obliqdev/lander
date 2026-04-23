@@ -420,6 +420,9 @@ button { font: inherit; color: inherit; }
   background: var(--accent);
   color: var(--accent-ink);
   box-shadow: 0 10px 24px rgba(96,208,132,.3);
+  border-radius: 9px;
+  padding: .75rem;
+  border: 0 none;
 }
 .btn-primary:hover { filter: brightness(.98); }
 .hamburger { display: inline-flex; padding: 10px 12px; }
